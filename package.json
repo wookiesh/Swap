@@ -1,0 +1,10 @@
+{
+	"name": "swap",
+	"version": "0.0.1",
+	"author": "Joseph Piron <joseph.piron@gmail.com",
+	"description": "An attempt to port lagarto-swap great idea to nodejs",
+	"dependencies": {
+		"serialport": "*"
+	},
+	"license": "MIT"	
+}
