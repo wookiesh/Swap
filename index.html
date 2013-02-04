@@ -8,10 +8,13 @@
 	<div id="packets"></div>
 </body>
 <script>
-	var socket = io.connect('http://localhost:8080');
+	var socket = io.connect('http://localhost:8080',{
+		"reconnect": true,
+		"reconnection delay": 500,		
+	});
 	socket.on("swapPacket", function(packet){
 		console.log(packet);
-		$("#packets").append("<div>" + packet.Source + " => " + packet.Dest + ": " +packet.Value+"</div>");
+		$("#packets").append("<div>" + Date() + ": " + packet.Source + " => " + packet.Dest + ":(" + packet.Nonce + "): " +packet.Value+"</div>");
 	})
 </script>
 </html>

@@ -29,4 +29,4 @@ var SerialModem = function (port){
 	});
 };
 util.inherits(SerialModem, events.EventEmitter);
-swap.exports = SerialModem;
+module.exports = SerialModem;
