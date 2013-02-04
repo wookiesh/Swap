@@ -4,7 +4,10 @@
 	"author": "Joseph Piron <joseph.piron@gmail.com",
 	"description": "An attempt to port lagarto-swap great idea to nodejs",
 	"dependencies": {
-		"serialport": "*"
+		"serialport": "*",
+		"log4js": "*",
+		"socket.io": "*",
+		"express": "3.x"
 	},
 	"license": "MIT"	
 }

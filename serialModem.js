@@ -1,7 +1,8 @@
 var	util = require("util"),
 	swap = require('./swap'),
 	serialport = require("serialport"),
-	events = require('events');
+	events = require('events'),
+	logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 
 var SerialModem = function (port){
 	events.EventEmitter.call(this);
@@ -15,7 +16,7 @@ var SerialModem = function (port){
 	serialPort.on("open", function(){
 		console.log("Port " + this.readStream.path + " opened");
 		this.on("data", function(data){
-			// console.log(data);
+			logger.debug("Received: " + data);
 			if (data[0]==('D'))
 			{
 				var packet = new swap.CCPacket(data.slice(1,data.length)); // remove \r
@@ -27,6 +28,5 @@ var SerialModem = function (port){
 		})
 	});
 };
-
 util.inherits(SerialModem, events.EventEmitter);
-module.exports = SerialModem;
+swap.exports = SerialModem;
