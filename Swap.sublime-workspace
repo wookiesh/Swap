@@ -1,0 +1,1214 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"e",
+				"EventEmitter"
+			],
+			[
+				"pro",
+				"prototype"
+			],
+			[
+				"prop",
+				"prototype  (namespace)"
+			],
+			[
+				"Ser",
+				"SerialModem"
+			],
+			[
+				"call",
+				"callback"
+			],
+			[
+				"host",
+				"hostname"
+			],
+			[
+				"backgr",
+				"background-image"
+			],
+			[
+				"my",
+				"mysqlBackup"
+			],
+			[
+				"seting",
+				"settings"
+			],
+			[
+				"machine",
+				"machineName"
+			],
+			[
+				"de",
+				"default-ssl"
+			],
+			[
+				"Si",
+				"SwitchButton"
+			],
+			[
+				"Publi",
+				"Publisher"
+			],
+			[
+				"INST",
+				"INSTANCE"
+			],
+			[
+				"read",
+				"readVcc"
+			],
+			[
+				"x",
+				"xPL_Message"
+			],
+			[
+				"ch",
+				"checkSensors"
+			],
+			[
+				"xPL",
+				"xPLMessage"
+			],
+			[
+				"inMes",
+				"inMessage"
+			],
+			[
+				"sd",
+				"sdebugln"
+			],
+			[
+				"sdeb",
+				"sdebugln"
+			],
+			[
+				"sde",
+				"sdebugln"
+			],
+			[
+				"INS",
+				"INSTANCE"
+			],
+			[
+				"INs",
+				"INST_TEMP"
+			],
+			[
+				"Ad",
+				"AddCommand"
+			],
+			[
+				"add",
+				"AddCommand"
+			],
+			[
+				"get",
+				"getTempC"
+			],
+			[
+				"las",
+				"lastLight"
+			],
+			[
+				"ds",
+				"dsAddr"
+			],
+			[
+				"OW",
+				"OW_POWER"
+			],
+			[
+				"O",
+				"OW_PIN"
+			],
+			[
+				"ve",
+				"vendor_id"
+			],
+			[
+				"prin",
+				"println"
+			],
+			[
+				"if",
+				"ifdef"
+			],
+			[
+				"hb",
+				"hbInterval"
+			],
+			[
+				"data",
+				"dataInterval"
+			],
+			[
+				"pr",
+				"print"
+			],
+			[
+				"clock",
+				"clockTime"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"read_",
+				"read_all  (function)"
+			],
+			[
+				"G",
+				"GrowlNotificationPacket"
+			],
+			[
+				"plu",
+				"Plugin"
+			],
+			[
+				"Pl",
+				"PluginMount"
+			],
+			[
+				"pl",
+				"Plugin"
+			],
+			[
+				"pa",
+				"pageSize"
+			],
+			[
+				"P",
+				"Packages"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/JSLint/JSLint.sublime-build",
+	"command_palette":
+	{
+		"height": 267.0,
+		"selected_items":
+		[
+			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add..."
+			],
+			[
+				"gitc",
+				"Git: Commit"
+			],
+			[
+				"fet",
+				"Fetch: File"
+			],
+			[
+				"fetc",
+				"Fetch: File"
+			],
+			[
+				"com",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"ignore",
+				"Gitignore: New gitingore"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ex",
+				"Fabric: Execute Task"
+			],
+			[
+				"exe",
+				"Fabric: Execute Task"
+			],
+			[
+				"pus",
+				"Git: Push"
+			],
+			[
+				"fa",
+				"Fabric: Execute Task"
+			],
+			[
+				"fab",
+				"Fabric: Execute Task"
+			],
+			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"gia",
+				"Git: Add Current File"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"sta",
+				"Git: Status"
+			],
+			[
+				"gad",
+				"Git: Add Current File"
+			],
+			[
+				"gitig",
+				"Gitignore: New gitingore"
+			],
+			[
+				"upgra",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"overla",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"br",
+				"Preferences: Browse Packages"
+			],
+			[
+				"python",
+				"SublimeREPL: Python - execnet"
+			],
+			[
+				"repl",
+				"SublimeREPL: Erlang"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"fabri",
+				"Fabric: Execute Task"
+			],
+			[
+				"fabr",
+				"Fabric: List Jobs"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"f",
+				"Fabric: List Jobs"
+			],
+			[
+				"flj",
+				"Fabric: List Jobs"
+			],
+			[
+				"",
+				"Build: Build"
+			],
+			[
+				"bro",
+				"Preferences: Browse Packages"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"todo",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"fileo",
+				"Show TODOs: Open files only"
+			],
+			[
+				"ignor",
+				"Gitignore: New gitingore"
+			],
+			[
+				"gitign",
+				"Gitignore: New gitingore"
+			],
+			[
+				"hg",
+				"Fetch: Manage"
+			],
+			[
+				"buil",
+				"Build: Build"
+			],
+			[
+				"his",
+				"Git: Commit history"
+			],
+			[
+				"diff",
+				"Git: Diff All"
+			],
+			[
+				"log",
+				"Git: Log Current File"
+			],
+			[
+				"history",
+				"Git: Commit history"
+			],
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
+				"git",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"list pa",
+				"Package Control: List Packages"
+			],
+			[
+				"lists",
+				"Package Control: List Packages"
+			],
+			[
+				"show",
+				"Show TODOs: Open files only"
+			],
+			[
+				"user",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"lis",
+				"Sort Lines"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"sub",
+				"Snippet: #!/usr/bin/env"
+			],
+			[
+				"pacl",
+				"Package Control: List Packages"
+			],
+			[
+				"listp",
+				"Package Control: List Packages"
+			],
+			[
+				"ard",
+				"Set Syntax: Arduino"
+			],
+			[
+				"packa",
+				"Package Control: Disable Package"
+			],
+			[
+				"cland",
+				"Preferences: SublimeClang Settings – Default"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"clang",
+				"SublimeClang: Clear cache"
+			],
+			[
+				"sublim",
+				"Preferences: SublimeClang Settings – Default"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"me",
+				"Snippet: Method"
+			],
+			[
+				"subl",
+				"SublimeHg: Open Menu"
+			],
+			[
+				"cli",
+				"Set Syntax: Sublime Hg CLI (New)"
+			],
+			[
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
+				"fold",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"pl",
+				"Package Control: Install Package"
+			],
+			[
+				"lin",
+				"SublimeLinter: Disable Background Linting"
+			],
+			[
+				"lint",
+				"SublimeLinter: Disable Background Linting"
+			],
+			[
+				"unlin",
+				"SublimeLinter: Disable Background Linting"
+			],
+			[
+				"intel",
+				"Show TODOs in project and open files"
+			],
+			[
+				"go to",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: List Packages"
+			],
+			[
+				"console",
+				"Set Syntax: R Console"
+			],
+			[
+				"inde",
+				"Indentation: Convert to Spaces"
+			]
+		],
+		"width": 572.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/joseph/workspace/alfred/swap/node_modules/serialport/tests/test_read.js",
+		"/Users/joseph/Downloads/OpENer_1.2.0/README",
+		"/Users/joseph/workspace/alfred/swap/serialModem.js",
+		"/Users/joseph/workspace/alfred/swap/app.js",
+		"/Users/joseph/workspace/alfred/swap/index.html",
+		"/Users/joseph/workspace/alfred/swap/swap.js",
+		"/Users/joseph/workspace/alfred/swap/package.json",
+		"/Users/joseph/workspace/alfred/swap/README.md",
+		"/Users/joseph/workspace/alfred/swap/jQuery.js",
+		"/Users/joseph/workspace/alfred/swap/readme.md",
+		"/Users/joseph/workspace/skiTimer/index-1.html",
+		"/Users/joseph/workspace/skiTimer/index.html",
+		"/Users/joseph/workspace/alfred/swap/.gitignore",
+		"/Users/joseph/workspace/alfred/swap/serialModel.js",
+		"/Users/joseph/workspace/alfred/swap/swapPacket.js",
+		"/Users/joseph/workspace/alfred/swap/swapPacket",
+		"/Users/joseph/workspace/alfred/swap/node_modules/.bin/serialportlist",
+		"/Users/joseph/Documents/repos/panstamp/python/lagarto/lagarto-swap/config/swapnet.json",
+		"/Users/joseph/Documents/repos/panstamp/python/pyswap/src/swap/modem/SerialPort.py",
+		"/Users/joseph/Documents/repos/panstamp/python/pyswapdmtgui/src/SwapManager.py",
+		"/Users/joseph/Documents/repos/panstamp/python/pyswapdmtgui/src/MainFrame.py",
+		"/Users/joseph/Documents/repos/panstamp/python/pyswap/src/swap/SwapServer.py",
+		"/Users/joseph/Documents/repos/panstamp/python/pyswap/doc/classmodem_1_1CcPacket_1_1CcPacket.png",
+		"/Users/joseph/Documents/repos/panstamp/python/lagarto/lagarto-swap/config/serial.xml",
+		"/Users/joseph/workspace/gateway-server/DEBIAN/postinst",
+		"/Users/joseph/workspace/gateway-server/fabfile.py",
+		"/Users/joseph/workspace/gateway-server/DEBIAN/control",
+		"/Users/joseph/workspace/web2py/applications/gateway/static/app/view/windows/Function.js",
+		"/Users/joseph/workspace/web2py/applications/gateway/static/app/controller/Machines.js",
+		"/Users/joseph/workspace/web2py/applications/gateway/models/db.py",
+		"/Users/joseph/workspace/web2py/applications/gateway/static/extjs/examples/ux/PreviewPlugin.js",
+		"/Users/joseph/workspace/web2py/applications/gateway/controllers/default.py",
+		"/Users/joseph/.ssh/known_hosts",
+		"/Users/joseph/.subversion/config",
+		"/Users/joseph/Desktop/essai.html",
+		"/Users/joseph/Desktop/GSM.csv",
+		"/Users/joseph/Downloads/contact_sample (1).csv",
+		"/Users/joseph/Downloads/zmq_websocket/demo.py",
+		"/Users/joseph/workspace/gateway-managers/.gitignore",
+		"/Users/joseph/Downloads/zmq_websocket/bin/activate",
+		"/Users/joseph/Downloads/contact_sample.csv",
+		"/Users/joseph/workspace/gateway-server/Gateway.sublime-project",
+		"/Users/joseph/workspace/Timer/src/timer.pyw",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/JSLint/JSLint.sublime-settings",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/JSLint/JSLint.sublime-build",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/JSLint.sublime-settings",
+		"/Library/Python/2.7/site-packages/Fabric-1.4.3-py2.7.egg/fabric/decorators.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/menu.py",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/controllers/default.py",
+		"/Users/joseph/Documents/workspace/gateway-server/fabfile.py",
+		"/Users/joseph/Documents/workspace/gateway-server/DEBIAN/postinst",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/monitoring.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Fabric/Default.sublime-commands",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Fabric/fabric.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Fabric Tasks/package-metadata.json",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SublimeTODO/todo.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/delete_word.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/Delete Left Right.sublime-macro",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Git/git.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
+		"/Users/joseph/Documents/workspace/gateway-server/DEBIAN/control",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/machines.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/Default (OSX).sublime-keymap",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/Default (OSX).sublime-keymap",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Side Bar.sublime-settings",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/SideBarGit.sublime-settings",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SideBarGit/SideBarGit.sublime-settings",
+		"/Users/joseph/Documents/workspace/gateway-server/.gitignore",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Git.sublime-settings",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/.gitignore",
+		"/Users/joseph/Documents/workspace/gateway-server/Gateway.sublime-project",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/app/view/Runs.js",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/app/view/Alarms.js",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/css/perso.css",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/app.js",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/index.html",
+		"/Users/joseph/Documents/workspace/gateway-server/.git/config",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/.git/config",
+		"/Users/joseph/.gitconfig",
+		"/Users/joseph/Documents/workspace/gateway-server/.git/COMMIT_EDITMSG",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/images/arrows-ffffff.png",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/Shell Turtlestein.sublime-settings",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/README.md",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Shell Turtlestein.sublime-settings",
+		"/Users/joseph/Documents/workspace/gateway-server/Gateway.sublime-workspace",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/shell_turtlestein.py",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/Default.sublime-keymap",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/package-metadata.json",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SublimeCodeIntel/Default (OSX).sublime-mousemap",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/joseph/Documents/workspace/gateway-server/web2py/routes.py",
+		"/Users/joseph/Documents/workspace/gateway-server/web2py/parameters_443.py",
+		"/Users/joseph/Documents/workspace/gateway-server/web2py/parameters_80.py",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/db.py",
+		"/Users/joseph/Documents/workspace/gateway-server/web2py/logging.conf",
+		"/Users/joseph/Documents/workspace/gateway-server/web2py/applications/welcome/models/db.py",
+		"/Users/joseph/Downloads/web2py/applications/gateway/controllers/default.py",
+		"/Users/joseph/Downloads/web2py/applications/admin/controllers/default.py",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/views/layout.html",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/views/appadmin.html",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/fabfile.py",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/DEBIAN/postinst",
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/DEBIAN/control",
+		"/Users/joseph/Documents/workspace/chatServer.py",
+		"/Volumes/pot007-gw 2/applications/gateway/models/db.py",
+		"/Users/joseph/Documents/workspace/opc2sql/src/opc2sql.py",
+		"/Users/joseph/Documents/workspace/jsonRpcCmd/src/jsonRpcCmd.py",
+		"/Users/joseph/Documents/workspace/xbmc/lib/libUPnP/Neptune/Extras/Tools/Testing/https-urls.txt",
+		"/Users/joseph/Downloads/POT007-exportedAlarms.csv",
+		"/Users/joseph/Desktop/POT007-exportedAlarmsxc.csv",
+		"/Users/joseph/g",
+		"/Users/joseph/Documents/workspace/series_downloader/showDl/plugins/scrappers/showRss.py",
+		"/usr/local/bin/syncPhotos",
+		"/Users/joseph/1350882201",
+		"/Users/joseph/64:20:0c:72",
+		"/Users/joseph/192.168.1.100",
+		"/Users/joseph/Virginies-Ipad",
+		"/Users/joseph/01:64:20:0c:72",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/bash.sublime-build",
+		"/Applications/Sync Music",
+		"/Users/joseph/Downloads/RapidSVN-0.12.0-8051.dmg",
+		"/Users/joseph/Downloads/papa.miom.be.bat",
+		"/Users/joseph/Documents/workspace/alfred/devices/Arduino/alfred/switch/SwitchButton.cpp"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/joseph/Documents/repos/panstamp/python/",
+			"/Users/joseph/Documents/repos/panstamp/python/pyswapdmtgui/src",
+			"",
+			"/Users/joseph/workspace/web2py/applications/gateway/static/app",
+			"",
+			"p000_r07_bd_diagnostic",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"intParse",
+			"MAX_SERIAL_SILENCE_MS",
+			"void isrT1event(void)\n{\n  if (t1Ticks == MAX_SERIAL_SILENCE_TK)\n  {\n    // Detach Timer1 interrupt\n    Timer1.detachInterrupt();\n    Timer1.stop();\n    resetTimer();\n    // Pending \"+++\" command?\n    if (!strcmp(strSerial, AT_GOTO_CMDMODE))\n    {\n      disableINT0irq();  // Disable wireless reception interrupt\n      Serial.println(\"OK-Command mode\");\n      serMode = SERMODE_COMMAND;\n    }\n    memset(strSerial, 0, sizeof(strSerial));\n    len = 0;\n    Timer1.resume();\n  }\n  else\n    t1Ticks++;\n}",
+			"int0",
+			"unable to update",
+			"continuousScroll",
+			"deviceDeltax",
+			"deviceDeltaX",
+			"sendMessage",
+			"sent:",
+			"sent",
+			"server_started",
+			"server started",
+			"wx.li",
+			"foreach",
+			"sed",
+			"bind",
+			"git",
+			"    \n",
+			"glo",
+			"ip",
+			"abine",
+			",",
+			"^",
+			", ",
+			" ,",
+			" ",
+			";",
+			"defined",
+			"ƒ",
+			"ctrl+c",
+			"sudo",
+			"fab",
+			"mysql",
+			"script_security",
+			"\n",
+			"BIRGUM",
+			"openvpn",
+			"\n",
+			"$",
+			"echo.",
+			"while",
+			"echo",
+			"response._vars",
+			"len",
+			"mode",
+			"machineNam",
+			"check",
+			"echo \"Address $ip received by DHCP\"\necho .\nunset ip\n\n########################################################################\n# Get the name of the machine to install\n\necho -n \"Please enter the name for this gateway (ex: exq001-gw): \"\nwhile [ -z $hostname ]; do\n    read hostname;\ndone;\necho \"Configuring gateway $hostname...\"\necho $hostname > /etc/hostname\n",
+			"floa",
+			"\"",
+			"rotate",
+			"transcode=vcodec=h264,vb=300",
+			"/axis-cgi/mjpg/video.cgi?resolution=640x480",
+			"http$",
+			"http",
+			"http://http://",
+			"http://",
+			"127.0.0.1",
+			"http://",
+			"127.0.0.1",
+			"Publis",
+			"64",
+			"/*",
+			"3",
+			"64",
+			"128",
+			"sde",
+			"\");\n",
+			"128",
+			"/*",
+			");\n",
+			"}\n",
+			"sendData",
+			"sdebugln",
+			"slnd",
+			"tostring",
+			"PSTR",
+			"DATA_POLL_INTERVAL",
+			"setsource",
+			"reset_se",
+			"pull",
+			"tab",
+			"ignore",
+			":",
+			"test",
+			"-build",
+			"build",
+			"self",
+			"cmd",
+			" +",
+			"macbook",
+			";",
+			"	",
+			"\\d*:\\s",
+			"Hi Guys",
+			"Program:p000_common.r07_bd_diagnostic",
+			"	",
+			"		",
+			"	",
+			"		",
+			"Field",
+			"CRYPT",
+			"main",
+			"App",
+			":2",
+			"azkeoâzekaop^zkaopzkeapzkozaoe"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"/axis-media/media.amp?resolution=320x240",
+			"rtsp",
+			"\":",
+			":\"",
+			"macbook.local",
+			",",
+			"|",
+			"",
+			"p000_r07_bd_diagnostic",
+			"|",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 165.0
+	},
+	"output.exec":
+	{
+		"height": 212.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sw",
+				"swap.js"
+			],
+			[
+				"swa",
+				"swap.js"
+			],
+			[
+				"pa",
+				"package.json"
+			],
+			[
+				"post",
+				"gateway-server/DEBIAN/postinst"
+			],
+			[
+				"fab",
+				"gateway-server/fabfile.py"
+			],
+			[
+				"contr",
+				"gateway-server/DEBIAN/control"
+			],
+			[
+				"machinesjs",
+				"gateway/static/app/controller/Machines.js"
+			],
+			[
+				"func",
+				"gateway/static/app/view/windows/Function.js"
+			],
+			[
+				"fa",
+				"gateway-server/fabfile.py"
+			],
+			[
+				"db.p",
+				"gateway/models/db.py"
+			],
+			[
+				"pos",
+				"gateway-server/DEBIAN/postinst"
+			],
+			[
+				"previe",
+				"gateway/static/extjs/examples/ux/PreviewPlugin.js"
+			],
+			[
+				"db",
+				"gateway/models/db.py"
+			],
+			[
+				"machines.js",
+				"gateway/static/app/controller/Machines.js"
+			],
+			[
+				"defau",
+				"gateway/controllers/default.py"
+			],
+			[
+				"po",
+				"gateway-server/DEBIAN/postinst"
+			],
+			[
+				"contro",
+				"gateway-server/DEBIAN/control"
+			],
+			[
+				"con",
+				"gateway-server/DEBIAN/control"
+			],
+			[
+				"moni",
+				"gateway/models/monitoring.py"
+			],
+			[
+				"giti",
+				"gateway/.gitignore"
+			],
+			[
+				".",
+				"gateway-server/.gitignore"
+			],
+			[
+				"machines",
+				"gateway/models/machines.py"
+			],
+			[
+				"machine",
+				"gateway/models/machines.py"
+			],
+			[
+				"index",
+				"gateway/static/index.html"
+			],
+			[
+				"defaut",
+				"gateway/controllers/default.py"
+			],
+			[
+				"work",
+				"gateway-server/Gateway.sublime-workspace"
+			],
+			[
+				"gitigno",
+				"gateway-server/.gitignore"
+			],
+			[
+				"para",
+				"gateway-server/web2py/parameters_80.py"
+			],
+			[
+				"routes",
+				"gateway-server/web2py/routes.py"
+			],
+			[
+				"control",
+				"gateway-server/DEBIAN/control"
+			],
+			[
+				"db.py",
+				"gateway/models/db.py"
+			],
+			[
+				"json",
+				"jsonRpcCmd/src/jsonRpcCmd.py"
+			],
+			[
+				"setup.py",
+				"workspace/jsonRpcCmd/setup.py"
+			],
+			[
+				"setup.p",
+				"repos/web2py/setup.py"
+			],
+			[
+				"oo",
+				"ooPinChangeInt/ooPinChangeInt.h"
+			],
+			[
+				"swapmana",
+				"pyswapdmtgui/src/SwapManager.py"
+			],
+			[
+				"swapm",
+				"pluginHouseAgentSWAP/SwapManager.py"
+			],
+			[
+				"mainfr",
+				"pyswapdmtgui/src/MainFrame.py"
+			],
+			[
+				"wait",
+				"pyswapdmtgui/src/WaitDialog.py"
+			],
+			[
+				"manag",
+				"SwapManager.py"
+			],
+			[
+				"jean",
+				"Arduino/JeanMemory/JeanMemory.ino"
+			],
+			[
+				"xpl_m",
+				"Arduino/libraries/xpl/xPL_Message.cpp"
+			],
+			[
+				"xpl_ut",
+				"Arduino/libraries/xpl/xPL_utils.h"
+			],
+			[
+				"xpl_u",
+				"Arduino/libraries/xpl/xPL_utils.cpp"
+			],
+			[
+				"xpl_mes",
+				"Arduino/libraries/xpl/xPL_Message.h"
+			],
+			[
+				"debug",
+				"Arduino/libraries/debug/debug.h"
+			],
+			[
+				"hardw",
+				"workspace/xoscillo/firmware/HardwareSerial.cpp"
+			],
+			[
+				"xpl",
+				"Arduino/libraries/xpl/xPL_Message.cpp"
+			],
+			[
+				"xpl.h",
+				"Arduino/libraries/xpl/xPL.h"
+			],
+			[
+				"queue",
+				"workspace/AVRQueue/Arduino/Queue.h"
+			],
+			[
+				"xpl_",
+				"Arduino/libraries/xpl/xPL_Message.cpp"
+			],
+			[
+				"xpl.",
+				"Arduino/libraries/xpl/xPL.cpp"
+			],
+			[
+				"serialn",
+				"workspace/alfred/devices/Arduino/alfred/serialNode/serialNode.ino"
+			],
+			[
+				"serialno",
+				"workspace/alfred/devices/Arduino/alfred/serialNode/serialNode.ino"
+			],
+			[
+				"onewi",
+				"Arduino/libraries/OneWire/OneWire.h"
+			],
+			[
+				"dalla",
+				"Arduino-Temperature-Control-Library/DallasTemperature.h"
+			],
+			[
+				"base",
+				"alfred/xpl/base.py"
+			],
+			[
+				"xpls",
+				"alfred/apps/xplSerial.py"
+			],
+			[
+				"temp2xpl",
+				"Documents/Arduino/temp2xpl/temp2xpl.ino"
+			],
+			[
+				"temp2",
+				"Documents/Arduino/temp2xpl/temp2xpl.ino"
+			],
+			[
+				"xplech",
+				".xpl/xPLEcho.json"
+			],
+			[
+				"baseplug",
+				".xpl/BasePlugin.json"
+			],
+			[
+				"set",
+				"setup.py"
+			],
+			[
+				"build",
+				"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/xPLLibrary.sublime-build"
+			],
+			[
+				"tes",
+				"tests/testAddress.py"
+			],
+			[
+				"mes",
+				"xpl/message.py"
+			],
+			[
+				"xplmess",
+				"message/expel/message/xpl.py"
+			],
+			[
+				"xplme",
+				"message/expel/message/__init__.py"
+			],
+			[
+				"fabfi",
+				"workspace/web2py/applications/webmoni/fabfile.py"
+			],
+			[
+				"grids",
+				"static/app/store/GridStore.js"
+			],
+			[
+				"default",
+				"controllers/default.py"
+			],
+			[
+				"rou",
+				"workspace/web2py/routes.py"
+			],
+			[
+				"",
+				"machineWebSite/app.js"
+			],
+			[
+				"app",
+				"machineWebSite/app.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/joseph/Documents/repos/panstamp/panstamp.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 234.0,
+	"status_bar_visible": true
+}

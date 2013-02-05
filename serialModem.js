@@ -14,7 +14,7 @@ var SerialModem = function (port){
 	});
 
 	serialPort.on("open", function(){
-		console.log("Port " + this.readStream.path + " opened");
+		logger.info("Port " + this.readStream.path + " opened");
 		this.on("data", function(data){
 			logger.debug("Received: " + data);
 			if (data[0]==('D'))

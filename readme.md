@@ -8,5 +8,5 @@ There's two reasons for this:
 
 This is also based on a modification of the gateway interface:
 * data and command modes do not exist anymore
-* data sent to serialPort starting with D (for data)
-* data sent to stamp starting with S (for send)
+* data sent to serialPort starting with 'D' (for data)
+* data sent to stamp starting with 'S' (for send)
