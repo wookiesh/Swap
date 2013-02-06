@@ -38,6 +38,7 @@ module.exports = {
 		this.network= null,
 		this.address= null,
 		this.txInterval= null
+		this.lastStatusTime = null
 	},
 
 	Functions: {
