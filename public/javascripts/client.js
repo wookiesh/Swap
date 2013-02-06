@@ -5,6 +5,15 @@ var socket = io.connect('http://localhost:' + window.location.port ,{
 
 socket.on("swapPacket", function(packet){
 	console.log(packet);
-	$("#packets").append("<div>" + Date() + ": " + packet.Source + " => " + 
-		packet.Dest + ":(" + packet.Nonce + "): " +packet.Value+"</div>");
+	$("#packets").prepend("<div>" + Date() + ": " + packet.source + " => " + 
+		packet.dest + ":(" + packet.nonce + "): " +packet.value+"</div>");
 })
+
+socket.on('moteAdded', function(mote){
+	addMote(mote);
+})
+
+function addMote(mote){	
+	console.log(mote);	
+	$("#motes").append("<div>Mote " + mote.address + '</div>');
+}

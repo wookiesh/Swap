@@ -5,6 +5,7 @@
 
 var express = require('express'),
 	app = express(),
+	fs = require('fs'),
 	util = require('util'),
 	routes = require('./routes'),
 	user = require('./routes/user'),
@@ -39,7 +40,13 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-var sm = new SerialModem("/dev/tty.usbserial-A1014MR7");
+var config = require('./config.json');
+var sm = new SerialModem(config);
+
 sm.on("received", function(packet){
 	io.sockets.emit('swapPacket', packet);
 });
+
+sm.on("moteAdded", function(mote){
+	io.sockets.emit('moteAdded', mote)
+})

@@ -1,0 +1,13 @@
+{
+	"serial": {
+		"port": "/dev/tty.usbserial-A1014MR7",
+		"baudrate": 38400
+	},
+
+	"network":{
+		"channel": 0,
+		"syncWord": "b547",
+		"address": 1,
+		"securit": 0
+	}
+}
