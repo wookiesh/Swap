@@ -1,0 +1,19 @@
+{
+    "1": {
+        "productCode": "00010001",
+        "hardwareVersion": null,
+        "firmwareVersion": null,
+        "state": {
+            "level": 2,
+            "str": "Radio Off"
+        },
+        "channel": 0,
+        "security": 0,
+        "password": null,
+        "nonce": 27,
+        "network": "B547",
+        "address": 1,
+        "txInterval": 5,
+        "lastStatusTime": 1360270998517
+    }
+}

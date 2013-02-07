@@ -36,17 +36,21 @@ app.get('/users', user.list);
 
 var config = require('./config.json'),
 	swap = require('./swap'),
-	SerialModem = require('./serialModem');
-	manager = require('./manager.js')
+	SerialModem = require('./serialModem'),
+	manager = require('./manager.js'),
+	log4js = require('log4js');
 
-var serial = new SerialModem(config);
-var swapManager = new manager(config);
+log4js.setGlobalLogLevel(log4js.levels.INFO);
+var swapManager = undefined, 
+	serial = new SerialModem(config);
+
+serial.on('started', function(){
+	swapManager = new manager(serial, config);
+	swapManager.on("newMote", function(mote){
+		io.sockets.emit('newMote', mote)
+	});
+});
 
 serial.on("data", function(packet){
 	io.sockets.emit('swapPacket', packet);
-	swapManager.packetReceived(packet);
 });
-
-swapManager.on("newMote", function(mote){
-	io.sockets.emit('newMote', mote)
-})

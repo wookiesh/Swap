@@ -45,6 +45,7 @@ var SerialModem = function (config){
 								serialPort.write("ATDA?\r");
 								serialPort.once("data", function(data){
 									self.address = parseInt(data);
+									self.emit("started");
 								});
 							});
 						});					

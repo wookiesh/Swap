@@ -1,7 +1,9 @@
+var logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
+
 module.exports = {
 	CCPacket: function (strPacket){
 		if ((strPacket.length)%2 != 0){
-			console.log("Packet length must be even: " + strPacket.length);
+			logger.error("Packet length must be even: " + strPacket.length);
 			return;
 		}
 		this.RSSI = parseInt(strPacket.slice(1,3), 16);
@@ -25,18 +27,19 @@ module.exports = {
 		this.value = ccPacket.data.slice(7,ccPacket.data.length);
 	},
 
-	SwapMote: function(){		 
+	SwapMote: function(address, network, channel, security, nonce){		 
 		// Standards registers
+		console.log(arguments);
 		this.productCode= null,
 		this.hardwareVersion= null,
 		this.firmwareVersion= null,
 		this.state= null,
-		this.channel= null,
-		this.security= null,
+		this.channel= channel,
+		this.security= security,
 		this.password= null,
-		this.nonce= null,
-		this.network= null,
-		this.address= null,
+		this.nonce= nonce,
+		this.network= network,
+		this.address= address,
 		this.txInterval= null
 		this.lastStatusTime = null
 	},
@@ -48,10 +51,14 @@ module.exports = {
 	},
 
 	SwapStates: {
-		RESTART: 0,
-		RXON: 1,
-		RXOFF: 2,
-		SYNC: 3,
-		LOWBAT: 4
-	}
+		RESTART: {level: 0, str: "Restart"},
+		RXON: {level: 1, str: "Radio On"},
+		RXOFF: {level: 2, str: "Radio Off"},
+		SYNC: {level: 3, str: "Sync mode"},
+		LOWBAT: {level: 4, str: "Low battery"},
+
+		get: function(val){ 
+			return [this.RESTART, this.RXON, this.RXOFF, this.SYNC, this.LOWBAT][val]; 
+		}
+	},
 };
