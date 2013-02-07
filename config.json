@@ -9,5 +9,11 @@
 		"syncWord": "b547",
 		"address": 1,
 		"securit": 0
+	},
+
+	"devices":{
+		"local": "devices",
+		"remote": "http://www.panstamp.com/downloads/devices.tar",
+		"update": true
 	}
 }

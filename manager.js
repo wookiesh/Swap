@@ -2,6 +2,7 @@ var events = require('events'),
 	util = require('util'),
 	swap = require('./swap'),
 	fs = require('fs'),
+	http = require('http'),
 	logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 
 var SwapManager = function(dataSource, config) {
@@ -15,9 +16,20 @@ var SwapManager = function(dataSource, config) {
 		fs.writeFile(this.configFile, JSON.stringify(self.motes, null, 4)+'\n', callback);
 	}
 
+	// Get device definitions from the web
+	this.updateDevices = function(){
+		logger.info("Updating definitions from %s", config.devices.remote);
+		if (!fs.existsSync(config.devices.local))	
+			fs.mkdirSync(config.devices.local, 0775)			
+		http.get(config.devices.remote, function(response){
+			response.pipe(fs.createWriteStream([config.devices.local, 'devices.tar'].join('/')));
+		});		
+	}
+
 	var self = this;
 	self.motes = self.loadNetwork();
 	self.device = dataSource;
+	if (config.devices.update) this.updateDevices();
 
 	self.device.on('data', function(packet){ self.packetReceived(packet); });
 	process.on("SIGTERM", function(){
