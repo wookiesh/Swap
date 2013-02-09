@@ -12,7 +12,8 @@
 		"socket.io": "*",
 		"express": "3.x",
 		"tar": "*",
-		"request": "*"
+		"request": "*",
+		"async": "*"
 	},
 	"license": "MIT"	
 }
