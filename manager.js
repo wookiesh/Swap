@@ -2,7 +2,8 @@ var events = require('events'),
 	util = require('util'),
 	swap = require('./swap'),
 	fs = require('fs'),
-	http = require('http'),
+	tar = require('tar'),
+	request = require('request'),
 	logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 
 var SwapManager = function(dataSource, config) {
@@ -14,17 +15,27 @@ var SwapManager = function(dataSource, config) {
 
 	this.saveNetwork = function(callback){
 		fs.writeFile(this.configFile, JSON.stringify(self.motes, null, 4)+'\n', callback);
-	}
+	};
 
 	// Get device definitions from the web
 	this.updateDevices = function(){
 		logger.info("Updating definitions from %s", config.devices.remote);
-		if (!fs.existsSync(config.devices.local))	
-			fs.mkdirSync(config.devices.local, 0775)			
-		http.get(config.devices.remote, function(response){
-			response.pipe(fs.createWriteStream([config.devices.local, 'devices.tar'].join('/')));
-		});		
-	}
+		if (! fs.existsSync("./devices"))
+			fs.mkdirSync("./devices");
+
+		// Downloading definitions
+		request(config.devices.remote).pipe(tar.Parse())
+		.on('entry', function(e){
+			if ((e.path.split('.').pop() == "xml") && (e.path != "devices/template.xml")){				
+				fs.createWriteStream('./devices/' + e.path.split('/').pop()).pipe(e);
+				e.on('end', function(){
+					logger.debug(e.path  + " downloaded");
+				});
+			}
+    	})
+
+    	// Loading xml files
+	};
 
 	var self = this;
 	self.motes = self.loadNetwork();

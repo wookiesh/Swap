@@ -10,7 +10,9 @@
 		"serialport": "*",
 		"log4js": "*",
 		"socket.io": "*",
-		"express": "3.x"
+		"express": "3.x",
+		"tar": "*",
+		"request": "*"
 	},
 	"license": "MIT"	
 }

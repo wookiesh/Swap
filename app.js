@@ -40,7 +40,7 @@ var config = require('./config.json'),
 	manager = require('./manager.js'),
 	log4js = require('log4js');
 
-log4js.setGlobalLogLevel(log4js.levels.INFO);
+log4js.setGlobalLogLevel(log4js.levels.DEBUG);
 var swapManager = undefined, 
 	serial = new SerialModem(config);
 
