@@ -17,16 +17,25 @@ var SwapManager = function(dataSource, config) {
 
 	this.saveNetwork = function(callback){
 		fs.writeFile(this.configFile, JSON.stringify(self.motes, null, 4)+'\n', callback);
+		//fs.writeFile("devices.json", JSON.stringify(self.developers, null, 4));
 	};
 
-	// Get device definitions from the web
-	this.updateDevices = function(){
+	// Get device definitions and if required download from the web
+	this.loadDevices = function(){		
+		if (config.devices.update) 
+			this.updateDefinitions(this.parseDefinitions);
+		else
+			this.parseDefinitions();
+	};
+
+	this.updateDefinitions = function(callback){
 		logger.info("Updating definitions from %s", config.devices.remote);
 		if (! fs.existsSync("./devices"))
 			fs.mkdirSync("./devices");
 
 		// Downloading definitions
-		request(config.devices.remote).pipe(fs.createWriteStream("./devices/devices.tar"))
+		request(config.devices.remote)
+		.pipe(fs.createWriteStream("./devices/devices.tar"))
 		.on('close', function(){
 			fs.createReadStream('./devices/devices.tar')
 			.pipe(tar.Parse())
@@ -36,45 +45,134 @@ var SwapManager = function(dataSource, config) {
 					e.on('end', function(){ logger.debug(e.path + " downloaded")});
 				}			
 			})    	
-			.on('end', function(){
-
-			  	// Loading xml files
-		    	fs.readFile('./devices/devices.xml', function(err, result){
-		    		if (err) throw err;
-		    		xml.parseString(result, function(err, result){
-		    			if (err) throw err;
-		    			var root = result.devices.developer;
-		    			Object.keys(root).forEach(function(devp){
-		    				var devpId = parseInt(root[devp].$.id);
-		    				self.developers[devpId] = {
-		    					name: root[devp].$.name,
-		    					devices: {}
-		    				};
-		    				root[devp].dev.forEach(function(devi){
-		    					self.developers[devpId].devices[parseInt(devi.$.id)]={
-		    						name: devi.$.name,
-		    						label: devi.$.label
-		    					}
-		    				})		    				
-		    			});
-		    		})
-		    	})
-			})
+			.on('end', callback)
 		});
+	};
+
+	this.parseDefinitions = function(){	  	
+	  	// Loading xml files
+	  	logger.debug("Parsing definition files..");
+    	fs.readFile('./devices/devices.xml', function(err, result){
+    		if (err) throw err;
+    		xml.parseString(result, function(err, result){
+    			if (err) throw err;
+    			var root = result.devices.developer;
+    			Object.keys(root).forEach(function(devp){
+    				var devpId = parseInt(root[devp].$.id);
+    				var devObj = {
+    					name: root[devp].$.name,
+    					devices: {}
+    				};
+    				self.developers[devpId] = devObj;
+    				self.developers[devObj.name] = devObj;
+
+    				root[devp].dev.forEach(function(devi){
+    					var deviObj = {
+    						name: devi.$.name,
+    						label: devi.$.label,
+    						id: parseInt(devi.$.id)
+    					}
+    					devObj.devices[deviObj.id] = deviObj;
+    					devObj.devices[deviObj.label] = deviObj;
+    				})		    				
+    			});
+    		})
+    	});
+    	fs.readdir('./devices', function(err, files){
+    		if (err) throw err;
+    		files.forEach(function(file){
+	    		if ((file.split('.').pop() == "xml") && (file != "devices.xml")){	
+	    			fs.readFile("./devices/" + file, function(err, result){
+	    				if (err) throw err;
+	    				xml.parseString(result, function (err, result){
+	    					if (err) throw err;
+	    					var deviObj = self.developers[result.device.developer].devices[result.device.product];
+	    					if (!deviObj)
+	    						logger.warn("Device %s is not known", result.device.product[0]);
+	    					else{	    				
+		    					deviObj.pwrDownMode = result.device.pwrdownmode[0] == 'true'? true: false;	
+		    					deviObj.regularRegisters = {};
+		    					deviObj.configRegisters = {};		    					
+		    					result.device.regular[0].reg.forEach(function(reg){
+		    						deviObj.regularRegisters[reg.$.id] = {
+		    							id: parseInt(reg.$.id),
+		    							name: reg.$.name,
+		    							endPoints : []
+		    						};
+		    						reg.endpoint.forEach(function(ep){
+		    							var regEp = {
+		    								dir: ep.$.dir,
+		    								name: ep.$.name,
+		    								type: ep.$.type,
+		    								size: ep.size? parseInt(ep.size[0]): 1,
+		    								position: self.parsePosition(ep.position),
+		    								units: []
+		    							};
+		    							deviObj.regularRegisters[reg.$.id].endPoints.push(regEp);
+		    							if (ep.units) ep.units[0].unit.forEach(function(u){	    							
+		    								regEp.units.push({
+		    									name: u.$.name,
+		    									factor: parseFloat(u.$.factor),
+		    									offset: parseFloat(u.$.offset)
+		    								});
+		    							})
+		    						});
+		    					});
+		    					if (result.device.config) result.device.config[0].reg.forEach(function(reg){
+		    						deviObj.configRegisters[reg.$.id] = {
+		    							id: parseInt(reg.$.id),
+		    							name: reg.$.name,
+		    							params: []		    							
+		    						};
+		    						if (reg.params) reg.params.forEach(function(p){
+		    							var param = {
+		    								name: p.$.name,
+		    								type: p.$.type,
+		    								size: p.size? parseInt(p.size[0]): 1,
+		    								position: self.parsePosition(p.position),
+		    								defaultValue: p.default ? (p.$.type == 'num' ? parseInt(p.default[0]): p.default[0]): null,
+		    								verif: p.verif ? p.verif[0]: null
+		    							};
+		    						});
+		    					});
+		    					debugger
+		    				}
+	    				});
+	    			});
+	    		}
+    		});
+    	});
+	};
+
+	// Util fonction needed for correct xml parsing
+	this.parsePosition = function(position){
+		if (position){
+			var pos = {byte: null, bit: null};
+			pos.byte = parseInt(position[0].split('.')[0]);
+			if (position[0].length>1)
+				pos.bit = parseInt(position[0].split('.')[1]);
+			else
+				pos.bit = 0;
+			return pos;
+		}
+		else
+			return {byte: 0, bit: 0};
 	}
 
 	var self = this;
 	self.motes = self.loadNetwork();
 	self.device = dataSource;
-	if (config.devices.update) this.updateDevices();
+	this.loadDevices();
 
-	self.device.on('data', function(packet){ self.packetReceived(packet); });
-	process.on("SIGTERM", function(){
-		self.saveNetwork(function(){process.exit(0)});
-	})
-	process.on("SIGINT", function(){
-		self.saveNetwork(function(){process.exit(0)});
-	})
+	if (self.device){
+		self.device.on('data', function(packet){ self.packetReceived(packet); });
+		process.on("SIGTERM", function(){
+			self.saveNetwork(function(){process.exit(0)});
+		})
+		process.on("SIGINT", function(){
+			self.saveNetwork(function(){process.exit(0)});
+		})
+	}
 
 	// Function to call when a packet is received
 	this.packetReceived = function(packet) {		
