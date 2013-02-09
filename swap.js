@@ -29,7 +29,6 @@ module.exports = {
 
 	SwapMote: function(address, network, channel, security, nonce){		 
 		// Standards registers
-		console.log(arguments);
 		this.productCode= null,
 		this.hardwareVersion= null,
 		this.firmwareVersion= null,

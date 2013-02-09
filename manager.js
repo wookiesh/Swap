@@ -3,11 +3,13 @@ var events = require('events'),
 	swap = require('./swap'),
 	fs = require('fs'),
 	tar = require('tar'),
+	xml = require('xml2js'),
 	request = require('request'),
 	logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 
 var SwapManager = function(dataSource, config) {
-	this.configFile = ('./motes.json')
+	this.configFile = ('./motes.json');
+	this.developers = {};
 
 	this.loadNetwork = function(){
 		return fs.existsSync(this.configFile) ? require('./motes.json'): {};
@@ -24,18 +26,42 @@ var SwapManager = function(dataSource, config) {
 			fs.mkdirSync("./devices");
 
 		// Downloading definitions
-		request(config.devices.remote).pipe(tar.Parse())
-		.on('entry', function(e){
-			if ((e.path.split('.').pop() == "xml") && (e.path != "devices/template.xml")){				
-				fs.createWriteStream('./devices/' + e.path.split('/').pop()).pipe(e);
-				e.on('end', function(){
-					logger.debug(e.path  + " downloaded");
-				});
-			}
-    	})
+		request(config.devices.remote).pipe(fs.createWriteStream("./devices/devices.tar"))
+		.on('close', function(){
+			fs.createReadStream('./devices/devices.tar')
+			.pipe(tar.Parse())
+			.on('entry', function(e){
+				if ((e.path.split('.').pop() == "xml") && (e.path != "devices/template.xml")){				
+					e.pipe(fs.createWriteStream('./devices/' + e.path.split('/').pop()));
+					e.on('end', function(){ logger.debug(e.path + " downloaded")});
+				}			
+			})    	
+			.on('end', function(){
 
-    	// Loading xml files
-	};
+			  	// Loading xml files
+		    	fs.readFile('./devices/devices.xml', function(err, result){
+		    		if (err) throw err;
+		    		xml.parseString(result, function(err, result){
+		    			if (err) throw err;
+		    			var root = result.devices.developer;
+		    			Object.keys(root).forEach(function(devp){
+		    				var devpId = parseInt(root[devp].$.id);
+		    				self.developers[devpId] = {
+		    					name: root[devp].$.name,
+		    					devices: {}
+		    				};
+		    				root[devp].dev.forEach(function(devi){
+		    					self.developers[devpId].devices[parseInt(devi.$.id)]={
+		    						name: devi.$.name,
+		    						label: devi.$.label
+		    					}
+		    				})		    				
+		    			});
+		    		})
+		    	})
+			})
+		});
+	}
 
 	var self = this;
 	self.motes = self.loadNetwork();
@@ -74,8 +100,12 @@ var SwapManager = function(dataSource, config) {
 				self.motes[mote.address] = mote;
 				value = packet.value.join('');				
 				mote.productCode = value;
+				mote.manufacturerId = parseInt(value.slice(1,4));
+				mote.deviceId = parseInt(value.slice(4,8));
 
-				logger.info("New mote %d added: %s", mote.address, mote.productCode)
+				logger.info("New mote %d added: %s - %s (%s)", mote.address, mote.productCode, 
+					self.developers[mote.manufacturerId].devices[mote.manufacturerId].label,
+					self.developers[mote.manufacturerId].name);
 				self.emit("newMoteDetected", mote);
 				// Persist motes
 				self.saveNetwork();			
