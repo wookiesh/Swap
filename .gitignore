@@ -16,7 +16,7 @@ results
 npm-debug.log
 node_modules
 
-*.css
+style.css
 devices
 motes.json
 devices.json

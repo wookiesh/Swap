@@ -1,12 +1,44 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
-	
-	h3 Stamps
-	#motes
-	h3 Last Packets
-	#packets
-	
-	script(src='javascripts/client.js')
+
+    .navbar
+        .navbar-inner
+            a.brand(href="#") Swap Gateway
+            ul.nav
+                li.dropdown
+                    a(href="#", data-toggle="dropdown").dropdown-toggle Settings
+                    ul.dropdown-menu
+                        li 
+                            a(data-toogle="modal", role="button", href="#serial") Serial
+                        li  
+                            a Network    
+
+    .container   
+        .row
+            .span6
+                h3 Stamps
+                #motes
+            .span6
+                h3 Network Events
+                #events 
+        .row
+            .span12
+                h3 Last Packets
+                #packets
+
+    #serial.modal.fade(role="dialog")
+        .modal-header
+            button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
+            h3 Serial Settings
+        .modal-body 
+            form
+                label Port
+                input(type="text")
+                label Speed
+                input(type="text", type="number")
+        .modal-footer
+            a(href="#").btn close
+            a(href="#").btn.btn-primary Save changes        
+
+    script(src='/js/client.js')

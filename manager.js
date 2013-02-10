@@ -14,17 +14,6 @@ var SwapManager = function(dataSource, config) {
         logger.info("Loading network definition")
         fs.exists(self.configFile, function(res){
             self.motes = res ? require('./motes.json'): {};
-            // // Used for easy web actions
-            // self.endPoints = {};
-            // Object.keys(self.motes).forEach(function(add){
-            //     var mote = self.motes[add];
-            //     var device = self.developers[mote.manufacturerId].devices[mote.deviceId];
-            //     Object.keys(device.regularRegisters).forEach(function(rId){
-            //         device.regularRegisters[rId].endPoints
-            //     })
-            //     mote.endPoints = device.endPoints;
-            //     console.log(device);
-            // })
             if (callback) callback();
         });
     };
@@ -314,11 +303,20 @@ var SwapManager = function(dataSource, config) {
                         temp += (1<<(8*(value.length-1-i))) * value[i]                                        
                     value = temp;
                 }
-                ep.units.forEach(function(unit){
-                    var localValue = value * unit.factor + unit.offset;
-                    logger.info("New value: %s %s", localValue, unit.name);
+                logger.debug("New status for %s from mote %d, raw value: %s", 
+                    ep.name, packet.source, value);
+                
+                self.emit("status", {
+                    rawValue: value,
+                    packet: packet,
+                    ep: ep,
+                    device: device,
                 })
-                debugger
+
+                // ep.units.forEach(function(unit){
+                //     var localValue = value * unit.factor + unit.offset;
+                //     logger.debug("New Status from mote %d: %s %s", localValue, unit.name);
+                // })
             });
         }
         else if (packet.regId in device.configRegisters){

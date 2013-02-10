@@ -7,10 +7,11 @@ var express = require('express'),
     server = require('http').createServer(app),
     path = require('path'),
     io = require('socket.io').listen(server, {log: false}),
-    stylus = require('stylus');
+    stylus = require('stylus'),
+    logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 
 server.listen(app.get('port') || 8000, function(){
-    console.log("Express server listening on port " + app.get('port'));
+    console.log("Express server listening on port " + (app.get('port') || 8000));
 });
 
 app.configure(function(){
@@ -40,16 +41,26 @@ var config = require('./config.json'),
     manager = require('./manager.js'),
     log4js = require('log4js');
 
-log4js.setGlobalLogLevel(log4js.levels.INFO);
+log4js.setGlobalLogLevel(log4js.levels.DEBUG);
 var swapManager = undefined, 
     serial = new SerialModem(config);
 
 serial.on('started', function(){
     swapManager = new manager(serial, config);
-    swapManager.on("newMote", function(mote){
-        io.sockets.emit('newMote', mote)
+
+    ['newMoteDetected', 'status', 'stateChanged', 'missingNonce',
+        'channelChanged', 'securityChanged', 'passwordChanged', 'networkChanged'].forEach(function(ev){
+        swapManager.on(ev, function(content){
+            io.sockets.emit(ev, content);
+        });
     });
-});
+
+    // On connection get actual motes
+    io.sockets.on('connection', function(socket){
+        logger.info("New socket.io client");
+        socket.emit('getMotes', swapManager.motes);        
+    })
+})
 
 serial.on("data", function(packet){
     io.sockets.emit('swapPacket', packet);
