@@ -1,44 +1,52 @@
-extends layout
+doctype 5
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+    body
+        .navbar
+            .navbar-inner
+                
+                ul.nav
+                    li.dropdown
+                        a(href="#", data-toggle="dropdown").dropdown-toggle Settings
+                        ul.dropdown-menu
+                            li 
+                                a(data-toggle="modal", href="#serial") Serial
+                            li  
+                                a(data-toggle="modal", href="#network") Network    
+                            li  
+                                a(data-toggle="modal", href="#devices") Devices
+        .container   
+            h1= title
+            .row
+                .span6
+                    h3 Stamps
+                    #motes
+                .span6
+                    h3 Network Events
+                    #events 
+            .row
+                .span12
+                    h3 Last Packets
+                    #packets                    
 
-block content
+        #serial.modal.hide.fade(tabindex=-1)
+            .modal-header
+                button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
+                h3 Serial Settings
+            .modal-body 
+                form
+                    label Port
+                    input(type="text")
+                    label Speed
+                    input(type="text", type="number")
+            .modal-footer
+                a(href="#").btn.btn-success Save changes  
+                a(href="#", data-dismiss="modal").btn Close      
 
-    .navbar
-        .navbar-inner
-            a.brand(href="#") Swap Gateway
-            ul.nav
-                li.dropdown
-                    a(href="#", data-toggle="dropdown").dropdown-toggle Settings
-                    ul.dropdown-menu
-                        li 
-                            a(data-toogle="modal", role="button", href="#serial") Serial
-                        li  
-                            a Network    
-
-    .container   
-        .row
-            .span6
-                h3 Stamps
-                #motes
-            .span6
-                h3 Network Events
-                #events 
-        .row
-            .span12
-                h3 Last Packets
-                #packets
-
-    #serial.modal.fade(role="dialog")
-        .modal-header
-            button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
-            h3 Serial Settings
-        .modal-body 
-            form
-                label Port
-                input(type="text")
-                label Speed
-                input(type="text", type="number")
-        .modal-footer
-            a(href="#").btn close
-            a(href="#").btn.btn-primary Save changes        
-
+    script(src='/js/jQuery.js')
+    script(src='/socket.io/socket.io.js')
     script(src='/js/client.js')
+    script(src='/js/bootstrap.min.js')
