@@ -1,10 +1,10 @@
 var	util = require("util"),
-	swap = require('./swap'),
+	swap = require('../../client/code/swap/swap'),
 	serialport = require("serialport"),
 	events = require('events'),
 	logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 
-// Handles communication to and from serial port and relay the inforamtion
+// Handles communication to and from serial port and relay the information
 var SerialModem = function (config){
 	events.EventEmitter.call(this);
 	

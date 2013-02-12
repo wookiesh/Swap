@@ -1,9 +1,9 @@
-doctype 5
-html
+!!! 5
+html(lang="en")
     head
-        title= title
-        link(rel='stylesheet', href='/css/style.css')
-        link(rel='stylesheet', href='/css/bootstrap.min.css')
+        meta(charset="utf-8")
+        != SocketStream
+        title= title 
     body
         .navbar
             .navbar-inner
@@ -11,6 +11,7 @@ html
                 ul.nav
                     li.dropdown
                         a(href="#", data-toggle="dropdown").dropdown-toggle Settings
+                            b.caret
                         ul.dropdown-menu
                             li 
                                 a(data-toggle="modal", href="#serial") Serial
@@ -45,8 +46,3 @@ html
             .modal-footer
                 a(href="#").btn.btn-success Save changes  
                 a(href="#", data-dismiss="modal").btn Close      
-
-    script(src='/js/jQuery.js')
-    script(src='/socket.io/socket.io.js')
-    script(src='/js/client.js')
-    script(src='/js/bootstrap.min.js')

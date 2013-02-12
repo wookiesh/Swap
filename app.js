@@ -1,67 +1,37 @@
-var express = require('express'),
-    app = express(),
-    fs = require('fs'),
-    util = require('util'),
-    routes = require('./routes'),
-    user = require('./routes/user'),
-    server = require('http').createServer(app),
-    path = require('path'),
-    io = require('socket.io').listen(server, {log: false}),
-    stylus = require('stylus'),
-    logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
+// My SocketStream 0.3 app
+var http = require('http'),
+    ss = require('socketstream'),
+    c = require('coffee-script'),
+    si = require('./server/swap/swapinterface');
 
-server.listen(app.get('port') || 8000, function(){
-    console.log("Express server listening on port " + (app.get('port') || 8000));
+// Define a single-page client called 'main'
+ss.client.define('main', {
+  view: 'app.jade',
+  css:  ['libs', 'app.styl'],
+  code: ['libs/jquery.min.js', 'libs','app'],
+  tmpl: '*'
 });
 
-app.configure(function(){
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
-    app.use(express.favicon());
-    app.use(express.logger('dev'));
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(app.router);
-    app.use(stylus.middleware({
-        src: path.join(__dirname, 'public'), compress:true
-    }));
-    app.use(express.static(path.join(__dirname, 'public')));
+// Serve this client on the root URL
+ss.http.route('/', function(req, res){
+  res.serveClient('main', {title: "SwapGateway"});
 });
 
-app.configure('development', function(){
-    app.use(express.errorHandler());
-});
+var locals = {title: 'SwapGateway'};
+// Code Formatters
+ss.client.formatters.add(require('ss-coffee'));
+ss.client.formatters.add(require('ss-jade'), {locals: locals});
+ss.client.formatters.add(require('ss-stylus'));
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+// Use server-side compiled Hogan (Mustache) templates. Others engines available
+ss.client.templateEngine.use(require('ss-hogan'));
 
-var config = require('./config.json'),
-    swap = require('./swap'),
-    SerialModem = require('./serialModem'),
-    manager = require('./manager.js'),
-    log4js = require('log4js');
+// Minimize and pack assets if you type: SS_ENV=production node app.js
+if (ss.env === 'production') ss.client.packAssets();
 
-log4js.setGlobalLogLevel(log4js.levels.DEBUG);
-var swapManager = undefined, 
-    serial = new SerialModem(config);
+// Start web server
+var server = http.Server(ss.http.middleware);
+server.listen(3000);
 
-serial.on('started', function(){
-    swapManager = new manager(serial, config);
-
-    ['newMoteDetected', 'status', 'stateChanged', 'missingNonce',
-        'channelChanged', 'securityChanged', 'passwordChanged', 'networkChanged'].forEach(function(ev){
-        swapManager.on(ev, function(content){
-            io.sockets.emit(ev, content);
-        });
-    });
-
-    // On connection get actual motes
-    io.sockets.on('connection', function(socket){
-        logger.info("New socket.io client");
-        socket.emit('getMotes', swapManager.motes);        
-    })
-})
-
-serial.on("data", function(packet){
-    io.sockets.emit('swapPacket', packet);
-});
+// Start SocketStream
+ss.start(server);

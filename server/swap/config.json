@@ -14,6 +14,6 @@
 	"devices":{
 		"local": "devices",
 		"remote": "http://www.panstamp.com/downloads/devices.tar",
-		"update": false
+		"update": true
 	}
 }

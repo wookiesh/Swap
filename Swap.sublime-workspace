@@ -4,16 +4,112 @@
 		"selected_items":
 		[
 			[
+				"btn",
+				"btn-primary"
+			],
+			[
+				"nav",
+				"navbar"
+			],
+			[
+				"style",
+				"stylesheet"
+			],
+			[
+				"sw",
+				"SwapPacket"
+			],
+			[
+				"Swap",
+				"SwapPacket"
+			],
+			[
+				"To",
+				"toTimeString"
+			],
+			[
+				"swap",
+				"swapManager"
+			],
+			[
+				"reg",
+				"regularRegisters"
+			],
+			[
+				"regu",
+				"regularRegisters"
+			],
+			[
+				"hand",
+				"handleStatus"
+			],
+			[
+				"ma",
+				"manufacturerId"
+			],
+			[
+				"de",
+				"developers"
+			],
+			[
+				"end",
+				"endPoints"
+			],
+			[
+				"re",
+				"regularRegisters"
+			],
+			[
+				"dev",
+				"developers"
+			],
+			[
+				"parse",
+				"parsePosition"
+			],
+			[
+				"config",
+				"configRegisters"
+			],
+			[
+				"deve",
+				"developers"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"pro",
+				"productCode"
+			],
+			[
+				"par",
+				"parseString  (function)"
+			],
+			[
+				"con",
+				"configFile"
+			],
+			[
+				"pack",
+				"packetReceived"
+			],
+			[
+				"Sw",
+				"SwapMote"
+			],
+			[
+				"swa",
+				"swapManager"
+			],
+			[
 				"CCPak",
 				"CCPacket"
 			],
 			[
 				"e",
 				"EventEmitter"
-			],
-			[
-				"pro",
-				"prototype"
 			],
 			[
 				"prop",
@@ -46,10 +142,6 @@
 			[
 				"machine",
 				"machineName"
-			],
-			[
-				"de",
-				"default-ssl"
 			],
 			[
 				"Si",
@@ -195,84 +287,43 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "swap.js",
-			"settings":
-			{
-				"buffer_size": 1292,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "serialModem.js",
-			"settings":
-			{
-				"buffer_size": 1437,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config.json",
-			"settings":
-			{
-				"buffer_size": 167,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app.js",
-			"settings":
-			{
-				"buffer_size": 1289,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/index.jade",
-			"settings":
-			{
-				"buffer_size": 151,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/javascripts/client.js",
-			"settings":
-			{
-				"buffer_size": 504,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 475,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Todos.md",
-			"settings":
-			{
-				"buffer_size": 79,
-				"line_ending": "Unix",
-				"name": "Todo's:"
-			}
-		}
 	],
 	"build_system": "Packages/JSLint/JSLint.sublime-build",
 	"command_palette":
 	{
-		"height": 327.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"inst",
-				"Package Control: Install Package"
+				"fet",
+				"Fetch: Package"
+			],
+			[
+				"fetc",
+				"Fetch: Package"
+			],
+			[
+				"form",
+				"Format: Javascript"
 			],
 			[
 				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
 				"Package Control: Install Package"
 			],
 			[
@@ -286,14 +337,6 @@
 			[
 				"gitc",
 				"Git: Commit"
-			],
-			[
-				"fet",
-				"Fetch: File"
-			],
-			[
-				"fetc",
-				"Fetch: File"
 			],
 			[
 				"com",
@@ -317,10 +360,6 @@
 			],
 			[
 				"ins",
-				"Package Control: Install Package"
-			],
-			[
-				"install",
 				"Package Control: Install Package"
 			],
 			[
@@ -600,7 +639,7 @@
 				"Indentation: Convert to Spaces"
 			]
 		],
-		"width": 494.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -617,23 +656,41 @@
 	},
 	"file_history":
 	[
-		"/Users/joseph/workspace/alfred/swap/node_modules/express/client.js",
+		"/Users/joseph/workspace/alfred/swap/server/swapinterface.coffee",
+		"/Users/joseph/workspace/alfred/swap/public/css/style.styl",
 		"/Users/joseph/workspace/alfred/swap/app.js",
-		"/Users/joseph/workspace/alfred/swap/public/javascripts/client.js",
-		"/Users/joseph/workspace/alfred/swap/views/layout.jade",
-		"/Users/joseph/workspace/alfred/swap/public/stylesheets/style.styl",
-		"/Users/joseph/workspace/alfred/swap/package.json",
-		"/Users/joseph/workspace/alfred/swap/views/index.jade",
-		"/Users/joseph/workspace/alfred/swap/index.html",
 		"/Users/joseph/workspace/alfred/swap/routes/index.js",
-		"/Users/joseph/workspace/alfred/swap/serialModem.js",
+		"/Users/joseph/workspace/alfred/swap/public/js/client.js",
+		"/Users/joseph/workspace/alfred/swap/views/index.jade",
 		"/Users/joseph/workspace/alfred/swap/.gitignore",
+		"/Users/joseph/workspace/alfred/swap/node_modules/express/client.js",
+		"/Users/joseph/workspace/alfred/swap/public/javascripts/client.js",
+		"/Users/joseph/workspace/alfred/swap/config.json",
+		"/Users/joseph/workspace/alfred/swap/node_modules/express/lib/router/route.js",
+		"/Users/joseph/workspace/alfred/swap/views/layout.jade",
+		"/Users/joseph/workspace/alfred/swap/public/js/bootstrap.min.js",
+		"/Users/joseph/workspace/alfred/swap/public/img/paper_fibers.png",
+		"/Users/joseph/workspace/alfred/swap/public/stylesheets/style.styl",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
+		"/Users/joseph/workspace/alfred/swap/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/ECBModeTest.as",
+		"/Users/joseph/workspace/alfred/swap/node_modules/.bin/stylus",
+		"/Users/joseph/workspace/alfred/swap/swap.js",
+		"/Users/joseph/workspace/alfred/swap/devices/devices.xml",
+		"/Users/joseph/workspace/alfred/swap/manager.js",
+		"/Users/joseph/workspace/alfred/swap/motes.json",
+		"/Users/joseph/workspace/alfred/swap/devices.json",
+		"/Users/joseph/workspace/alfred/swap/devices/temphum.xml",
+		"/Users/joseph/workspace/alfred/swap/serialModem.js",
+		"/Users/joseph/workspace/alfred/swap/package.json",
+		"/Users/joseph/workspace/alfred/swap/devices/SeismoFloor.xml",
+		"/Users/joseph/workspace/alfred/swap/node_modules/tar/examples/reader.js",
+		"/Users/joseph/workspace/alfred/swap/README.md",
+		"/Users/joseph/workspace/alfred/swap/Todos.md",
+		"/Users/joseph/workspace/alfred/swap/index.html",
 		"/Users/joseph/workspace/alfred/swap/public/javascripts/jQuery.js",
 		"/Users/joseph/workspace/alfred/swap/jQuery.js",
 		"/Users/joseph/workspace/alfred/swap/node_modules/serialport/tests/test_read.js",
 		"/Users/joseph/Downloads/OpENer_1.2.0/README",
-		"/Users/joseph/workspace/alfred/swap/swap.js",
-		"/Users/joseph/workspace/alfred/swap/README.md",
 		"/Users/joseph/workspace/alfred/swap/readme.md",
 		"/Users/joseph/workspace/skiTimer/index-1.html",
 		"/Users/joseph/workspace/skiTimer/index.html",
@@ -685,7 +742,6 @@
 		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/delete_word.py",
 		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/Delete Left Right.sublime-macro",
 		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Git/git.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
 		"/Users/joseph/Documents/workspace/gateway-server/DEBIAN/control",
 		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/machines.py",
 		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/Default (OSX).sublime-keymap",
@@ -727,24 +783,7 @@
 		"/Users/joseph/Documents/workspace/gateway-server/web2py/applications/welcome/models/db.py",
 		"/Users/joseph/Downloads/web2py/applications/gateway/controllers/default.py",
 		"/Users/joseph/Downloads/web2py/applications/admin/controllers/default.py",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/views/layout.html",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/views/appadmin.html",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/fabfile.py",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/DEBIAN/postinst",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/DEBIAN/control",
-		"/Users/joseph/Documents/workspace/chatServer.py",
-		"/Volumes/pot007-gw 2/applications/gateway/models/db.py",
-		"/Users/joseph/Documents/workspace/opc2sql/src/opc2sql.py",
-		"/Users/joseph/Documents/workspace/jsonRpcCmd/src/jsonRpcCmd.py",
-		"/Users/joseph/Documents/workspace/xbmc/lib/libUPnP/Neptune/Extras/Tools/Testing/https-urls.txt",
-		"/Users/joseph/Downloads/POT007-exportedAlarms.csv",
-		"/Users/joseph/Desktop/POT007-exportedAlarmsxc.csv",
-		"/Users/joseph/g",
-		"/Users/joseph/Documents/workspace/series_downloader/showDl/plugins/scrappers/showRss.py",
-		"/usr/local/bin/syncPhotos",
-		"/Users/joseph/1350882201",
-		"/Users/joseph/64:20:0c:72",
-		"/Users/joseph/192.168.1.100"
+		"/Users/joseph/Documents/workspace/web2py/applications/gateway/views/layout.html"
 	],
 	"find":
 	{
@@ -769,6 +808,43 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dropdo",
+			"drop",
+			"emit",
+			"name",
+			"callb",
+			"logger.info",
+			"null",
+			"config",
+			"self.device",
+			"device",
+			"humidi",
+			"humidu",
+			"console",
+			"id",
+			"err",
+			"Err",
+			"err",
+			"Err",
+			"err",
+			"Err",
+			"err",
+			"Err",
+			"err",
+			"Err",
+			"err",
+			"Err",
+			"err",
+			"syncwo",
+			"network",
+			"P",
+			"p",
+			"P",
+			"p",
+			"P",
+			"p",
+			"P",
+			"p",
 			": ",
 			"intParse",
 			"MAX_SERIAL_SILENCE_MS",
@@ -859,24 +935,7 @@
 			"-build",
 			"build",
 			"self",
-			"cmd",
-			" +",
-			"macbook",
-			";",
-			"	",
-			"\\d*:\\s",
-			"Hi Guys",
-			"Program:p000_common.r07_bd_diagnostic",
-			"	",
-			"		",
-			"	",
-			"		",
-			"Field",
-			"CRYPT",
-			"main",
-			"App",
-			":2",
-			"azkeoâzekaop^zkaopzkeapzkozaoe"
+			"cmd"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -906,221 +965,8 @@
 	"groups":
 	[
 		{
-			"selected": 7,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "swap.js",
-					"settings":
-					{
-						"buffer_size": 1292,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1149,
-								1149
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "serialModem.js",
-					"settings":
-					{
-						"buffer_size": 1437,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								793,
-								793
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "config.json",
-					"settings":
-					{
-						"buffer_size": 167,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								162,
-								162
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app.js",
-					"settings":
-					{
-						"buffer_size": 1289,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								617,
-								617
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "views/index.jade",
-					"settings":
-					{
-						"buffer_size": 151,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								70,
-								70
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "public/javascripts/client.js",
-					"settings":
-					{
-						"buffer_size": 504,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								440,
-								440
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "README.md",
-					"settings":
-					{
-						"buffer_size": 475,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								475,
-								475
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Todos.md",
-					"settings":
-					{
-						"buffer_size": 79,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								29,
-								29
-							]
-						],
-						"settings":
-						{
-							"auto_name": "Todo's:",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1178,32 +1024,160 @@
 		"selected_items":
 		[
 			[
-				"read",
-				"README.md"
+				"gi",
+				".gitignore"
+			],
+			[
+				"git",
+				".gitignore"
 			],
 			[
 				"cli",
-				"public/javascripts/client.js"
+				"public/js/client.js"
 			],
 			[
-				"inde",
-				"views/index.jade"
+				"clie",
+				"node_modules/express/client.js"
+			],
+			[
+				"conf",
+				"config.json"
+			],
+			[
+				"route",
+				"routes/index.js"
 			],
 			[
 				"ap",
 				"app.js"
 			],
 			[
+				"con",
+				"config.json"
+			],
+			[
+				"lay",
+				"views/layout.jade"
+			],
+			[
+				".styl",
+				"public/stylesheets/style.styl"
+			],
+			[
+				"sty",
+				"node_modules/.bin/stylus"
+			],
+			[
+				"dei",
+				"devices/devices.xml"
+			],
+			[
+				"swap",
+				"swap.js"
+			],
+			[
+				"mana",
+				"manager.js"
+			],
+			[
+				"jade",
+				"views/index.jade"
+			],
+			[
+				"mote",
+				"motes.json"
+			],
+			[
+				"ign",
+				".gitignore"
+			],
+			[
+				"temp",
+				"devices/temphum.xml"
+			],
+			[
+				"de",
+				"devices/devices.xml"
+			],
+			[
+				"dev",
+				"devices.json"
+			],
+			[
+				"confi",
+				"config.json"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"devi",
+				"devices.json"
+			],
+			[
+				"temph",
+				"devices/temphum.xml"
+			],
+			[
+				"deve",
+				"devices.json"
+			],
+			[
+				"seism",
+				"devices/SeismoFloor.xml"
+			],
+			[
+				".xml",
+				"devices/binouts2.xml"
+			],
+			[
 				"sw",
 				"swap.js"
 			],
 			[
-				"swa",
-				"swap.js"
+				"igno",
+				".gitignore"
 			],
 			[
 				"pa",
 				"package.json"
+			],
+			[
+				"reader",
+				"node_modules/tar/examples/reader.js"
+			],
+			[
+				"",
+				".gitignore"
+			],
+			[
+				"gitin",
+				".gitignore"
+			],
+			[
+				"mo",
+				"motes.json"
+			],
+			[
+				"app",
+				"app.js"
+			],
+			[
+				"seri",
+				"serialModem.js"
+			],
+			[
+				"read",
+				"README.md"
+			],
+			[
+				"inde",
+				"views/index.jade"
+			],
+			[
+				"swa",
+				"swap.js"
 			],
 			[
 				"post",
@@ -1259,10 +1233,6 @@
 			],
 			[
 				"contro",
-				"gateway-server/DEBIAN/control"
-			],
-			[
-				"con",
 				"gateway-server/DEBIAN/control"
 			],
 			[
@@ -1480,14 +1450,6 @@
 			[
 				"rou",
 				"workspace/web2py/routes.py"
-			],
-			[
-				"",
-				"machineWebSite/app.js"
-			],
-			[
-				"app",
-				"machineWebSite/app.js"
 			]
 		],
 		"width": 0.0
@@ -1507,7 +1469,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 234.0,
 	"status_bar_visible": true
 }
