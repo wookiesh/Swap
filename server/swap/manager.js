@@ -219,15 +219,13 @@ var SwapManager = function(dataSource, config) {
         });
     };
 
-    this.updateDefinitions()
-
     var self = this;
     self.configFile = './motes.json';
     self.dataSource = dataSource;
     
-    // definitions.parseAll(function(repo){
-    //     self.repo = repo;
-    // });
+    definitions.parseAll(function(repo){
+        self.repo = repo;
+    });
 
     // // To persist things on exit
     // process.on("SIGTERM", function(){
