@@ -17,10 +17,11 @@ var SwapManager = function(dataSource, config) {
 
     // Persist motes definition between executions
     this.saveNetwork = function(callback){
+        logger.info('Persisting modifications')
         if (self.motes)
             fs.writeFile(this.configFile, JSON.stringify(self.motes, null, 4)+'\n', callback);
-        if (self.developers)
-            fs.writeFile("devices.json", JSON.stringify(self.developers, null, 4));
+        if (self.repo)
+            fs.writeFile("devices.json", JSON.stringify(self.repo, null, 4));
     };
 
     // Starts receiving packets from dataSource
@@ -58,8 +59,8 @@ var SwapManager = function(dataSource, config) {
                 mote.deviceId = parseInt(value.slice(4,8));
 
                 logger.info("New mote %d added: %s - %s (%s)", mote.address, mote.productCode, 
-                    self.developers[mote.manufacturerId].devices[mote.manufacturerId].label,
-                    self.developers[mote.manufacturerId].name);
+                    self.repo[mote.manufacturerId].devices[mote.manufacturerId].label,
+                    self.repo[mote.manufacturerId].name);
                 self.emit("newMoteDetected", mote);
                 // Persist motes
                 self.saveNetwork();         
@@ -135,7 +136,7 @@ var SwapManager = function(dataSource, config) {
 
             // Retrieve value from endpoints definition 
             else if (packet.regId > 10) {
-                var device = self.developers[mote.manufacturerId].devices[mote.deviceId];
+                var device = self.repo[mote.manufacturerId].devices[mote.deviceId];
                 self.handleStatus(packet, device);
             }   
         }
@@ -195,45 +196,22 @@ var SwapManager = function(dataSource, config) {
     // Sets the value of a specific register
     this.setRegister = function(regId, address, value){ };
 
-
-    this.updateDefinitions = function(callback){
-        var request = require('request'),
-            tar = require ('tar')
-        logger.info("Updating definitions from %s", config.devices.remote);
-        if (! fs.existsSync("./devices"))
-            fs.mkdirSync("./devices");
-
-        // Downloading definitions
-        request(config.devices.remote)
-        .pipe(fs.createWriteStream("./devices/devices.tar"))
-        .on('close', function(){
-            fs.createReadStream('./devices/devices.tar')
-            .pipe(tar.Parse())
-            .on('entry', function(e){
-                if ((e.path.split('.').pop() == "xml") && (e.path != "devices/template.xml")){              
-                    e.pipe(fs.createWriteStream('./devices/' + e.path.split('/').pop()));
-                    e.on('end', function(){ logger.debug(e.path + " downloaded")});
-                }           
-            })      
-            .on('end', function() {if (callback) callback()})
-        });
-    };
-
+    // Really start things up here !!
     var self = this;
     self.configFile = './motes.json';
     self.dataSource = dataSource;
     
     definitions.parseAll(function(repo){
-        self.repo = repo;
+        self.repo = repo;        
+        self.loadNetwork(function(){
+            self.start();
+        })
     });
 
-    // // To persist things on exit
-    // process.on("SIGTERM", function(){
-    //     self.saveNetwork(function(){process.exit(0)});
-    // })
-    // process.on("SIGINT", function(){
-    //     self.saveNetwork(function(){process.exit(0)});
-    // })
+    // To persist things on exit
+    process.on("SIGINT", function(){
+         self.saveNetwork(function(){process.exit(0)});
+    })
 };
 
 util.inherits(SwapManager, events.EventEmitter);

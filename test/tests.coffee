@@ -16,8 +16,9 @@ module.exports = {
 			test.done()
 
 	'parse position': (test) ->
-		test.equals definitions.parsePosition('7'), {byte: 7, bit: undefined}
-		test.equals definitions.parsePosition('7.2'), {byte: 7, bit: 2}
+		test.deepEqual definitions.parsePosition(7), {byte: 7, bit: undefined}
+		test.deepEqual definitions.parsePosition(7.2), {byte: 7, bit: 2}
+		test.deepEqual definitions.parsePosition(), {byte: 0, bit: undefined}
 		test.done()
 
 	'definitions download': (test) ->
@@ -34,11 +35,4 @@ module.exports = {
 		definitions.parseAll -> 
 			test.ok definitions.repo
 			test.done()
-
-	'essai': (test) ->
-		fs.readdir './devices/', (e,res) ->
-			definitions.parseM ->			
-				async.forEach res, 
-					(f,cb) -> definitions.parse('./devices/' + f, cb),
-					-> test.done()
 }

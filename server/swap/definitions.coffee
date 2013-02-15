@@ -19,19 +19,21 @@ downloadDefinitions = (callback) ->
         callback("./#{config.devices.local}/devices.tar") if callback
 
 # Extract downloaded definitions
-extractDefinitions = (sourceFile, callback) ->
-    result = []
-    fs.createReadStream(sourceFile)
+extractDefinitions = (callback) ->
+    goingon = []
+    fs.createReadStream("./#{config.devices.local}/devices.tar")
     .pipe(tar.Parse())
     .on 'entry', (e) ->
         if ((e.path.split('.').pop() is "xml") and (not ~e.path.indexOf('template.xml'))) 
-            result.push "./#{config.devices.local}/#{e.path.split('/').pop()}" if not ~e.path.indexOf('devices.xml')
+            goingon.push e.path
             e.pipe(fs.createWriteStream("./#{config.devices.local}/#{e.path.split('/').pop()}"))
             .on 'close', -> 
                 logger.debug "#{e.path} downloaded"            
-    .on 'end', ->  
-        logger.info 'Definition files extracted'      
-        callback(result) if callback              
+                goingon.splice(goingon.indexOf(e.path), 1)
+                logger.debug "Still #{goingon.length} to go"
+                if goingon.length == 0
+                    logger.info 'Definition files extracted'
+                    callback() if callback   
 
 # Extract manufacturer information from xml respository
 parseManufacturersXml = (callback) ->
@@ -72,67 +74,70 @@ parseManufacturersXml = (callback) ->
 # Extract device information from xml repository
 parseDeviceXml = (file, callback) ->
     fs.readFile "#{file}", (er, result) ->
-        console.log result.length
         if er
             logger.error(er)
             callback() if callback
         else
             logger.debug("Parsing #{file}")
             try
-                console.log result.toString()
-                console.log result.length
                 xml.parseString result, (err, result) ->
                     if not err
                         deviObj = repo[result.device.developer].devices[result.device.product]                               
                         if not deviObj
                             logger.warn("Unknown device #{result.device.product[0]}")
-                        else                      
+                        else                                                  
                             deviObj.pwrDownMode = (if result.device.pwrdownmode[0] is 'true' then true else false)
                             deviObj.regularRegisters = {}
                             deviObj.configRegisters = {}
-                            for reg in result.device.regular[0].reg                               
-                                deviObj.regularRegisters[reg.$.id] =
-                                    id: parseInt(reg.$.id)
-                                    name: reg.$.name
-                                    endPoints : []
-                                
-                                for ep in reg.endpoint
-                                    regEp =
-                                        dir: ep.$.dir,
-                                        name: ep.$.name,
-                                        type: ep.$.type,
-                                        size: (if ep.size then parseInt(ep.size[0]) else 1)
-                                        position: parsePosition(ep.position)
-                                        units: [null]
-
-                                    deviObj.regularRegisters[reg.$.id].endPoints.push(regEp)
-                                    if ep.units
-                                        for u in ep.units[0].unit
-                                            regEp.units.push
-                                                name: u.$.name
-                                                factor: parseFloat(u.$.factor)
-                                                offset: parseFloat(u.$.offset)
-                                                                        
-                            if result.device.config
-                                for reg in result.device.config[0].reg                            
-                                    deviObj.configRegisters[reg.$.id] =
+                            try
+                                for reg in result.device.regular[0].reg                               
+                                    deviObj.regularRegisters[reg.$.id] =
                                         id: parseInt(reg.$.id)
                                         name: reg.$.name
-                                        params: []                                      
+                                        endPoints : []
+                                    
+                                    for ep in reg.endpoint
+                                        regEp =
+                                            dir: ep.$.dir,
+                                            name: ep.$.name,
+                                            type: ep.$.type,
+                                            size: (if ep.size then parseInt(ep.size[0]) else 1)
+                                            position: parsePosition(ep.position)
+                                            units: [null]
 
-                                    if (reg.params) 
-                                        for p in reg.params
-                                            param =
-                                                name: p.$.name
-                                                type: p.$.type
-                                                size: (if p.size then parseInt(p.size[0]) else 1)
-                                                position: self.parsePosition(p.position)
-                                                defaultValue: (if p["default"] then ((if p.$.type is "num" then parseInt(p["default"][0]) else p["default"][0])) else null)
-                                                verif: (if p.verif then p.verif[0] else null)
+                                        deviObj.regularRegisters[reg.$.id].endPoints.push(regEp)
+                                        if ep.units
+                                            for u in ep.units[0].unit
+                                                regEp.units.push
+                                                    name: u.$.name
+                                                    factor: parseFloat(u.$.factor)
+                                                    offset: parseFloat(u.$.offset)
+
+                                if result.device.config
+                                    for reg in result.device.config[0].reg                            
+                                        deviObj.configRegisters[reg.$.id] =
+                                            id: parseInt(reg.$.id)
+                                            name: reg.$.name
+                                            params: []                                      
+
+                                        if (reg.params) 
+                                            for p in reg.params
+                                                param =
+                                                    name: p.$.name
+                                                    type: p.$.type
+                                                    size: (if p.size then parseInt(p.size[0]) else 1)
+                                                    position: self.parsePosition(p.position)
+                                                    defaultValue: (if p["default"] then ((if p.$.type is "num" then parseInt(p["default"][0]) else p["default"][0])) else null)
+                                                    verif: (if p.verif then p.verif[0] else null)                                                
+                            catch perr
+                                logger.error "Error in parsing elements: #{perr}"
+
                         logger.debug "Parsed #{file}"                                                      
                     else
                         logger.error "Error while parsing #{file}: #{err}" 
+                    
                     callback() if callback                    
+
             catch e
                 logger.error "Catched error while parsing #{file}: #{e}"
                 callback(e) if callback
@@ -144,9 +149,9 @@ parsePosition = (position) ->
             byte: null
             bit: null
 
-        pos.byte = parseInt(position[0].split('.')[0])
-        if position[0].length>1
-            pos.bit = parseInt(position[0].split('.')[1])
+        pos.byte = parseInt(position.toString().split('.')[0])
+        if position.toString().length>1
+            pos.bit = parseInt(position.toString().split('.')[1])
         else
             pos.bit = `undefined`
         pos
@@ -156,25 +161,18 @@ parsePosition = (position) ->
 
 # Global parsing for all definitions
 parseAll = (callback) ->
-    fs.readdir './devices', (e,res) ->
-        parse = (files) -> 
+    fs.readdir config.devices.local, (e,files) ->
+        files.splice(files.indexOf('devices.xml'), 1)
+        files.splice(files.indexOf('devices.tar'), 1)        
+        parse = -> 
             logger.info 'Parsing definition files'
             parseManufacturersXml -> 
-                #async.forEach ['./devices/chronos.xml'], 
-                parseDeviceXml('./devices/chronos.xml', callback)
-                    #(-> console.log(arguments); callback())
+                async.forEach files, ((f,cb) -> parseDeviceXml("#{config.devices.local}/#{f}", cb)), -> callback(repo)
 
         if config.devices.update
-            downloadDefinitions((file)-> extractDefinitions(file, parse))
+            downloadDefinitions (file)-> extractDefinitions parse  
         else
-            extractDefinitions "./#{config.devices.local}/devices.tar", parse
-
-    # fs.readdir './devices/', (e,res) ->
-    #     console.log res
-    #     parseManufacturersXml ->           
-    #         async.forEach res, 
-    #             (f, cb) -> parseDeviceXml('./devices/' + f, cb), 
-    #             -> callback()
+            parse callback
 
 module.exports = 
     parsePosition: parsePosition
@@ -182,7 +180,5 @@ module.exports =
     extractDefinitions: extractDefinitions
     parseAll: parseAll
     repo: repo
-    parse: parseDeviceXml
-    parseM: parseManufacturersXml
 
 

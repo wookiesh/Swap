@@ -10,3 +10,5 @@ This is also based on a modification of the gateway interface:
 * data and command modes do not exist anymore
 * data sent to serialPort starting with 'D' (for data)
 * data sent to stamp starting with 'S' (for send)
+
+This projects uses socketstream as a communication framework.
