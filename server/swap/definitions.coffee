@@ -11,7 +11,6 @@ repo = {}
 # Download definitions from central repo
 downloadDefinitions = (callback) ->
     logger.info "Downloading ./#{config.devices.local}"
-    fs.mkdirSync("./#{config.devices.local}") unless fs.existsSync("./#{config.devices.local}")
     request(config.devices.remote)
     .pipe(fs.createWriteStream("./#{config.devices.local}/devices.tar"))
     .on 'close', ->
@@ -91,8 +90,8 @@ parseDeviceXml = (file, callback) ->
                             deviObj.configRegisters = {}
                             try
                                 for reg in result.device.regular[0].reg                               
-                                    deviObj.regularRegisters[reg.$.id] =
-                                        id: parseInt(reg.$.id)
+                                    deviObj.regularRegisters[parseInt(reg.$.id)] =
+                                        id: parseInt reg.$.id
                                         name: reg.$.name
                                         endPoints : []
                                     
@@ -101,11 +100,11 @@ parseDeviceXml = (file, callback) ->
                                             dir: ep.$.dir,
                                             name: ep.$.name,
                                             type: ep.$.type,
-                                            size: (if ep.size then parseInt(ep.size[0]) else 1)
-                                            position: parsePosition(ep.position)
+                                            size: (if ep.size then parseInt ep.size[0] else 1)
+                                            position: parsePosition ep.position
                                             units: [null]
 
-                                        deviObj.regularRegisters[reg.$.id].endPoints.push(regEp)
+                                        deviObj.regularRegisters[parseInt(reg.$.id)].endPoints.push regEp
                                         if ep.units
                                             for u in ep.units[0].unit
                                                 regEp.units.push
@@ -126,7 +125,7 @@ parseDeviceXml = (file, callback) ->
                                                     name: p.$.name
                                                     type: p.$.type
                                                     size: (if p.size then parseInt(p.size[0]) else 1)
-                                                    position: self.parsePosition(p.position)
+                                                    position: parsePosition p.position
                                                     defaultValue: (if p["default"] then ((if p.$.type is "num" then parseInt(p["default"][0]) else p["default"][0])) else null)
                                                     verif: (if p.verif then p.verif[0] else null)                                                
                             catch perr
@@ -135,7 +134,6 @@ parseDeviceXml = (file, callback) ->
                         logger.debug "Parsed #{file}"                                                      
                     else
                         logger.error "Error while parsing #{file}: #{err}" 
-                    
                     callback() if callback                    
 
             catch e
@@ -161,7 +159,12 @@ parsePosition = (position) ->
 
 # Global parsing for all definitions
 parseAll = (callback) ->
+    # Lets fet off with these files, fed up...
+    callback require '../../devices.json'
+    return
+    fs.mkdirSync("./#{config.devices.local}") unless fs.existsSync("./#{config.devices.local}")
     fs.readdir config.devices.local, (e,files) ->
+        logger.error e if e
         files.splice(files.indexOf('devices.xml'), 1)
         files.splice(files.indexOf('devices.tar'), 1)        
         parse = -> 

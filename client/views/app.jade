@@ -25,27 +25,27 @@ block content
                     #serial.tab-pane.active
                         form
                             label Port:
-                            input(type="text", ng-model="config.serial.port")
+                            input(type="text", ng-model="config.serial.port", required)
                             label Speed:
-                            input(type="number", ng-model="config.serial.baudrate")                        
+                            input(type="number", ng-model="config.serial.baudrate", required)                        
                     #devices.tab-pane
                         form
                             label Local folder:
-                            input(type="text", ng-model="config.devices.local")
+                            input(type="text", ng-model="config.devices.local", required)
                             label Definitions Url:
-                            input(type="text", ng-model="config.devices.remote").span8
+                            input(type="text", ng-model="config.devices.remote", required).span5
                             label Update on start:    
                                 input(type="checkbox", ng-model="config.devices.update")
                     #network.tab-pane
                         form
                             label Channel:
-                            input(type="number", ng-model="config.network.channel")
+                            input(type="number", ng-model="config.network.channel", required)
                             label Network:
-                            input(type="text", ng-model="config.network.syncWord")
+                            input(type="text", ng-model="config.network.syncWord", required)
                             label Modem address:
-                            input(type="number", ng-model="config.network.address")
+                            input(type="number", ng-model="config.network.address", required)
                             label Security:
-                            input(type="number", ng-model="config.network.security")
+                            input(type="number", ng-model="config.network.security"), required)
                     //- tt config = {{config}}
 
         .modal-footer
@@ -58,6 +58,7 @@ block content
             .span6
                 h3 Stamps
                 #motes
+                    div(ng-repeat="mote in motes") {{mote}}
             .span6
                 h3 Network Events
                 #events 

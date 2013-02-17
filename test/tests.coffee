@@ -34,5 +34,6 @@ module.exports = {
 	'parse all definitions': (test) ->
 		definitions.parseAll -> 
 			test.ok definitions.repo
+			fs.writeFile("devices.json", JSON.stringify(definitions.repo, 0, 4))
 			test.done()
 }

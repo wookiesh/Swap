@@ -2,7 +2,7 @@
 var http = require('http'),
     ss = require('socketstream'),
     c = require('coffee-script'),
-    si = require('./server/swap/swapinterface');
+    si = require('./server/rpc/swapinterface');
 
 // Define a single-page client called 'main'
 ss.client.define('main', {
