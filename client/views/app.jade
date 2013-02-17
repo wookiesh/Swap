@@ -1,19 +1,57 @@
 extends layout
 block content
-    .navbar(ng-controller="MenuCtrl")
+    .navbar
         .navbar-inner
             
             ul.nav
-                li.dropdown
-                    a(href="#", data-toggle="dropdown").dropdown-toggle Settings
-                        b.caret
-                    ul.dropdown-menu
-                        li 
-                            a(ng-click='showConfig("\'serial\'")') Serial
-                        li  
-                            a(data-toggle="modal", data-dg="network", href="#config") Network    
-                        li  
-                            a(data-toggle="modal", data-dg="devices", href="#config") Devices
+                li
+                    a(href="#config", data-toggle="modal").dropdown-toggle Settings                    
+
+    #config.modal.hide.fade(tabindex=-1)
+        .modal-header
+            button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
+            h3 {{name}} Settings
+
+        .modal-body
+            .tab-pane
+                ul.nav.nav-tabs
+                    li.active
+                        a(href="#serial", data-toggle='tab') Serial
+                    li
+                        a(href="#devices", data-toggle='tab') Devices 
+                    li
+                        a(href='#network', data-toggle='tab') Network
+                .tab-content
+                    #serial.tab-pane.active
+                        form
+                            label Port:
+                            input(type="text", ng-model="config.serial.port")
+                            label Speed:
+                            input(type="number", ng-model="config.serial.baudrate")                        
+                    #devices.tab-pane
+                        form
+                            label Local folder:
+                            input(type="text", ng-model="config.devices.local")
+                            label Definitions Url:
+                            input(type="text", ng-model="config.devices.remote").span8
+                            label Update on start:    
+                                input(type="checkbox", ng-model="config.devices.update")
+                    #network.tab-pane
+                        form
+                            label Channel:
+                            input(type="number", ng-model="config.network.channel")
+                            label Network:
+                            input(type="text", ng-model="config.network.syncWord")
+                            label Modem address:
+                            input(type="number", ng-model="config.network.address")
+                            label Security:
+                            input(type="number", ng-model="config.network.security")
+                    //- tt config = {{config}}
+
+        .modal-footer
+            a(href="#", ng-click="saveConfig()").btn.btn-success Save changes  
+            a(href="#", data-dismiss="modal").btn Close      
+
     .container
         h1 Swap Gateway
         .row
@@ -23,42 +61,9 @@ block content
             .span6
                 h3 Network Events
                 #events 
+                    div(ng-repeat="event in events") {{event}}
         .row
             .span12
                 h3 Last Packets
                 #packets
-                    div(ng-repeat="packet in packets") {{packet}}
-
-    #config.modal.hide.fade(tabindex=-1)
-        .modal-header
-            button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
-            h3 {{Name}} Settings
-
-        .modal-body 
-            form#serial.hide
-                label Port:
-                input(type="text")
-                label Speed:
-                input(type="number")
-
-            form#devices.hide
-                label Local folder:
-                input(type="text")
-                label Definitions Url:
-                input(type="text").span8
-                label Update on start:    
-                    input(type="checkbox")
-
-            form#network.hide
-                label Channel:
-                input(type="number")
-                label Network:
-                input(type="text")
-                label Modem address:
-                input(type="number")
-                label Security:
-                input(type="number")
-
-        .modal-footer
-            a(href="#").btn.btn-success Save changes  
-            a(href="#", data-dismiss="modal").btn Close      
+                    div(ng-repeat="packet in packets") {{packet}}    

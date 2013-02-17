@@ -5,8 +5,16 @@ var events = require('events'),
     definitions = require('./definitions'),
     logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 
+/*
+General class to handle communication from and to a swap Network
+Emits: 
+    - swapStatus: new status received from a mote
+        - event: {status, mote}
+    - swapEvent: new event on the the swap network (address changed, password changed, etc..)
+        - event: {type, text, mote}
+*/
 var SwapManager = function(dataSource, config) {
-    // Load motes definition from persistence
+    // Load motes definition from persistence    
     this.loadNetwork = function(callback){
         logger.info("Loading network definition")
         fs.exists(self.configFile, function(res){
@@ -61,7 +69,7 @@ var SwapManager = function(dataSource, config) {
                 logger.info("New mote %d added: %s - %s (%s)", mote.address, mote.productCode, 
                     self.repo[mote.manufacturerId].devices[mote.manufacturerId].label,
                     self.repo[mote.manufacturerId].name);
-                self.emit("newMoteDetected", mote);
+                self.emit('swapEvent', "newMoteDetected", mote);
                 // Persist motes
                 self.saveNetwork();         
             }

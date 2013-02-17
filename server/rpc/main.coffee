@@ -6,4 +6,5 @@ module.exports.actions = (req, res, ss) ->
 	getConfig: () ->
 		res config: config
 
-console.log require('socketstream').publish
+	saveConfig: (config) ->
+		res "err"		
