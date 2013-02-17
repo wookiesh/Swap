@@ -1,48 +1,64 @@
-!!! 5
-html(lang="en")
-    head
-        meta(charset="utf-8")
-        != SocketStream
-        title= title 
-    body
-        .navbar
-            .navbar-inner
-                
-                ul.nav
-                    li.dropdown
-                        a(href="#", data-toggle="dropdown").dropdown-toggle Settings
-                            b.caret
-                        ul.dropdown-menu
-                            li 
-                                a(data-toggle="modal", href="#serial") Serial
-                            li  
-                                a(data-toggle="modal", href="#network") Network    
-                            li  
-                                a(data-toggle="modal", href="#devices") Devices
-        .container
-            h1= title
-            .row
-                .span6
-                    h3 Stamps
-                    #motes
-                .span6
-                    h3 Network Events
-                    #events 
-            .row
-                .span12
-                    h3 Last Packets
-                    #packets                    
+extends layout
+block content
+    .navbar(ng-controller="MenuCtrl")
+        .navbar-inner
+            
+            ul.nav
+                li.dropdown
+                    a(href="#", data-toggle="dropdown").dropdown-toggle Settings
+                        b.caret
+                    ul.dropdown-menu
+                        li 
+                            a(ng-click='showConfig("\'serial\'")') Serial
+                        li  
+                            a(data-toggle="modal", data-dg="network", href="#config") Network    
+                        li  
+                            a(data-toggle="modal", data-dg="devices", href="#config") Devices
+    .container
+        h1 Swap Gateway
+        .row
+            .span6
+                h3 Stamps
+                #motes
+            .span6
+                h3 Network Events
+                #events 
+        .row
+            .span12
+                h3 Last Packets
+                #packets
+                    div(ng-repeat="packet in packets") {{packet}}
 
-        #serial.modal.hide.fade(tabindex=-1)
-            .modal-header
-                button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
-                h3 Serial Settings
-            .modal-body 
-                form
-                    label Port
-                    input(type="text")
-                    label Speed
-                    input(type="text", type="number")
-            .modal-footer
-                a(href="#").btn.btn-success Save changes  
-                a(href="#", data-dismiss="modal").btn Close      
+    #config.modal.hide.fade(tabindex=-1)
+        .modal-header
+            button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
+            h3 {{Name}} Settings
+
+        .modal-body 
+            form#serial.hide
+                label Port:
+                input(type="text")
+                label Speed:
+                input(type="number")
+
+            form#devices.hide
+                label Local folder:
+                input(type="text")
+                label Definitions Url:
+                input(type="text").span8
+                label Update on start:    
+                    input(type="checkbox")
+
+            form#network.hide
+                label Channel:
+                input(type="number")
+                label Network:
+                input(type="text")
+                label Modem address:
+                input(type="number")
+                label Security:
+                input(type="number")
+
+        .modal-footer
+            a(href="#").btn.btn-success Save changes  
+            a(href="#", data-dismiss="modal").btn Close      

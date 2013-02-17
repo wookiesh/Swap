@@ -1,7 +1,7 @@
 var events = require('events'),
     util = require('util'),
     fs = require('fs');
-    swap = require('../../client/code/swap/swap'),
+    swap = require('../../client/code/app/swap'),
     definitions = require('./definitions'),
     logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
 

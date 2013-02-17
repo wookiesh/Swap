@@ -2,6 +2,7 @@
 # Install with 'npm install -g nodemon' then start your app with 'nodemon app.js'
 # From then on, all changes you make to /server will cause your app to automatically restart
 
+.git/*
 /client/*
 ./README.md
 devices/*

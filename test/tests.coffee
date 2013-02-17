@@ -28,7 +28,7 @@ module.exports = {
 				test.done()
 
 	'extract definitions': (test) ->
-		definitions.extractDefinitions './devices/devices.tar', ->
+		definitions.extractDefinitions ->
 			test.done()
 	
 	'parse all definitions': (test) ->

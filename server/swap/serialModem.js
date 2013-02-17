@@ -1,5 +1,5 @@
 var	util = require("util"),
-	swap = require('../../client/code/swap/swap'),
+	swap = require('../../client/code/app/swap'),
 	serialport = require("serialport"),
 	events = require('events'),
 	logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]);
