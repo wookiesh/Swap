@@ -41,6 +41,7 @@ module.exports = {
         this.address= address,
         this.txInterval= undefined
         this.lastStatusTime = undefined
+        this.location = undefined
     },
 
     Endpoint: function(id){

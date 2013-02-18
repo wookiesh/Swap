@@ -58,13 +58,23 @@ block content
             .span6
                 h3 Stamps
                 #motes
-                    div(ng-repeat="mote in motes") {{mote}}
+                    ul
+                        li(ng-repeat="mote in motes") {{mote.address}}: 
+                            b{{mote.location}}
+                            ul
+                                li(ng-repeat="reg in getDevice(mote).regularRegisters") {{reg.name}}
+                                    ul
+                                        li(ng-repeat="ep in reg.endPoints") {{ep.name}}
+                                            span.pull-right {{mote[ep.name]}}
             .span6
                 h3 Network Events
                 #events 
-                    div(ng-repeat="event in events") {{event}}
+                    div(ng-repeat="se in swapEvents") {{se.text}}
+                        span.pull-right {{se.time.toLocaleTimeString()}}
         .row
             .span12
                 h3 Last Packets
                 #packets
-                    div(ng-repeat="packet in packets") {{packet}}    
+                    div(ng-repeat="packet in packets") {{packet}} 
+                        span.pull-right {{packet.time.toLocaleTimeString()}}
+                .pull-right {{packets.length}} packets

@@ -84,10 +84,11 @@ class SwapManager extends events.EventEmitter
             return if not mote 
 
             # handles missing packets ??
-            if  Math.abs(mote.nonce - packet.nonce) % 254 is not 1
+            if Math.abs(mote.nonce - packet.nonce) % 254 != 1
                 text = "Missing nonce: #{packet.nonce} - #{mote.nonce}, first or lost packet ?"
                 logger.warn text
-                @emit 'swapEvent', {name:'missingNonce', text:text, mote:mote}
+                device = @repo[mote.manufacturerId].devices[mote.deviceId]
+                @emit 'swapEvent', {name:'missingNonce', text:text, mote:mote, device:device}
             
             mote.nonce = packet.nonce
             mote.lastStatusTime = new Date().getTime()
@@ -167,7 +168,10 @@ class SwapManager extends events.EventEmitter
     handleStatus: (packet, device) ->   
         if packet.regId of device.regularRegisters
             for ep in device.regularRegisters[packet.regId].endPoints
-                value = packet.value[ep.position.byte .. ep.position.byte+ep.size]
+                console.log packet.value
+                console.log ep.position
+                value = packet.value[ep.position.byte .. ep.position.byte + ep.size-1]
+                console.log value
                 if ep.position.bit is not undefined
                     value &= position.bit
                 else
@@ -183,6 +187,7 @@ class SwapManager extends events.EventEmitter
                     packet: packet,
                     ep: ep,
                     device: device,
+                    mote: @motes[packet.source]
 
                 #ep.units.forEach(function(unit){
                 #    var localValue = value * unit.factor + unit.offset;

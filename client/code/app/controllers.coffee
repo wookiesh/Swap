@@ -1,34 +1,44 @@
 module.exports = (ngModule) ->
 
     # General controller of the application
-    ngModule.controller 'AppCtrl', ['$scope', ($scope)->
+    ngModule.controller 'AppCtrl', ['$scope', 'rpc', 'pubsub', ($scope, rpc, pubsub)->
         $scope.packets = []
-        $scope.events = []
+        $scope.swapEvents = []
         $scope.motes = []
-
-        # To refresh bindings on ss io
-        ss.event.onAny (args...) -> 
-            $scope.$apply => $scope.$broadcast @event, args...
+        $scope.repo = []
 
         # When a serial packet is received
-        ss.event.on 'swapPacket', (p) ->
-            console.log p
-            $scope.packets.splice(0, 0, p)
+        $scope.$on 'swapPacket', (e, sp) ->
+            console.log sp
+            sp.time = new Date()
+            $scope.packets.splice(0, 0, sp)
+            $scope.packets.pop() if $scope.packets.length > 20
 
         # When a network event is received
-        ss.event.on 'swapEvent', (e) ->
-            console.log e
-            $scope.events.splice(0, 0, e.text)
+        $scope.$on 'swapEvent', (e, se) ->
+            console.log se
+            se.time = new Date()
+            $scope.swapEvents.splice(0, 0, se)
+            $scope.swapEvents.pop() if $scope.swapEvents.length > 20
 
         # When a status event is received
-        ss.event.on 'status', (status) ->
+        $scope.$on 'swapStatus', (e, status) ->
             console.log status
+            ep = status.ep
+            unit = ep.units[1]
+            $scope.motes[status.mote.address][ep.name] = 
+                "#{(status.rawValue * unit.factor + unit.offset).toFixed(2)} #{unit.name}"
 
-        ss.rpc 'swapinterface.getConfig', (res) ->
+
+        rpc.exec('swapinterface.getConfig').then (res) ->
             $scope.config = res.config
 
-        ss.rpc 'swapinterface.getMotes', (motes) ->
-            $scope.motes.push(m) for m of motes
+        rpc.exec('swapinterface.getMotes').then (motes) ->
+            console.log motes
+            $scope.motes = motes
+
+        rpc.exec('swapinterface.getDevices').then (repo) ->
+            $scope.repo = repo
 
         $scope.showConfig = (req) ->
             $scope.name = req.charAt(0).toUpperCase() + req.slice(1) 
@@ -36,7 +46,10 @@ module.exports = (ngModule) ->
         $scope.saveConfig = () ->             
             ss.rpc 'swapinterface.saveConfig', $scope.config, (err) ->
                 $('#config').modal('hide')
-                alert(err) if err 
+                alert(err) if err
+
+        $scope.getDevice = (mote) ->  
+            $scope.repo[mote.manufacturerId].devices[mote.deviceId] if $scope.repo[mote.manufacturerId]
     ]
 
 

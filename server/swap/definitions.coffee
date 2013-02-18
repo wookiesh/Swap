@@ -10,6 +10,7 @@ repo = {}
 
 # Download definitions from central repo
 downloadDefinitions = (callback) ->
+    fs.mkdirSync("./#{config.devices.local}") unless fs.existsSync("./#{config.devices.local}")
     logger.info "Downloading ./#{config.devices.local}"
     request(config.devices.remote)
     .pipe(fs.createWriteStream("./#{config.devices.local}/devices.tar"))
@@ -160,8 +161,8 @@ parsePosition = (position) ->
 # Global parsing for all definitions
 parseAll = (callback) ->
     # Lets fet off with these files, fed up...
-    callback require '../../devices.json'
-    return
+    # callback require '../../devices.json'
+    # return
     fs.mkdirSync("./#{config.devices.local}") unless fs.existsSync("./#{config.devices.local}")
     fs.readdir config.devices.local, (e,files) ->
         logger.error e if e

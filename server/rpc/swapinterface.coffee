@@ -25,19 +25,25 @@ swapManager = null
 
 serial.on 'started', () ->
     swapManager = new Manager serial, config
-    serial.on 'data', (sp) -> ss.api.publish.all('swapPacket', sp)
+    serial.on 'data', (sp) -> ss.api.publish.all 'swapPacket', sp
 
     # Just to forward things to web interface
-    swapManager.on 'swapEvent',(args...) -> ss.api.publish.all 'swapEvent', args...
+    swapManager.on 'swapEvent', (args...) -> ss.api.publish.all 'swapEvent', args...
     swapManager.on 'swapStatus', (args...) -> ss.api.publish.all 'swapStatus', args...
 
 module.exports.actions = (req, res, ss) ->
-		# Get information for serial port
-	getConfig: () ->
-		res config: config
+    # Get manager configuration
+    getConfig: () ->
+        res null, config: config
 
-	saveConfig: (config) ->
-		res "err"	
+    # Save manager configuration
+    saveConfig: (config) ->
+        res "err"   
 
-	getMotes: () ->
-		res swapManager.motes
+    # Get existing network
+    getMotes: () ->
+        res null, swapManager.motes
+
+    # Get recognized devices
+    getDevices: () ->
+        res null, swapManager.repo
