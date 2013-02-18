@@ -76,7 +76,7 @@ class SwapManager extends events.EventEmitter
 
                 text = "New mote #{mote.address} added: #{mote.productCode} - #{@repo[mote.manufacturerId].devices[mote.manufacturerId].label} (#{@repo[mote.manufacturerId].name})"                                
                 logger.info text
-                @emit 'swapEvent', {name:'newMoteDetected', text:text, mote:mote}
+                @emit 'swapEvent', {name:'newMoteDetected', text:text, mote:mote, time: new Date()}
 
                 # Persist motes
                 @saveNetwork()
@@ -84,14 +84,14 @@ class SwapManager extends events.EventEmitter
             return if not mote 
 
             # handles missing packets ??
-            if Math.abs(mote.nonce - packet.nonce) % 254 != 1
+            if Math.abs(mote.nonce - packet.nonce) not in [1,255]
                 text = "Missing nonce: #{packet.nonce} - #{mote.nonce}, first or lost packet ?"
                 logger.warn text
-                device = @repo[mote.manufacturerId].devices[mote.deviceId]
-                @emit 'swapEvent', {name:'missingNonce', text:text, mote:mote, device:device}
+                # device = @repo[mote.manufacturerId].devices[mote.deviceId]
+                @emit 'swapEvent', {name:'missingNonce', text:text, type:'warn', time: new Date()}
             
             mote.nonce = packet.nonce
-            mote.lastStatusTime = new Date().getTime()
+            mote.lastStatusTime = packet.time
             
             if packet.regId is 1
                 mote.hardwareVersion = value
@@ -105,25 +105,25 @@ class SwapManager extends events.EventEmitter
                 mote.state = swap.SwapStates.get value
                 text = "Mote #{mote.address} state changed to #{mote.state.str}"
                 logger.info text
-                @emit 'swapEvent', {name:'stateChanged', text:text, mote:mote}            
+                @emit 'swapEvent', {name:'state', text:text, mote: mote, time: new Date() }            
 
             else if packet.regId is 4
                 mote.channel = value
                 text = "Mote #{mote.address} channel changed to #{value}"
                 logger.warn text
-                @emit 'swapEvent', {name:'channelChanged', text:text, mote:mote}
+                @emit 'swapEvent', {name:'channel', text:text, mote:mote, time: new Date()}
 
             else if packet.regId is 5
                 mote.security = value
                 text = "Mote #{mote.address} secutiy changed to #{value}"
                 logger.info text
-                @emit 'swapEvent', {name:'securityChanged', text:text, mote:mote}
+                @emit 'swapEvent', {name:'security', text:text, mote:mote, time: new Date()}
 
             else if packet.regId is 6
                 mote.password = value
                 text = "Mote #{mote.address} password changed"
                 logger.info text
-                @emit 'swapEvent', {name:'passwordChanged', text:text, mote:mote}
+                @emit 'swapEvent', {name:'password', text:text, mote:mote, time: new Date()}
 
             else if packet.regId is 7
                 mote.nonce = value
@@ -133,7 +133,7 @@ class SwapManager extends events.EventEmitter
                 mote.network = value
                 text = "Mote #{mote.address} channel changed to #{value}"
                 logger.warn text
-                @emit 'swapEvent', {name:'networkChanged', text:text, mote:mote}
+                @emit 'swapEvent', {name:'network', text:text, mote:mote, time: new Date()}
             
             else if packet.regId is 9
                 old = address
@@ -142,12 +142,14 @@ class SwapManager extends events.EventEmitter
                 mote.address = value
                 text = "Address of mote changed from #{old} to #{value}"
                 logger.warn text
-                @emit 'swapEvent', {name:'addressChanged', text:text, mote:mote, old:old}
+                @emit 'swapEvent', {name:'address', text:text, mote:mote, old:old, time: new Date()}
 
             else if packet.regId is 10
                 value = 256*value[0]+ value[1];
-                logger.info("Mote %d transmit interval changed to %d s", mote.address, value);
+                text = "Mote #{mote.address} transmit interval changed to #{value} s"
+                logger.info text
                 mote.txInterval = value;            
+                @emit 'swapEvent', {name: 'txInterval', text: text, mote: mote, time: new Date()}
 
             # Retrieve value from endpoints definition 
             else if packet.regId > 10
@@ -168,10 +170,7 @@ class SwapManager extends events.EventEmitter
     handleStatus: (packet, device) ->   
         if packet.regId of device.regularRegisters
             for ep in device.regularRegisters[packet.regId].endPoints
-                console.log packet.value
-                console.log ep.position
                 value = packet.value[ep.position.byte .. ep.position.byte + ep.size-1]
-                console.log value
                 if ep.position.bit is not undefined
                     value &= position.bit
                 else
@@ -188,6 +187,7 @@ class SwapManager extends events.EventEmitter
                     ep: ep,
                     device: device,
                     mote: @motes[packet.source]
+                    time: new Date()
 
                 #ep.units.forEach(function(unit){
                 #    var localValue = value * unit.factor + unit.offset;

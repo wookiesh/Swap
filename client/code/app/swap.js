@@ -10,7 +10,8 @@ module.exports = {
         this.LQI = parseInt(strPacket.slice(3,5), 16);
         this.data = [];
         for(i = 6; i< strPacket.length; i+=2)
-            this.data.push(parseInt(strPacket.slice(i,i+2), 16));   
+            this.data.push(parseInt(strPacket.slice(i,i+2), 16)); 
+        this.time = new Date()  
     },
 
     SwapPacket: function (ccPacket) {           
@@ -25,6 +26,7 @@ module.exports = {
         this.regAddress = ccPacket.data[5];
         this.regId = ccPacket.data[6];
         this.value = ccPacket.data.slice(7,ccPacket.data.length);
+        this.time = ccPacket.time;
     },
 
     SwapMote: function(address, network, channel, security, nonce){      

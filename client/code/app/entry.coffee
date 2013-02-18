@@ -8,7 +8,7 @@ require '/services'
 require '/directives'
 
 # angular application
-app = angular.module('app', ['app.filters', 'app.services', 'app.directives'])
+app = angular.module('app', ['app.filters', 'app.services', 'app.directives', 'ui.bootstrap'])
 
 # configure angular routing
 require('/routers')(app)
