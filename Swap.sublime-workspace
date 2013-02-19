@@ -4,6 +4,162 @@
 		"selected_items":
 		[
 			[
+				"camera",
+				"camera-server"
+			],
+			[
+				"publi",
+				"publish"
+			],
+			[
+				"publis",
+				"publisher"
+			],
+			[
+				"reg",
+				"regId"
+			],
+			[
+				"data",
+				"dataSource"
+			],
+			[
+				"ccP",
+				"CCPacket"
+			],
+			[
+				"lo",
+				"location"
+			],
+			[
+				"templte",
+				"templates"
+			],
+			[
+				"label",
+				"label-warning"
+			],
+			[
+				"mote",
+				"moteDetailsOpen"
+			],
+			[
+				"res",
+				"res"
+			],
+			[
+				"devi",
+				"deviceId"
+			],
+			[
+				"man",
+				"manufacturerId"
+			],
+			[
+				"swap",
+				"swapManager"
+			],
+			[
+				"SerialP",
+				"serialPort"
+			],
+			[
+				"to",
+				"toString"
+			],
+			[
+				"pack",
+				"packet"
+			],
+			[
+				"net",
+				"netEvent"
+			],
+			[
+				"tab",
+				"tab-pane"
+			],
+			[
+				"ng-sw",
+				"ng-switch-when"
+			],
+			[
+				"du",
+				"DummySerial"
+			],
+			[
+				"emit",
+				"emitData"
+			],
+			[
+				"pa",
+				"parsePosition"
+			],
+			[
+				"par",
+				"parseManufacturersXml"
+			],
+			[
+				"parse",
+				"parseDeviceXml"
+			],
+			[
+				"pars",
+				"parseDeviceXml"
+			],
+			[
+				"dei",
+				"definitions"
+			],
+			[
+				"ex",
+				"extractDefinitions"
+			],
+			[
+				"down",
+				"downloadDefinitions"
+			],
+			[
+				"extr",
+				"extractDefinitions"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"dow",
+				"downloadDefinitions"
+			],
+			[
+				"deice",
+				"devices"
+			],
+			[
+				"crea",
+				"createWriteStream"
+			],
+			[
+				"create",
+				"createReadStream"
+			],
+			[
+				"endp",
+				"endpoint"
+			],
+			[
+				"update",
+				"updateDefinitions"
+			],
+			[
+				"devp",
+				"devpId"
+			],
+			[
+				"confi",
+				"configFile"
+			],
+			[
 				"btn",
 				"btn-primary"
 			],
@@ -26,14 +182,6 @@
 			[
 				"To",
 				"toTimeString"
-			],
-			[
-				"swap",
-				"swapManager"
-			],
-			[
-				"reg",
-				"regularRegisters"
 			],
 			[
 				"regu",
@@ -64,10 +212,6 @@
 				"developers"
 			],
 			[
-				"parse",
-				"parsePosition"
-			],
-			[
 				"config",
 				"configRegisters"
 			],
@@ -82,18 +226,6 @@
 			[
 				"pro",
 				"productCode"
-			],
-			[
-				"par",
-				"parseString  (function)"
-			],
-			[
-				"con",
-				"configFile"
-			],
-			[
-				"pack",
-				"packetReceived"
 			],
 			[
 				"Sw",
@@ -240,10 +372,6 @@
 				"hbInterval"
 			],
 			[
-				"data",
-				"dataInterval"
-			],
-			[
 				"pr",
 				"print"
 			],
@@ -276,10 +404,6 @@
 				"Plugin"
 			],
 			[
-				"pa",
-				"pageSize"
-			],
-			[
 				"P",
 				"Packages"
 			]
@@ -291,12 +415,68 @@
 	"build_system": "Packages/JSLint/JSLint.sublime-build",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 307.0,
 		"selected_items":
 		[
 			[
+				"gni",
+				"Gitignore: New gitingore"
+			],
+			[
+				"ing",
+				"Gitignore: New gitingore"
+			],
+			[
 				"fet",
-				"Fetch: Package"
+				"Fetch: File"
+			],
+			[
+				"coffe",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"java",
+				"Format: Javascript"
+			],
+			[
+				"coff",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"displa",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"che",
+				"Coffee: Check Syntax"
+			],
+			[
+				"coof",
+				"Coffee: Compile File"
+			],
+			[
+				"coffer",
+				"Coffee: Display Parse Tree"
+			],
+			[
+				"cof",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
 			],
 			[
 				"fetc",
@@ -317,14 +497,6 @@
 			[
 				"forma",
 				"Format: Javascript"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
 			],
 			[
 				"comm",
@@ -349,10 +521,6 @@
 			[
 				"ignore",
 				"Gitignore: New gitingore"
-			],
-			[
-				"remo",
-				"Package Control: Remove Package"
 			],
 			[
 				"remove",
@@ -563,10 +731,6 @@
 				"Preferences: SublimeClang Settings – Default"
 			],
 			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
 				"clang",
 				"SublimeClang: Clear cache"
 			],
@@ -639,7 +803,7 @@
 				"Indentation: Convert to Spaces"
 			]
 		],
-		"width": 449.0
+		"width": 494.0
 	},
 	"console":
 	{
@@ -656,13 +820,81 @@
 	},
 	"file_history":
 	[
-		"/Users/joseph/workspace/alfred/swap/server/swapinterface.coffee",
-		"/Users/joseph/workspace/alfred/swap/public/css/style.styl",
+		"/Users/joseph/workspace/alfred/swap/Swap.sublime-project",
+		"/Users/joseph/workspace/alfred/swap/package.json",
+		"/Users/joseph/workspace/cameras-server/etc/init/camera-server.conf",
+		"/Users/joseph/workspace/cameras-server/etc/init/cameraServer.conf",
+		"/Users/joseph/workspace/cameras-server/readme.txt",
+		"/Users/joseph/workspace/camerasServer/DEBIAN/prerm",
+		"/Users/joseph/workspace/camerasServer/DEBIAN/control",
+		"/Users/joseph/workspace/cameras-server/.git/config",
+		"/Users/joseph/workspace/camerasServer/templates/BB5.cmt",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/controllers.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swap/manager.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/swap.js",
 		"/Users/joseph/workspace/alfred/swap/app.js",
-		"/Users/joseph/workspace/alfred/swap/routes/index.js",
-		"/Users/joseph/workspace/alfred/swap/public/js/client.js",
-		"/Users/joseph/workspace/alfred/swap/views/index.jade",
+		"/Users/joseph/workspace/alfred/swap/client/views/app.jade",
+		"/Users/joseph/workspace/alfred/swap/server/rpc/swapinterface.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swap/serialmodem.coffee",
+		"/Users/joseph/workspace/alfred/swap/test/tests.coffee",
+		"/Users/joseph/workspace/alfred/swap/test/testsswap.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swap/config.json",
+		"/Users/joseph/workspace/alfred/swap/server/swap/pubsub.coffee",
+		"/Users/joseph/workspace/alfred/swap/node_modules/socketstream/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/TestCase.as",
+		"/Users/joseph/workspace/alfred/swap/motes.json",
+		"/Users/joseph/workspace/alfred/swap/client/templates/dialogs/moteDetails.jade",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/entry.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/templates/essai.jade",
+		"/Users/joseph/workspace/alfred/swap/client/code/libs/ui-bootstrap-custom-0.1.1-SNAPSHOT.js",
 		"/Users/joseph/workspace/alfred/swap/.gitignore",
+		"/Users/joseph/workspace/alfred/swap/node_modules/ss-hogan/node_modules/hogan.js/.git_ignore",
+		"/Users/joseph/workspace/alfred/swap/server/swap/definitions.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/css/app.styl",
+		"/Users/joseph/workspace/alfred/swap/client/static/assets/main/1361148696163.html",
+		"/Users/joseph/workspace/alfred/swap/devices/devices.xml",
+		"/Users/joseph/workspace/alfred/swap/devices/temppress.xml",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/services.coffee",
+		"/Users/joseph/workspace/alfred/swap/devices/temphum.xml",
+		"/Users/joseph/workspace/alfred/swap/server/swap/serialModem.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swap/swapinterface.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/rpc/main.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swap/serialModem.js",
+		"/Users/joseph/workspace/alfred/swap/devices.json",
+		"/Users/joseph/workspace/alfred/swap/server/swap/manager.js",
+		"/Users/joseph/workspace/alfred/swap/client/views/layout.jade",
+		"/Users/joseph/workspace/alfred/swap/node_modules/socketstream/lib/client/template_engines/angular.js",
+		"/Users/joseph/workspace/alfred/swap/node_modules/xml2js/node_modules/sax/test/trailing-attribute-no-value.js",
+		"/Users/joseph/workspace/alfred/swap/.nodemonignore",
+		"/Users/joseph/workspace/alfred/swap/client/code/libs/underscore.js",
+		"/Users/joseph/workspace/alfred/swap/client/code/libs/angular.min.js",
+		"/Users/joseph/workspace/alfred/swap/client/code/libs/bootstram-modal.js",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
+		"/Users/joseph/workspace/alfred/swap/client/code/libs/bootstrap.min.js",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/filters.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/directives.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/routers.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/routes.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/app.coffee",
+		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/ui.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/templates/packet.jade",
+		"/Users/joseph/workspace/alfred/swap/client/templates/serialConfig.jade",
+		"/Users/joseph/workspace/alfred/swap/client/code/swap/swap.js",
+		"/Users/joseph/workspace/alfred/swap/README.md",
+		"/Users/joseph/workspace/alfred/swap/node_modules/async/package.json",
+		"/Users/joseph/workspace/alfred/swap/devices/onewire.xml",
+		"/Users/joseph/workspace/alfred/swap/test/tests.js",
+		"/Users/joseph/.bashrc",
+		"/Users/joseph/.profile",
+		"/Users/joseph/workspace/alfred/swap/server/swap/devices.coffee",
+		"/Users/joseph/workspace/alfred/swap/devices/lcddriver.xml",
+		"/Users/joseph/workspace/alfred/swap/server/swap/devices.js",
+		"/Users/joseph/workspace/alfred/swap/devices/binouts2.xml",
+		"/Users/joseph/workspace/alfred/swap/devices/bininps.xml",
+		"/Users/joseph/workspace/alfred/swap/server/swap/main.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swapinterface.coffee",
+		"/Users/joseph/workspace/alfred/swap/app.coffee",
+		"/Users/joseph/workspace/alfred/swap/Swap.sublime-workspace",
 		"/Users/joseph/workspace/alfred/swap/node_modules/express/client.js",
 		"/Users/joseph/workspace/alfred/swap/public/javascripts/client.js",
 		"/Users/joseph/workspace/alfred/swap/config.json",
@@ -671,22 +903,17 @@
 		"/Users/joseph/workspace/alfred/swap/public/js/bootstrap.min.js",
 		"/Users/joseph/workspace/alfred/swap/public/img/paper_fibers.png",
 		"/Users/joseph/workspace/alfred/swap/public/stylesheets/style.styl",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
 		"/Users/joseph/workspace/alfred/swap/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/ECBModeTest.as",
 		"/Users/joseph/workspace/alfred/swap/node_modules/.bin/stylus",
 		"/Users/joseph/workspace/alfred/swap/swap.js",
-		"/Users/joseph/workspace/alfred/swap/devices/devices.xml",
 		"/Users/joseph/workspace/alfred/swap/manager.js",
-		"/Users/joseph/workspace/alfred/swap/motes.json",
-		"/Users/joseph/workspace/alfred/swap/devices.json",
-		"/Users/joseph/workspace/alfred/swap/devices/temphum.xml",
 		"/Users/joseph/workspace/alfred/swap/serialModem.js",
-		"/Users/joseph/workspace/alfred/swap/package.json",
 		"/Users/joseph/workspace/alfred/swap/devices/SeismoFloor.xml",
 		"/Users/joseph/workspace/alfred/swap/node_modules/tar/examples/reader.js",
-		"/Users/joseph/workspace/alfred/swap/README.md",
+		"/Users/joseph/workspace/alfred/swap/views/index.jade",
 		"/Users/joseph/workspace/alfred/swap/Todos.md",
 		"/Users/joseph/workspace/alfred/swap/index.html",
+		"/Users/joseph/workspace/alfred/swap/routes/index.js",
 		"/Users/joseph/workspace/alfred/swap/public/javascripts/jQuery.js",
 		"/Users/joseph/workspace/alfred/swap/jQuery.js",
 		"/Users/joseph/workspace/alfred/swap/node_modules/serialport/tests/test_read.js",
@@ -720,70 +947,7 @@
 		"/Users/joseph/Downloads/contact_sample (1).csv",
 		"/Users/joseph/Downloads/zmq_websocket/demo.py",
 		"/Users/joseph/workspace/gateway-managers/.gitignore",
-		"/Users/joseph/Downloads/zmq_websocket/bin/activate",
-		"/Users/joseph/Downloads/contact_sample.csv",
-		"/Users/joseph/workspace/gateway-server/Gateway.sublime-project",
-		"/Users/joseph/workspace/Timer/src/timer.pyw",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/JSLint/JSLint.sublime-settings",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/JSLint/JSLint.sublime-build",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/JSLint.sublime-settings",
-		"/Library/Python/2.7/site-packages/Fabric-1.4.3-py2.7.egg/fabric/decorators.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/menu.py",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/controllers/default.py",
-		"/Users/joseph/Documents/workspace/gateway-server/fabfile.py",
-		"/Users/joseph/Documents/workspace/gateway-server/DEBIAN/postinst",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/monitoring.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Fabric/Default.sublime-commands",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Fabric/fabric.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Fabric Tasks/package-metadata.json",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SublimeTODO/todo.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/delete_word.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/Delete Left Right.sublime-macro",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Git/git.py",
-		"/Users/joseph/Documents/workspace/gateway-server/DEBIAN/control",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/machines.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/Default (OSX).sublime-keymap",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/Default (OSX).sublime-keymap",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Side Bar.sublime-settings",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/Side Bar.sublime-settings",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/SideBarGit.sublime-settings",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SideBarGit/SideBarGit.sublime-settings",
-		"/Users/joseph/Documents/workspace/gateway-server/.gitignore",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Git/Git.sublime-settings",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Git.sublime-settings",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/.gitignore",
-		"/Users/joseph/Documents/workspace/gateway-server/Gateway.sublime-project",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/app/view/Runs.js",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/app/view/Alarms.js",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/css/perso.css",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/app.js",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/index.html",
-		"/Users/joseph/Documents/workspace/gateway-server/.git/config",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/.git/config",
-		"/Users/joseph/.gitconfig",
-		"/Users/joseph/Documents/workspace/gateway-server/.git/COMMIT_EDITMSG",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/static/images/arrows-ffffff.png",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/Shell Turtlestein.sublime-settings",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/README.md",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Shell Turtlestein.sublime-settings",
-		"/Users/joseph/Documents/workspace/gateway-server/Gateway.sublime-workspace",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/shell_turtlestein.py",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/Default.sublime-keymap",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Shell Turtlestein/package-metadata.json",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/SublimeCodeIntel/Default (OSX).sublime-mousemap",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/joseph/Documents/workspace/gateway-server/web2py/routes.py",
-		"/Users/joseph/Documents/workspace/gateway-server/web2py/parameters_443.py",
-		"/Users/joseph/Documents/workspace/gateway-server/web2py/parameters_80.py",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/models/db.py",
-		"/Users/joseph/Documents/workspace/gateway-server/web2py/logging.conf",
-		"/Users/joseph/Documents/workspace/gateway-server/web2py/applications/welcome/models/db.py",
-		"/Users/joseph/Downloads/web2py/applications/gateway/controllers/default.py",
-		"/Users/joseph/Downloads/web2py/applications/admin/controllers/default.py",
-		"/Users/joseph/Documents/workspace/web2py/applications/gateway/views/layout.html"
+		"/Users/joseph/Downloads/zmq_websocket/bin/activate"
 	],
 	"find":
 	{
@@ -794,6 +958,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"",
 			"/Users/joseph/Documents/repos/panstamp/python/",
 			"/Users/joseph/Documents/repos/panstamp/python/pyswapdmtgui/src",
 			"",
@@ -808,6 +973,69 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"couch",
+			"require ",
+			"value",
+			"swapEvent",
+			"tooltip",
+			"status",
+			"ss.rpc",
+			"q",
+			"(",
+			"r",
+			"(",
+			"swapsta",
+			"emit",
+			"temphu",
+			"in",
+			"..",
+			"call",
+			"self",
+			".on",
+			"on",
+			"            \n",
+			"emit",
+			"address",
+			"emit",
+			"regular",
+			"temphu",
+			"jQuery",
+			"MainCtrl",
+			"c",
+			"logger",
+			"this",
+			"saven",
+			"devices.json",
+			"sourceFile",
+			"self.developers",
+			"]",
+			"module.exports[",
+			"logging",
+			"function",
+			"Function",
+			"function",
+			"Function",
+			"function",
+			"Function",
+			"function",
+			"Function",
+			"function",
+			"unless",
+			" (",
+			"on",
+			"repository",
+			")",
+			"(",
+			"returned",
+			"var",
+			"update",
+			"process.on",
+			"process",
+			"cb",
+			"console",
+			"console.log",
+			"logging",
+			"cool",
 			"dropdo",
 			"drop",
 			"emit",
@@ -872,70 +1100,7 @@
 			"^",
 			", ",
 			" ,",
-			" ",
-			";",
-			"defined",
-			"ƒ",
-			"ctrl+c",
-			"sudo",
-			"fab",
-			"mysql",
-			"script_security",
-			"\n",
-			"BIRGUM",
-			"openvpn",
-			"\n",
-			"$",
-			"echo.",
-			"while",
-			"echo",
-			"response._vars",
-			"len",
-			"mode",
-			"machineNam",
-			"check",
-			"echo \"Address $ip received by DHCP\"\necho .\nunset ip\n\n########################################################################\n# Get the name of the machine to install\n\necho -n \"Please enter the name for this gateway (ex: exq001-gw): \"\nwhile [ -z $hostname ]; do\n    read hostname;\ndone;\necho \"Configuring gateway $hostname...\"\necho $hostname > /etc/hostname\n",
-			"floa",
-			"\"",
-			"rotate",
-			"transcode=vcodec=h264,vb=300",
-			"/axis-cgi/mjpg/video.cgi?resolution=640x480",
-			"http$",
-			"http",
-			"http://http://",
-			"http://",
-			"127.0.0.1",
-			"http://",
-			"127.0.0.1",
-			"Publis",
-			"64",
-			"/*",
-			"3",
-			"64",
-			"128",
-			"sde",
-			"\");\n",
-			"128",
-			"/*",
-			");\n",
-			"}\n",
-			"sendData",
-			"sdebugln",
-			"slnd",
-			"tostring",
-			"PSTR",
-			"DATA_POLL_INTERVAL",
-			"setsource",
-			"reset_se",
-			"pull",
-			"tab",
-			"ignore",
-			":",
-			"test",
-			"-build",
-			"build",
-			"self",
-			"cmd"
+			" "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1024,12 +1189,264 @@
 		"selected_items":
 		[
 			[
-				"gi",
-				".gitignore"
+				"app",
+				"app.js"
+			],
+			[
+				"mana",
+				"server/swap/manager.coffee"
+			],
+			[
+				"pu",
+				"server/swap/pubsub.coffee"
+			],
+			[
+				"config",
+				"server/swap/config.json"
+			],
+			[
+				"control",
+				"client/code/app/controllers.coffee"
+			],
+			[
+				"swapin",
+				"server/rpc/swapinterface.coffee"
+			],
+			[
+				"confi",
+				"server/swap/config.json"
+			],
+			[
+				"pub",
+				"server/swap/pubsub.coffee"
+			],
+			[
+				"sinterfa",
+				"server/rpc/swapinterface.coffee"
+			],
+			[
+				"swap",
+				"client/code/app/swap.js"
+			],
+			[
+				"conf",
+				"server/swap/config.json"
+			],
+			[
+				"serialm",
+				"server/swap/serialmodem.coffee"
+			],
+			[
+				"testcoff",
+				"test/tests.coffee"
+			],
+			[
+				"testc",
+				"node_modules/socketstream/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/TestCase.as"
+			],
+			[
+				"serialmo",
+				"server/swap/serialmodem.coffee"
+			],
+			[
+				"appj",
+				"client/views/app.jade"
+			],
+			[
+				"ap",
+				"app.js"
+			],
+			[
+				"moted",
+				"/Users/joseph/workspace/alfred/swap/client/templates/dialogs/moteDetails.jade"
+			],
+			[
+				"mote",
+				"motes.json"
+			],
+			[
+				"appja",
+				"client/views/app.jade"
+			],
+			[
+				"",
+				"app.js"
+			],
+			[
+				"appjad",
+				"client/views/app.jade"
+			],
+			[
+				"det",
+				"client/templates/dialogs/moteDetails.jade"
+			],
+			[
+				"app.j",
+				"client/views/app.jade"
+			],
+			[
+				"app.ja",
+				"client/views/app.jade"
+			],
+			[
+				"entre",
+				"client/code/app/entry.coffee"
+			],
+			[
+				"ui",
+				"client/code/libs/ui-bootstrap-custom-0.1.1-SNAPSHOT.js"
+			],
+			[
+				"swap.js",
+				"client/code/app/swap.js"
+			],
+			[
+				"entr",
+				"client/code/app/entry.coffee"
 			],
 			[
 				"git",
 				".gitignore"
+			],
+			[
+				"ignore",
+				"node_modules/ss-hogan/node_modules/hogan.js/.git_ignore"
+			],
+			[
+				"defini",
+				"server/swap/definitions.coffee"
+			],
+			[
+				"man",
+				"server/swap/manager.coffee"
+			],
+			[
+				"sty",
+				"client/css/app.styl"
+			],
+			[
+				"servi",
+				"client/code/app/services.coffee"
+			],
+			[
+				"contro",
+				"client/code/app/controllers.coffee"
+			],
+			[
+				"temph",
+				"devices/temphum.xml"
+			],
+			[
+				"devices",
+				"devices/devices.xml"
+			],
+			[
+				"motes",
+				"motes.json"
+			],
+			[
+				"devices.xml",
+				"devices/devices.xml"
+			],
+			[
+				"temppre",
+				"devices/temppress.xml"
+			],
+			[
+				"defin",
+				"server/swap/definitions.coffee"
+			],
+			[
+				"test",
+				"test/tests.coffee"
+			],
+			[
+				"con",
+				"server/swap/config.json"
+			],
+			[
+				"dev",
+				"devices.json"
+			],
+			[
+				"devi",
+				"devices.json"
+			],
+			[
+				"tempp",
+				"devices/temppress.xml"
+			],
+			[
+				"app.s",
+				"client/css/app.styl"
+			],
+			[
+				"manag",
+				"server/swap/manager.js"
+			],
+			[
+				"layou",
+				"client/views/layout.jade"
+			],
+			[
+				"controle",
+				"client/code/app/controllers.coffee"
+			],
+			[
+				"ang",
+				"node_modules/socketstream/lib/client/template_engines/angular.js"
+			],
+			[
+				"devic",
+				"devices.json"
+			],
+			[
+				"temp",
+				"devices/temphum.xml"
+			],
+			[
+				"c",
+				"server/swap/config.json"
+			],
+			[
+				"tes",
+				"test/tests.coffee"
+			],
+			[
+				"one",
+				"devices/onewire.xml"
+			],
+			[
+				"nodemo",
+				".nodemonignore"
+			],
+			[
+				"de",
+				"devices/devices.xml"
+			],
+			[
+				"defi",
+				"server/swap/definitions.coffee"
+			],
+			[
+				"igno",
+				".nodemonignore"
+			],
+			[
+				"ignoe",
+				".nodemonignore"
+			],
+			[
+				"lcd",
+				"devices/lcddriver.xml"
+			],
+			[
+				".xml",
+				"devices/binouts2.xml"
+			],
+			[
+				"bini",
+				"devices/bininps.xml"
 			],
 			[
 				"cli",
@@ -1040,20 +1457,8 @@
 				"node_modules/express/client.js"
 			],
 			[
-				"conf",
-				"config.json"
-			],
-			[
 				"route",
 				"routes/index.js"
-			],
-			[
-				"ap",
-				"app.js"
-			],
-			[
-				"con",
-				"config.json"
 			],
 			[
 				"lay",
@@ -1064,60 +1469,20 @@
 				"public/stylesheets/style.styl"
 			],
 			[
-				"sty",
-				"node_modules/.bin/stylus"
-			],
-			[
 				"dei",
 				"devices/devices.xml"
-			],
-			[
-				"swap",
-				"swap.js"
-			],
-			[
-				"mana",
-				"manager.js"
 			],
 			[
 				"jade",
 				"views/index.jade"
 			],
 			[
-				"mote",
-				"motes.json"
-			],
-			[
 				"ign",
 				".gitignore"
 			],
 			[
-				"temp",
-				"devices/temphum.xml"
-			],
-			[
-				"de",
-				"devices/devices.xml"
-			],
-			[
-				"dev",
-				"devices.json"
-			],
-			[
-				"confi",
-				"config.json"
-			],
-			[
 				"pack",
 				"package.json"
-			],
-			[
-				"devi",
-				"devices.json"
-			],
-			[
-				"temph",
-				"devices/temphum.xml"
 			],
 			[
 				"deve",
@@ -1128,16 +1493,8 @@
 				"devices/SeismoFloor.xml"
 			],
 			[
-				".xml",
-				"devices/binouts2.xml"
-			],
-			[
 				"sw",
 				"swap.js"
-			],
-			[
-				"igno",
-				".gitignore"
 			],
 			[
 				"pa",
@@ -1148,20 +1505,12 @@
 				"node_modules/tar/examples/reader.js"
 			],
 			[
-				"",
-				".gitignore"
-			],
-			[
 				"gitin",
 				".gitignore"
 			],
 			[
 				"mo",
 				"motes.json"
-			],
-			[
-				"app",
-				"app.js"
 			],
 			[
 				"seri",
@@ -1232,10 +1581,6 @@
 				"gateway-server/DEBIAN/postinst"
 			],
 			[
-				"contro",
-				"gateway-server/DEBIAN/control"
-			],
-			[
 				"moni",
 				"gateway/models/monitoring.py"
 			],
@@ -1280,10 +1625,6 @@
 				"gateway-server/web2py/routes.py"
 			],
 			[
-				"control",
-				"gateway-server/DEBIAN/control"
-			],
-			[
 				"db.py",
 				"gateway/models/db.py"
 			],
@@ -1318,10 +1659,6 @@
 			[
 				"wait",
 				"pyswapdmtgui/src/WaitDialog.py"
-			],
-			[
-				"manag",
-				"SwapManager.py"
 			],
 			[
 				"jean",
@@ -1362,94 +1699,6 @@
 			[
 				"queue",
 				"workspace/AVRQueue/Arduino/Queue.h"
-			],
-			[
-				"xpl_",
-				"Arduino/libraries/xpl/xPL_Message.cpp"
-			],
-			[
-				"xpl.",
-				"Arduino/libraries/xpl/xPL.cpp"
-			],
-			[
-				"serialn",
-				"workspace/alfred/devices/Arduino/alfred/serialNode/serialNode.ino"
-			],
-			[
-				"serialno",
-				"workspace/alfred/devices/Arduino/alfred/serialNode/serialNode.ino"
-			],
-			[
-				"onewi",
-				"Arduino/libraries/OneWire/OneWire.h"
-			],
-			[
-				"dalla",
-				"Arduino-Temperature-Control-Library/DallasTemperature.h"
-			],
-			[
-				"base",
-				"alfred/xpl/base.py"
-			],
-			[
-				"xpls",
-				"alfred/apps/xplSerial.py"
-			],
-			[
-				"temp2xpl",
-				"Documents/Arduino/temp2xpl/temp2xpl.ino"
-			],
-			[
-				"temp2",
-				"Documents/Arduino/temp2xpl/temp2xpl.ino"
-			],
-			[
-				"xplech",
-				".xpl/xPLEcho.json"
-			],
-			[
-				"baseplug",
-				".xpl/BasePlugin.json"
-			],
-			[
-				"set",
-				"setup.py"
-			],
-			[
-				"build",
-				"/Users/joseph/Library/Application Support/Sublime Text 2/Packages/User/xPLLibrary.sublime-build"
-			],
-			[
-				"tes",
-				"tests/testAddress.py"
-			],
-			[
-				"mes",
-				"xpl/message.py"
-			],
-			[
-				"xplmess",
-				"message/expel/message/xpl.py"
-			],
-			[
-				"xplme",
-				"message/expel/message/__init__.py"
-			],
-			[
-				"fabfi",
-				"workspace/web2py/applications/webmoni/fabfile.py"
-			],
-			[
-				"grids",
-				"static/app/store/GridStore.js"
-			],
-			[
-				"default",
-				"controllers/default.py"
-			],
-			[
-				"rou",
-				"workspace/web2py/routes.py"
 			]
 		],
 		"width": 0.0

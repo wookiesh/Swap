@@ -19,4 +19,18 @@ module.exports = {
 		test.equals(sp.source, 1)
 		test.equals(sp.dest, 0)
 		test.done()
+
+	'stringify a SwapPacket': (test) ->
+		sp = new swap.SwapPacket()
+		sp.dest = 3
+		sp.regAddress = 3
+		sp.regId = 11
+		sp.hop = 4
+		sp.security = 2
+		sp.source = 22
+		sp.nonce = 245
+		sp.func = swap.Functions.COMMAND
+		sp.value = [23, 56]
+		test.equals('031642f502030b1738', sp.toString())
+		test.done()		
 }

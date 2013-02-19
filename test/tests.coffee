@@ -36,4 +36,11 @@ module.exports = {
 			test.ok definitions.repo
 			fs.writeFile("devices.json", JSON.stringify(definitions.repo, 0, 4))
 			test.done()
+
+	'send a query packet to all motes': (test) ->
+		sm = require './server/swap/serialmodem'
+		new sm.SerialModem(require './server/swap/config').on 'started', () ->
+			serial.write packet
+			test.done()
+
 }

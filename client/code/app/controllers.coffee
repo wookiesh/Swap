@@ -66,6 +66,7 @@ module.exports = (ngModule) ->
             # $scope.dlgOpts.template = ss.tmpl['dialogs-moteDetails'].render()
             # $scope.dlgOpts.resolve = {mote: () -> angular.copy(mote)}
             # $dialog.dialog($scope.dlgOpts).open('essai',"MoteDetailsCtrl").then (res) ->
+            $scope.modelMote = mote
             $scope.mote = angular.copy(mote)
             $scope.moteDetailsOpen = true
 

@@ -61,11 +61,11 @@ block content
             legend Standard registers
             .row
                 .span4
-                    label Product Code: {{mote.productCode}}
+                    label Product Code: {{modelMote.productCode}}
                     //- label Hardware Version: {{mote.hardwareVersion}}
                     //- label Firmware Version: {{mote.firmwareVersion}}
-                    label State: {{mote.state.str}}
-                    label Last Status at: {{renderDate(mote.lastStatusTime)}}
+                    label State: {{modelMote.state.str}}
+                    label Last Status at: {{renderDate(modelMote.lastStatusTime)}}
                     label Location:
                     input(type='text', ng-model='mote.location')
                     label Address:
