@@ -39,3 +39,8 @@ server.listen(3000);
 
 // Start SocketStream
 ss.start(server);
+
+process.on('SIGINT', function(){
+  console.log(arguments);
+  process.exit()
+})

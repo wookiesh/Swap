@@ -26,8 +26,8 @@ class SerialModem extends events.EventEmitter
             @on "data", (data) =>
                 logger.debug "Received: #{data}"
                 # TODO: D is not necessary since it already starts with '('
-                if data[0] is 'D'
-                    packet = new swap.CCPacket data[1 .. data.length-1]  # remove \r
+                if data[0] is '('
+                    packet = new swap.CCPacket data[0 .. data.length-1]  # remove \r
                     if packet.data
                         packet = new swap.SwapPacket packet
                         self.emit 'data', packet
@@ -52,8 +52,8 @@ class SerialModem extends events.EventEmitter
                                         self.emit 'started'
 
     # To send a packet to the Swap network                      
-    sendPacket: (packet) ->
-        console.log 'Not yet'
+    send: (address, fct, regId, regAddr, data) ->
+        console.log 'Sending'
 
     # To check that the modem is still living
     ping: (callback) ->

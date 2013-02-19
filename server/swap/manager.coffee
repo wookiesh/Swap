@@ -23,9 +23,13 @@ class SwapManager extends events.EventEmitter
             @loadNetwork () =>
                 @start()
        
-        # To persist things on exit
-        process.on "SIGINT", () ->
-             @saveNetwork () -> process.exit 0
+        # To persist things on exit"
+        process.on "exit", () => 
+        process.on "SIGTERM", () -> console.log "Here SIGTERM"
+        process.on "SIGTINT", () =>
+            console.log "SIGINT received"
+            @saveNetwork () -> process.exit 0
+            
 
     # Load motes definition from persistence    
     loadNetwork: (callback) ->
@@ -199,10 +203,11 @@ class SwapManager extends events.EventEmitter
         else logger.error 'Packet information cannot be interpreted'
 
     # Gets the value of a specific register
-    queryRegister: (regId, address) ->
+    sendQuery: (regId, address) ->
 
     # Sets the value of a specific register
-    setRegister: (regId, address, value) ->
+    sendCommand: (regId, address, value) ->
+        @dataSource.send(address, regId, address, value)
     
 module.exports = SwapManager
 

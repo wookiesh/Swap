@@ -16,5 +16,10 @@
 		"local": "devices",
 		"remote": "http://www.panstamp.com/downloads/devices.tar",
 		"update": false
+	},
+
+	"broker":{
+		"host": "localhost",
+		"port": 10000
 	}
 }

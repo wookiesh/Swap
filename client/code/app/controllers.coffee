@@ -53,7 +53,7 @@ module.exports = (ngModule) ->
             $scope.name = req.charAt(0).toUpperCase() + req.slice(1) 
 
         $scope.saveConfig = () ->             
-            ss.rpc 'swapinterface.saveConfig', $scope.config, (err) ->
+            rpc.exec('swapinterface.saveConfig', $scope.config).then (err) ->
                 # Todo: ues angular bootstrap
                 $('#config').modal('hide')
                 alert(err) if err
@@ -66,8 +66,16 @@ module.exports = (ngModule) ->
             # $scope.dlgOpts.template = ss.tmpl['dialogs-moteDetails'].render()
             # $scope.dlgOpts.resolve = {mote: () -> angular.copy(mote)}
             # $dialog.dialog($scope.dlgOpts).open('essai',"MoteDetailsCtrl").then (res) ->
-            $scope.mote = mote
+            $scope.mote = angular.copy(mote)
             $scope.moteDetailsOpen = true
+
+        $scope.saveMoteDetails = (mote) ->
+            if mote.location != $scope.motes[mote.address].location
+                rpc.exec('swapinterface.updateMote', 'location', mote).then (mote) ->                    
+                    # alert err if err  
+                    $scope.motes[mote.address].location = mote.location
+                $scope.moteDetailsOpen = false
+            # rpc.exec('swapinterface.updateMote', 'location', mote.location) if
 
         $scope.closeMoteDetails = () -> $scope.moteDetailsOpen = false
 
