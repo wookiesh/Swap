@@ -34,45 +34,54 @@ class SwapPacket
         res = (hspad2(i) for i in [@dest, @source]).join('')
         res += @hop.toString(16) + @security.toString(16)   
         res += (hspad2(i) for i in [@nonce, @func, @regAddress, @regId]).join('')
-        res += (hspad2(i) for i in @value).join('')
+        temp = if @value.length is undefined then [@value] else @value
+        res += (hspad2(i) for i in temp).join('')
 
 # Utility function
 hspad2 = (number) ->
-    ('0' + number?.toString(16)).slice(-2)
+    ('00' + number?.toString(16)).slice(-2)
 
 class SwapMote
-    constructor: (address, network, channel, security, nonce) ->        
+    constructor: (@address, @network, @channel, @security, @nonce) ->        
         # Standards registers
         @productCode = `undefined`
         @hardwareVersion = `undefined`
         @firmwareVersion = `undefined`
         @state = `undefined`
-        @channel = channel
-        @security = security
         @password = `undefined`
-        @nonce = nonce
-        @network = network
-        @address = address
         @txInterval = `undefined`
     
         @lastStatusTime = `undefined`
         @location = 'Nowhere'
 
 class Endpoint
-    constructor: (id) ->
-        @id = id
+    constructor: (@id) ->
         @name = `undefined`
         @location = `undefined`   
         @vale = `undefined`
         @unit = `undefined`
         @dir = `undefined`
 
-Functions=
+Functions =
     STATUS: 0
     QUERY: 1
     COMMAND: 2
 
-SwapStates=
+Registers =
+    productCode: 0
+    hardwareVersion: 1
+    firmwareVersion: 2
+    state: 3
+    channel: 4
+    security: 5
+    password: 6
+    nonce: 7
+    network: 8
+    address: 9
+    txInterval: 10
+
+
+SwapStates =
     RESTART:
         level: 0
         str: "Restart"
@@ -102,4 +111,5 @@ module.exports =
     SwapPacket: SwapPacket
     SwapMote: SwapMote
     Functions: Functions
+    Registers: Registers
     SwapStates: SwapStates

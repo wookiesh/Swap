@@ -71,10 +71,15 @@ module.exports = (ngModule) ->
             $scope.moteDetailsOpen = true
 
         $scope.saveMoteDetails = (mote) ->
-            if mote.location != $scope.motes[mote.address].location
+            if mote.location != $scope.modelMote.location
                 rpc.exec('swapinterface.updateMote', 'location', mote).then (mote) ->                    
-                    # alert err if err  
-                    $scope.motes[mote.address].location = mote.location
+                    $scope.modelMote.location = mote.location
+
+            for prop in ['address', 'channel', 'network', 'txInterval']
+                if mote[prop] != $scope.modelMote[prop]
+                    rpc.exec('swapinterface.updateMote', prop, mote).then (mote) ->
+                        $scope.modelMote[prop] = mote[prop]
+
                 $scope.moteDetailsOpen = false
             # rpc.exec('swapinterface.updateMote', 'location', mote.location) if
 
@@ -83,6 +88,8 @@ module.exports = (ngModule) ->
         $scope.renderDate = (time) -> 
             new Date(time).toLocaleString()
     ]
+
+    # TODO: use dialog directive putting the partial in a angular script directive <script type="text/ng-template" id="dialog.html"
 
     # ngModule.controller 'MoteDetailsCtrl', ['$scope', 'rpc', 'pubsub', 'dialog', 'mote'
     # ($scope, rpc, pubsub, dialog, mote) ->

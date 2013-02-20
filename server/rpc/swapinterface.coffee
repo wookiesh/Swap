@@ -1,9 +1,12 @@
+ss = require 'socketstream'
+ps = require '../swap/pubsub'
+swap = require '../../client/code/app/swap'
 config = require '../swap/config.json'
 SerialModem = require '../swap/serialmodem'
 Manager = require '../swap/manager'
-ps = require '../swap/pubsub'
+
 log4js = require 'log4js'
-ss = require 'socketstream'
+logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0])
 
 log4js.setGlobalLogLevel log4js.levels.DEBUG
 
@@ -62,7 +65,15 @@ module.exports.actions = (req, res, ss) ->
 
     # Save mote modifications
     updateMote: (prop, mote) ->
+        logger.info "Updating mote #{mote.address}: #{prop} = #{mote[prop]}"
         if prop is 'location'
             swapManager.motes[mote.address].location = mote.location
             res null, swapManager.motes[mote.address]
-            # swapManager.send
+
+        if prop in ['address', 'channel', 'network', 'txInterval']
+            throw "Not yet implemented" if prop is 'address'
+            swapManager.sendCommand swap.Registers[prop], mote.address, mote[prop]
+
+
+
+

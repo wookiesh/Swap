@@ -14,22 +14,16 @@ Emits:
         - event: {type, text, mote}
 ###
 class SwapManager extends events.EventEmitter
-    constructor: (dataSource, config) ->
+    constructor: (@dataSource, @config) ->
+        # To persist things on exit"
+        process.on 'SIGUSR2', () => @saveNetwork()  # for nodemon
+        process.on 'exit', () => @saveNetwork()
         @configFile = './motes.json'
-        @dataSource = dataSource
     
         definitions.parseAll (repo) =>
             @repo = repo;         
             @loadNetwork () =>
-                @start()
-       
-        # To persist things on exit"
-        process.on "exit", () => 
-        process.on "SIGTERM", () -> console.log "Here SIGTERM"
-        process.on "SIGTINT", () =>
-            console.log "SIGINT received"
-            @saveNetwork () -> process.exit 0
-            
+                @start()    
 
     # Load motes definition from persistence    
     loadNetwork: (callback) ->
@@ -39,15 +33,15 @@ class SwapManager extends events.EventEmitter
             callback() if callback
         
     # Persist motes definition between executions
-    saveNetwork: (callback) ->
+    saveNetwork: () ->
         logger.info 'Persisting modifications'
-        fs.writeFile(@configFile, JSON.stringify(@motes, null, 4)+'\n', callback) if @motes
+        fs.writeFileSync(@configFile, JSON.stringify(@motes, null, 4)+'\n') if @motes
         fs.writeFile('devices.json', JSON.stringify(@repo, null, 4)) if @repo
 
     # Starts receiving packets from dataSource
     start: () ->
         logger.info "Starting manager"
-        @dataSource.on('data', (packet) => @packetReceived(packet)) if @dataSource
+        @dataSource?.on('data', (packet) => @packetReceived(packet))
 
 
     # Function to call when a packet is received
@@ -152,7 +146,7 @@ class SwapManager extends events.EventEmitter
                 value = 256*value[0]+ value[1];
                 text = "Mote #{mote.address} transmit interval changed to #{value} s"
                 logger.info text
-                mote.txInterval = value;            
+                mote.txInterval = value;
                 @emit 'swapEvent', {name: 'txInterval', text: text, mote: mote, time: new Date()}
 
             # Retrieve value from endpoints definition 
@@ -207,7 +201,14 @@ class SwapManager extends events.EventEmitter
 
     # Sets the value of a specific register
     sendCommand: (regId, address, value) ->
-        @dataSource.send(address, regId, address, value)
+        sp = new swap.SwapPacket()
+        sp.source = @dataSource.address
+        sp.dest = address
+        sp.func = swap.Functions.COMMAND
+        sp.regAddress = address
+        sp.regId = regId
+        sp.value = value
+        @dataSource.send(sp)
     
 module.exports = SwapManager
 

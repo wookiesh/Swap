@@ -38,9 +38,20 @@ module.exports = {
 			test.done()
 
 	'send a query packet to all motes': (test) ->
-		sm = require './server/swap/serialmodem'
-		new sm.SerialModem(require './server/swap/config').on 'started', () ->
-			serial.write packet
-			test.done()
-
+		sm = require '../server/swap/serialmodem'
+		config = require '../server/swap/config'
+		serial = new sm(config)
+		# Try to set interval to 1 
+		sp = new (require '../client/code/app/swap').SwapPacket()
+		sp.source = 0
+		sp.dest = 1
+		sp.func = 2
+		sp.regAddress = 1
+		sp.regId = 10
+		sp.value = 1
+		serial.on 'started', () ->
+			serial.serialPort.on 'data', (data) -> 
+				test.equals data, '# Sending: 0100000002010a01'
+				test.done()
+			serial.send sp	
 }

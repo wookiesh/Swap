@@ -36,30 +36,33 @@ class SerialModem extends events.EventEmitter
                 else if data is 'Modem ready!'
                     @write 'ATHV?\r'
                     @once 'data', (data) =>
-                        @hardwareVersion = parseInt data
+                        self.hardwareVersion = parseInt data
                         @write 'ATFV?\r'
                         @once 'data', (data) =>
-                            @firmwareVersion = parseInt data
+                            self.firmwareVersion = parseInt data
                             @write 'ATCH?\r'
                             @once 'data', (data) =>
-                                @channel = parseInt data
+                                self.channel = parseInt data
                                 @write 'ATSW?\r'
                                 @once 'data', (data) =>
-                                    @syncword = data
+                                    self.syncword = data
                                     @write 'ATDA?\r'
                                     @once 'data', (data) =>
-                                        @address = parseInt data
+                                        self.address = parseInt data
                                         self.emit 'started'
 
     # To send a packet to the Swap network                      
-    send: (address, fct, regId, regAddr, data) ->
-        console.log 'Sending'
+    send: (packet) ->
+        logger.debug "Sent: S#{packet}"
+        @serialPort.write "S#{packet}\r"
 
     # To check that the modem is still living
     ping: (callback) ->
         @write 'AT\r'
         @once 'data', (data) ->
             if data is not 'OK'
-                logger.warn "Error while pinging: #{data}"          
+                logger.warn "Error while pinging: #{data}"  
+            else
+                callback() if callback()        
 
 module.exports = SerialModem
