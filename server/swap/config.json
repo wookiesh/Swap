@@ -5,13 +5,6 @@
 		"baudrate": 38400
 	},
 
-	"network":{
-		"channel": 0,
-		"syncWord": "b547",
-		"address": 1,
-		"security": 0
-	},
-
 	"devices":{
 		"local": "devices",
 		"remote": "http://www.panstamp.com/downloads/devices.tar",

@@ -80,6 +80,9 @@ block content
                     //- | {{mote}}                
                 
         .modal-footer
+            span.pull-left(ng-show='showSetSync')
+                span.label.label-info Info
+                |  Set device in Sync Mode to save change
             a(href="#", ng-click='closeMoteDetails()').btn Close  
             a(href="#", ng-click='saveMoteDetails(mote)').btn.btn-primary Save changes      
 

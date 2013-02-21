@@ -31,15 +31,23 @@ class SwapPacket
         @time = ccPacket?.time
 
     toString: () ->
-        res = (hspad2(i) for i in [@dest, @source]).join('')
+        res = (num2byte(i) for i in [@dest, @source]).join('')
         res += @hop.toString(16) + @security.toString(16)   
-        res += (hspad2(i) for i in [@nonce, @func, @regAddress, @regId]).join('')
+        res += (num2byte(i) for i in [@nonce, @func, @regAddress, @regId]).join('')
         temp = if @value.length is undefined then [@value] else @value
-        res += (hspad2(i) for i in temp).join('')
+        res += (num2byte(i) for i in temp).join('')
 
 # Utility function
-hspad2 = (number) ->
+num2byte = (number) ->
     ('00' + number?.toString(16)).slice(-2)
+
+bytePad = (byte, number) ->
+    (('00' for a in [0..number+1]).join('') + byte).slice(-(2*number))
+
+getValue = (value, length) ->
+    #TODO: transform this to implement to parsing of a value in byte array
+    #TODO: handle string values here, and others
+    (value >> 8*i) & 255 for i in [length-1..0]
 
 class SwapMote
     constructor: (@address, @network, @channel, @security, @nonce) ->        
@@ -68,17 +76,17 @@ Functions =
     COMMAND: 2
 
 Registers =
-    productCode: 0
-    hardwareVersion: 1
-    firmwareVersion: 2
-    state: 3
-    channel: 4
-    security: 5
-    password: 6
-    nonce: 7
-    network: 8
-    address: 9
-    txInterval: 10
+    productCode: {id: 0, length: 8}
+    hardwareVersion: {id: 1, length: 4}
+    firmwareVersion: {id: 2, length: 4}
+    state: {id: 3, length: 1}
+    channel: {id: 4, length: 1} 
+    security: {id: 5, length: 1}
+    password: {id: 6, length: undefined}
+    nonce: {id: 7, length: 1}
+    network: {id: 8, length: 2}
+    address: {id: 9, length: 1}
+    txInterval: {id: 10, length: 2}
 
 
 SwapStates =
@@ -113,3 +121,6 @@ module.exports =
     Functions: Functions
     Registers: Registers
     SwapStates: SwapStates
+    bytePad : bytePad
+    num2byte : num2byte
+    getValue: getValue

@@ -43,12 +43,13 @@ serial.on 'started', () ->
         unit = status.ep.units[1]
         value = status.rawValue * unit.factor + unit.offset
         publisher.publish "status/#{status.mote.location}/#{status.ep.name}: #{value}"
-
+        # Here value is separated from unit with a white space
 
 
 module.exports.actions = (req, res, ss) ->
     # Get manager configuration
     getConfig: () ->
+        # TODO: get adress sync etc from serial device becaus no sense in config file
         res null, config: config
 
     # Save manager configuration
@@ -72,7 +73,13 @@ module.exports.actions = (req, res, ss) ->
 
         if prop in ['address', 'channel', 'network', 'txInterval']
             throw "Not yet implemented" if prop is 'address'
-            swapManager.sendCommand swap.Registers[prop], mote.address, mote[prop]
+            console.log swap.Registers[prop].length
+            console.log swap.bytePad(swap.num2byte(mote[prop]), swap.Registers[prop].length)
+            swapManager.sendCommand swap.Registers[prop].id, mote.address, 
+                swap.getValue(mote[prop], swap.Registers[prop].length)
+            
+
+    # TODO: get something generic to deal with register param or endpoint size to set values
 
 
 

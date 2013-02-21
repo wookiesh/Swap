@@ -13,7 +13,7 @@ Emits:
 ###
 class SerialModem extends events.EventEmitter
     constructor: (@config) ->       
-        @syncword = config.network.syncword
+        @syncword = "qds"
 
         @serialPort = new serialport.SerialPort config.serial.port,
             baudrate: config.serial.baudrate || 38400,
@@ -48,7 +48,7 @@ class SerialModem extends events.EventEmitter
                                     self.syncword = data
                                     @write 'ATDA?\r'
                                     @once 'data', (data) =>
-                                        self.address = parseInt data
+                                        self.address = parseInt data, 16
                                         self.emit 'started'
 
     # To send a packet to the Swap network                      

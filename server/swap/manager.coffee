@@ -208,6 +208,7 @@ class SwapManager extends events.EventEmitter
         sp.regAddress = address
         sp.regId = regId
         sp.value = value
+        console.log sp
         @dataSource.send(sp)
     
 module.exports = SwapManager

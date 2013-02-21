@@ -18,11 +18,11 @@ require('/controllers')(app)
 
 ss.server.on 'disconnect', ->
     # $('#warning').modal 'show'
-    alert "Disconnected =("
+    console.log "Disconnected =("
 
 ss.server.on 'reconnect', ->
     # $('#warning').modal 'hide'
-    alert "Connected =)"
+    console.log "Connected =)"
 
 ss.server.on 'ready', ->
     jQuery ()->

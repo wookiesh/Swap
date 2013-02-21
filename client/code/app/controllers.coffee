@@ -69,12 +69,15 @@ module.exports = (ngModule) ->
             $scope.modelMote = mote
             $scope.mote = angular.copy(mote)
             $scope.moteDetailsOpen = true
+            $scope.showSetSync = false
 
         $scope.saveMoteDetails = (mote) ->
             if mote.location != $scope.modelMote.location
                 rpc.exec('swapinterface.updateMote', 'location', mote).then (mote) ->                    
                     $scope.modelMote.location = mote.location
 
+            $scope.showSetSync = true  # if mote.ispwrdown
+            return
             for prop in ['address', 'channel', 'network', 'txInterval']
                 if mote[prop] != $scope.modelMote[prop]
                     rpc.exec('swapinterface.updateMote', prop, mote).then (mote) ->

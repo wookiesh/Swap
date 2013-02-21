@@ -32,5 +32,22 @@ module.exports = {
 		sp.func = swap.Functions.COMMAND
 		sp.value = [23, 56]
 		test.equals('031642f502030b1738', sp.toString())
-		test.done()		
+		test.done()	
+
+	'byte pad a value': (test) ->
+		bp = swap.bytePad
+		nb = swap.num2byte
+		test.equals(bp('fa',2), '00fa')
+		test.equals(bp('', 3), '000000')
+		test.equals(bp('12',1), '12')	
+		test.equals(bp('0054', 5), '0000000054')
+		test.equals(bp(nb(6),2), '0006')
+		test.done()
+
+	'value to byte array': (test) ->
+		gv = swap.getValue
+		test.deepEqual(gv(2,2), [0,2])
+		test.deepEqual(gv(258, 3), [0,1,2])
+		test.deepEqual(gv(256,4), [0,0,1,0])
+		test.done()
 }
