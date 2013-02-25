@@ -86,7 +86,7 @@ class SwapManager extends events.EventEmitter
                 text = "Missing nonce: #{packet.nonce} - #{mote.nonce}, first or lost packet ?"
                 logger.warn text
                 # device = @repo[mote.manufacturerId].devices[mote.deviceId]
-                @emit 'swapEvent', {name:'missingNonce', text:text, type:'warn', time: new Date()}
+                @emit 'swapEvent', {name:'missingNonce', text:text, type:'warning', time: new Date()}
             
             mote.nonce = packet.nonce
             mote.lastStatusTime = packet.time

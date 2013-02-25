@@ -8,7 +8,15 @@ require '/services'
 require '/directives'
 
 # angular application
-app = angular.module('app', ['app.filters', 'app.services', 'app.directives', 'ui.bootstrap'])
+app = angular.module('app', ['app.filters', 'app.services', 'app.directives', 'ui.bootstrap'], 
+	($dialogProvider) ->
+		$dialogProvider.options {			
+            backdrop: true
+            backdropFade: true
+            modalFade: true
+            keyboard: true
+		}
+)
 
 # configure angular routing
 require('/routers')(app)

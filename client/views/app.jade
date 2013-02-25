@@ -5,12 +5,13 @@ block content
             
             ul.nav
                 li
-                    a(href="#config", data-toggle="modal").dropdown-toggle Settings                    
+                    a(ng-click="openConfig()") Settings                    
 
-    #config.modal.hide.fade(tabindex=-1)
+    |<script id="config.html" type="text/ng-template">
+    #config        
         .modal-header
-            button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
-            h3 {{name}} Settings
+            button(type="button", aria-hidden="true", ng-click="close()").close &times;                
+            h3 Settings
 
         .modal-body
             .tab-pane
@@ -33,7 +34,7 @@ block content
                             label Local folder:
                             input(type="text", ng-model="config.devices.local", required)
                             label Definitions Url:
-                            input(type="text", ng-model="config.devices.remote", required).span5
+                            input(type="text", ng-model="config.devices.remote", required).span6
                             label Update on start:    
                                 input(type="checkbox", ng-model="config.devices.update")
                     #network.tab-pane
@@ -49,42 +50,55 @@ block content
                     //- tt config = {{config}}
 
         .modal-footer
-            a(href="#", data-dismiss="modal").btn Close  
-            a(href="#", ng-click="saveConfig()").btn.btn-primary Save changes          
+            a(href="#", ng-click='close()').btn Close  
+            a(href="#", ng-click='close(config)').btn.btn-primary Save changes     
+    |</script>             
 
-    #moteDetails(modal="moteDetailsOpen")
+    |<script id="dialog.html", type="text/ng-template">
+    #moteDetails
         .modal-header
-            button(type="button", aria-hidden="true", data-dismiss="modal").close &times;                
-            h3 Mote Details {{essai}}
+            button(type="button", aria-hidden="true", ng-click="close()").close &times;                
+            h3 Mote Details
 
         .modal-body
-            legend Standard registers
-            .row
-                .span4
-                    label Product Code: {{modelMote.productCode}}
-                    //- label Hardware Version: {{mote.hardwareVersion}}
-                    //- label Firmware Version: {{mote.firmwareVersion}}
-                    label State: {{modelMote.state.str}}
-                    label Last Status at: {{renderDate(modelMote.lastStatusTime)}}
-                    label Location:
-                    input(type='text', ng-model='mote.location')
-                    label Address:
-                    input(type='number', ng-model='mote.address')
-                .span4
-                    label Channel:
-                    input(type='number', ng-model='mote.channel')
-                    label Network:
-                    input(type='text', ng-model='mote.network')
-                    label Transmit Interval (s):
-                    input(type='number', ng-model='mote.txInterval')
-                    //- | {{mote}}                
-                
+            dl.dl-horizontal
+                dt Product Code
+                dd {{modelMote.productCode}}
+                dt State
+                dd {{modelMote.state.str}}
+                dt Last Status
+                dd {{modelMote.lastStatusTime | date:'dd/MM/yyyy @ hh:mm'}}
+            legend Standard registers                    
+            form.form-horizontal
+                .control-group
+                    label.control-label Location:
+                    .controls
+                        input(type='text', placeholder="Room ...",ng-model='mote.location')
+                .control-group
+                    label.control-label Address:
+                    .controls
+                        input(type='number', placeholder="Not 1 ...", ng-model='mote.address')
+                .control-group
+                    label.control-label Channel:
+                    .controls
+                        input(type='number', placeholder="Be careful ...", ng-model='mote.channel')
+                .control-group
+                    label.control-label Network:
+                    .controls
+                        input(type='text', placeholder="Be careful ...", ng-model='mote.network')
+                .control-group
+                    label.control-label Transmit Interval (s):
+                    .controls
+                        input(type='number', placeholder="In seconds ...", ng-model='mote.txInterval')                              
         .modal-footer
             span.pull-left(ng-show='showSetSync')
                 span.label.label-info Info
                 |  Set device in Sync Mode to save change
-            a(href="#", ng-click='closeMoteDetails()').btn Close  
-            a(href="#", ng-click='saveMoteDetails(mote)').btn.btn-primary Save changes      
+            a(href="#", ng-click='close()').btn Close  
+            a(href="#", ng-click='close(mote)', disabled="{{$scope.submitAvailable}}" ).btn.btn-primary Save changes      
+    |</script>
+
+    //- #TODO: create a directive for jquery timeago plugin or moment.js and livestamp.js or http://plnkr.co/edit/7aQ08j?p=preview
 
     .container
         h1 Swap Gateway
@@ -93,27 +107,25 @@ block content
             .span6
                 h3 Stamps
                 #motes
-                    ul
-                        li(ng-repeat="mote in motes") {{mote.address}}: 
-                            a(ng-click="openMoteDetails(mote)")
-                                b{{mote.location}}
-                            ul
-                                li(ng-repeat="reg in getDevice(mote).regularRegisters") {{reg.name}}
-                                    ul
-                                        li(ng-repeat="ep in reg.endPoints") {{ep.name}}
-                                            span.pull-right {{mote[ep.name]}}
+                    #mote(ng-repeat="mote in motes") 
+                        a(ng-click="openMoteDetails(mote)") {{mote.address}}: 
+                             b{{mote.location}}
+                        ul
+                            li(ng-repeat="reg in getDevice(mote).regularRegisters") {{reg.name}}
+                                ul
+                                    li(ng-repeat="ep in reg.endPoints") {{ep.name}}
+                                        span.pull-right {{mote[ep.name]}}
             .span6
                 h3 Network Events
                 #events 
                     div(ng-repeat="se in swapEvents") 
-                        //- span.label.label-warning warning
-                        | {{se.text}}
-                        //- span().label.label-warning warn                        
+                        span('class'="text-{{se.type}}") {{se.text}}                       
                         span.pull-right {{renderDate(se.time)}}
         .row
             .span12
                 h3 Last Packets
                 #packets
-                    div(ng-repeat="packet in packets") {{packet}} 
+                    div(ng-repeat="packet in packets") 
+                        span {{packet}} 
                         span.pull-right {{renderDate(packet.time)}}
                 .pull-right {{packets.length}} packets

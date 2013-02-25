@@ -66,7 +66,7 @@ class Endpoint
     constructor: (@id) ->
         @name = `undefined`
         @location = `undefined`   
-        @vale = `undefined`
+        @value = `undefined`
         @unit = `undefined`
         @dir = `undefined`
 
