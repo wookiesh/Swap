@@ -1,0 +1,36 @@
+{
+    "2": {
+        "address": 2,
+        "network": 46406,
+        "channel": 0,
+        "security": 0,
+        "nonce": 35,
+        "productCode": "00010001",
+        "state": {
+            "level": 2,
+            "str": "Radio Off"
+        },
+        "txInterval": 8,
+        "lastStatusTime": "2013-02-26T01:33:48.466Z",
+        "location": "Bureau",
+        "manufacturerId": 1,
+        "deviceId": 1
+    },
+    "10": {
+        "address": 10,
+        "network": 46406,
+        "channel": 0,
+        "security": 0,
+        "nonce": 38,
+        "productCode": "00010001",
+        "state": {
+            "level": 2,
+            "str": "Radio Off"
+        },
+        "txInterval": 10,
+        "lastStatusTime": "2013-02-26T01:33:49.843Z",
+        "location": "Batteries Inside",
+        "manufacturerId": 1,
+        "deviceId": 1
+    }
+}

@@ -1,7 +1,8 @@
 ss = require 'socketstream'
 ps = require '../swap/pubsub'
+fs = require 'fs'
 swap = require '../../client/code/app/swap'
-config = require '../swap/config.json'
+config = require '../config.json'
 SerialModem = require '../swap/serialmodem'
 Manager = require '../swap/manager'
 
@@ -10,18 +11,20 @@ logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0]
 
 log4js.setGlobalLogLevel log4js.levels.DEBUG
 
-# events = require 'events'
-# class DummySerial extends events.EventEmitter     
-#   emitData: =>
-#       @emit('data', "D(2323)000000000000")
-#       setTimeout(@emitData, 1000)
+###
+events = require 'events'
+class DummySerial extends events.EventEmitter     
+  emitData: =>
+      @emit 'data', "(352E)0001004900010B051C"
+      setTimeout @emitData, 1000
 
-#   constructor: ->
-#       setTimeout (=> 
-#           @emit('started')
-#           @emitData())
-#           , 2000
-#       @emitData()
+  constructor: ->
+      setTimeout (=> 
+          @emit 'started'
+          @emitData())
+          , 2000
+      @emitData()
+###
 
 serial = new SerialModem config
 # serial = new DummySerial()
@@ -49,12 +52,18 @@ serial.on 'started', () ->
 module.exports.actions = (req, res, ss) ->
     # Get manager configuration
     getConfig: () ->
-        # TODO: get adress sync etc from serial device becaus no sense in config file
         res null, config: config
 
     # Save manager configuration
-    saveConfig: (config) ->
-        res "err"   
+    saveConfig: (cfg) ->
+        val = JSON.stringify(cfg, null, 4)
+        logger.info "Saving config to #{__dirname}/../config.json"
+        fs.writeFile "#{__dirname}/../config.json", val, ((res) -> logger.error res if res)
+        serial.command("ATCH=#{swap.num2byte(cfg.network.channel)}") if cfg.network.channel != config.network.channel
+        serial.command("ATSW=#{cfg.network.syncword.toString(16)}") if cfg.network.syncword != config.network.syncword
+        serial.command("ATDA=#{swap.num2byte(cfg.network.address)}") if cfg.network.address != config.network.address
+        config = cfg
+        res ''   
 
     # Get existing network
     getMotes: () ->
@@ -65,19 +74,15 @@ module.exports.actions = (req, res, ss) ->
         res null, swapManager.repo
 
     # Save mote modifications
-    updateMote: (prop, mote) ->
+    updateMote: (prop, mote, oldMote) ->
         logger.info "Updating mote #{mote.address}: #{prop} = #{mote[prop]}"
-        if prop is 'location'
+        if prop is 'location'            
             swapManager.motes[mote.address].location = mote.location
             res null, swapManager.motes[mote.address]
 
-        if prop in ['address', 'channel', 'network', 'txInterval']
-            throw "Not yet implemented" if prop is 'address'
-            console.log swap.Registers[prop].length
-            console.log swap.bytePad(swap.num2byte(mote[prop]), swap.Registers[prop].length)
-            swapManager.sendCommand swap.Registers[prop].id, mote.address, 
+        if prop in ['address', 'channel', 'network', 'txInterval']            
+            swapManager.sendCommand swap.Registers[prop].id, oldMote.address, 
                 swap.getValue(mote[prop], swap.Registers[prop].length)
-            
 
     # TODO: get something generic to deal with register param or endpoint size to set values
 

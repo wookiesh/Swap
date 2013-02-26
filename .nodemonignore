@@ -8,3 +8,4 @@
 devices/*
 devices.json
 motes.json
+config.json

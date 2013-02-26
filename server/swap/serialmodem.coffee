@@ -42,19 +42,25 @@ class SerialModem extends events.EventEmitter
                             self.firmwareVersion = parseInt data
                             @write 'ATCH?\r'
                             @once 'data', (data) =>
-                                self.channel = parseInt data
+                                self.config.network.channel = parseInt data, 16
                                 @write 'ATSW?\r'
                                 @once 'data', (data) =>
-                                    self.syncword = data
+                                    self.config.network.syncword = parseInt data, 16
                                     @write 'ATDA?\r'
                                     @once 'data', (data) =>
-                                        self.address = parseInt data, 16
+                                        self.config.network.address = parseInt data, 16
+                                        self.config.network.security = 0 # for now
                                         self.emit 'started'
 
     # To send a packet to the Swap network                      
     send: (packet) ->
         logger.debug "Sent: S#{packet}"
         @serialPort.write "S#{packet}\r"
+
+    # To set value on modem config
+    command: (str) ->
+        logger.debug "Sent: #{str}"
+        @serialPort.write str + "\r"
 
     # To check that the modem is still living
     ping: (callback) ->

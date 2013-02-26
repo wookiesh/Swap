@@ -1,0 +1,21 @@
+{
+    "serial": {
+        "port": "/dev/tty.usbserial-A1014MR7",
+        "baudrate": 38400
+    },
+    "devices": {
+        "local": "devices",
+        "remote": "http://www.panstamp.com/downloads/devices.tar",
+        "update": false
+    },
+    "network": {
+        "channel": 0,
+        "syncword": 46406,
+        "address": 250,
+        "security": 0
+    },
+    "broker": {
+        "host": "localhost",
+        "port": 10000
+    }
+}

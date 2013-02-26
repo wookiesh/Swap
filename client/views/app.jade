@@ -24,36 +24,34 @@ block content
                         a(href="#devices", data-toggle='tab') Devices 
                     li
                         a(href='#network', data-toggle='tab') Network
-                .tab-content
-                    #serial.tab-pane.active
-                        form
+                form(name="form")        
+                    .tab-content
+                        #serial.tab-pane.active
                             label Port:
                             input(type="text", ng-model="config.serial.port", required)
                             label Speed:
                             input(type="number", ng-model="config.serial.baudrate", required)                        
-                    #devices.tab-pane
-                        form
+                        #devices.tab-pane
                             label Local folder:
                             input(type="text", ng-model="config.devices.local", required)
                             label Definitions Url:
                             input(type="text", ng-model="config.devices.remote", required).span6
                             label Update on start:    
                                 input(type="checkbox", ng-model="config.devices.update")
-                    #network.tab-pane
-                        form
+                        #network.tab-pane
                             label Channel:
                             input(type="number", ng-model="config.network.channel", required)
                             label Network:
-                            input(type="text", ng-model="config.network.syncWord", required)
+                            input(type="number", ng-model="config.network.syncword", required)
                             label Modem address:
                             input(type="number", ng-model="config.network.address", required)
                             label Security:
-                            input(type="number", ng-model="config.network.security"), required)
-                    //- tt config = {{config}}
+                            input(type="number", ng-model="config.network.security", required)
+                        //- {{form.$error}}
 
         .modal-footer
             a(href="#", ng-click='close()').btn Close  
-            a(href="#", ng-click='close(config)').btn.btn-primary Save changes     
+            button(ng-click='close(config)', ng-disabled="form.$invalid").btn.btn-primary Save changes     
     |</script>             
 
     |<script id="dialog.html", type="text/ng-template">
@@ -69,35 +67,36 @@ block content
                 dt State
                 dd {{modelMote.state.str}}
                 dt Last Status
-                dd {{modelMote.lastStatusTime | date:'dd/MM/yyyy @ hh:mm'}}
+                dd {{modelMote.lastStatusTime | date:'dd/MM/yyyy @ hh:mm:ss'}}
             legend Standard registers                    
-            form.form-horizontal
+            form(name="form").form-horizontal
                 .control-group
                     label.control-label Location:
                     .controls
-                        input(type='text', placeholder="Room ...",ng-model='mote.location')
+                        input(type='text', placeholder="Room ...",ng-model='mote.location', required)
                 .control-group
                     label.control-label Address:
                     .controls
-                        input(type='number', placeholder="Not 1 ...", ng-model='mote.address')
+                        input(type='number', placeholder="Not 1 ...", ng-model='mote.address', required)
                 .control-group
                     label.control-label Channel:
                     .controls
-                        input(type='number', placeholder="Be careful ...", ng-model='mote.channel')
+                        input(type='number', placeholder="Be careful ...", ng-model='mote.channel', required)
                 .control-group
                     label.control-label Network:
                     .controls
-                        input(type='text', placeholder="Be careful ...", ng-model='mote.network')
+                        input(type='text', placeholder="Be careful ...", ng-model='mote.network', required)
                 .control-group
                     label.control-label Transmit Interval (s):
                     .controls
-                        input(type='number', placeholder="In seconds ...", ng-model='mote.txInterval')                              
+                        input(type='number', placeholder="In seconds ...", ng-model='mote.txInterval', required)   
+             
         .modal-footer
             span.pull-left(ng-show='showSetSync')
                 span.label.label-info Info
-                |  Set device in Sync Mode to save change
+                |  Set device in <em> Sync Mode </em> to save change
             a(href="#", ng-click='close()').btn Close  
-            a(href="#", ng-click='close(mote)', disabled="{{$scope.submitAvailable}}" ).btn.btn-primary Save changes      
+            button(ng-click='close(mote)', ng-disabled="form.$invalid || showSetSync" ).btn.btn-primary Save changes      
     |</script>
 
     //- #TODO: create a directive for jquery timeago plugin or moment.js and livestamp.js or http://plnkr.co/edit/7aQ08j?p=preview
@@ -122,12 +121,12 @@ block content
                 #events 
                     div(ng-repeat="se in swapEvents") 
                         span('class'="text-{{se.type}}") {{se.text}}                       
-                        span.pull-right {{renderDate(se.time)}}
+                        span.pull-right {{se.time| date:'hh:mm:ss'}}
         .row
             .span12
                 h3 Last Packets
                 #packets
                     div(ng-repeat="packet in packets") 
                         span {{packet}} 
-                        span.pull-right {{renderDate(packet.time)}}
+                        span.pull-right {{packet.time | date:'hh:mm:ss'}}
                 .pull-right {{packets.length}} packets

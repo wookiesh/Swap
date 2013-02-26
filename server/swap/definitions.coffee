@@ -2,7 +2,7 @@ fs = require 'fs'
 request = require 'request' 
 xml = require 'xml2js' 
 tar = require 'tar' 
-config = require './config'
+config = require '../config'
 async = require 'async'
 logger = require('log4js').getLogger(__filename.split("/").pop(-1).split(".")[0])
 

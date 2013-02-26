@@ -18,7 +18,7 @@ class SwapManager extends events.EventEmitter
         # To persist things on exit"
         process.on 'SIGUSR2', () => @saveNetwork()  # for nodemon
         process.on 'exit', () => @saveNetwork()
-        @configFile = './motes.json'
+        @networkFile = "#{__dirname}/network.json"
     
         definitions.parseAll (repo) =>
             @repo = repo;         
@@ -27,15 +27,15 @@ class SwapManager extends events.EventEmitter
 
     # Load motes definition from persistence    
     loadNetwork: (callback) ->
-        logger.info "Loading network definition"
-        fs.exists @configFile, (res) =>
-            @motes = if res then require("../../motes.json") else {}
+        fs.exists @networkFile, (res) =>
+            logger.info "Loading network definition" if res
+            @motes = if res then require(@networkFile) else {}
             callback() if callback
         
     # Persist motes definition between executions
     saveNetwork: () ->
         logger.info 'Persisting modifications'
-        fs.writeFileSync(@configFile, JSON.stringify(@motes, null, 4)+'\n') if @motes
+        fs.writeFileSync(@networkFile, JSON.stringify(@motes, null, 4)+'\n') if @motes != {}
         fs.writeFile('devices.json', JSON.stringify(@repo, null, 4)) if @repo
 
     # Starts receiving packets from dataSource
@@ -50,7 +50,9 @@ class SwapManager extends events.EventEmitter
         mote = undefined
 
         if packet.source.toString() not of @motes
-            logger.warn "Unknown mote packet received from source: #{packet.source}"        
+            text =  "Packet received from unknown source: #{packet.source}"   
+            logger.warn text
+            @emit 'swapEvent', {name: 'unknownMote', text:text, type:'warning', time:new Date()}
         else
             mote = @motes[packet.source]
         
@@ -61,8 +63,8 @@ class SwapManager extends events.EventEmitter
             if packet.regId is 0               
                 # First time this mote talks
                 if not mote
-                    mote = new swap.SwapMote packet.source, @dataSource.syncword, 
-                        @dataSource.channel, 0, packet.nonce - 1                            
+                    mote = new swap.SwapMote packet.source, @dataSource.config.network.syncword, 
+                        @dataSource.config.network.channel, 0, packet.nonce - 1                            
                 else 
                     return
 
@@ -106,41 +108,35 @@ class SwapManager extends events.EventEmitter
                 @emit 'swapEvent', {name:'state', text:text, mote: mote, time: new Date() }            
 
             else if packet.regId is 4
-                mote.channel = value
+                mote.channel = value[0]
                 text = "Mote #{mote.address} channel changed to #{value}"
                 logger.warn text
                 @emit 'swapEvent', {name:'channel', text:text, mote:mote, time: new Date()}
 
             else if packet.regId is 5
-                mote.security = value
+                mote.security = value[0]
                 text = "Mote #{mote.address} secutiy changed to #{value}"
                 logger.info text
                 @emit 'swapEvent', {name:'security', text:text, mote:mote, time: new Date()}
 
             else if packet.regId is 6
-                mote.password = value
+                mote.password = value.join('')
                 text = "Mote #{mote.address} password changed"
                 logger.info text
                 @emit 'swapEvent', {name:'password', text:text, mote:mote, time: new Date()}
 
             else if packet.regId is 7
-                mote.nonce = value
+                mote.nonce = value[0]
 
             else if packet.regId is 8
-                value = value.join ""
+                value = parseInt(value.join(""), 16)
                 mote.network = value
-                text = "Mote #{mote.address} channel changed to #{value}"
+                text = "Mote #{mote.address} network changed to #{value}"
                 logger.warn text
                 @emit 'swapEvent', {name:'network', text:text, mote:mote, time: new Date()}
             
             else if packet.regId is 9
-                old = address
-                delete @motes[old]
-                @motes[value] = mote
-                mote.address = value
-                text = "Address of mote changed from #{old} to #{value}"
-                logger.warn text
-                @emit 'swapEvent', {name:'address', text:text, mote:mote, old:old, time: new Date()}
+                @changeMoteAddress mote, value[0]                
 
             else if packet.regId is 10
                 value = 256*value[0]+ value[1];
@@ -163,6 +159,15 @@ class SwapManager extends events.EventEmitter
         else
             logger.error "Received packet does not contain a valid function: #{packet.func}"
     
+    changeMoteAddress: (mote, newAddress) ->
+        old = mote.address
+        delete @motes[old]        
+        @motes[newAddress] = mote          
+        mote.address = newAddress      
+        text = "Address of mote changed from #{old} to #{newAddress}"        
+        logger.info text
+        @emit 'swapEvent', {name:'address', text: text, mote: mote, old:old, time: new Date()}
+        @saveNetwork()
 
     # Interprete raw value according to device definition
     handleStatus: (packet, device) ->   
@@ -202,13 +207,12 @@ class SwapManager extends events.EventEmitter
     # Sets the value of a specific register
     sendCommand: (regId, address, value) ->
         sp = new swap.SwapPacket()
-        sp.source = @dataSource.address
+        sp.source = @dataSource.config.network.address
         sp.dest = address
         sp.func = swap.Functions.COMMAND
         sp.regAddress = address
         sp.regId = regId
         sp.value = value
-        console.log sp
         @dataSource.send(sp)
     
 module.exports = SwapManager
