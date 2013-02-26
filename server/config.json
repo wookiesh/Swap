@@ -11,7 +11,7 @@
     "network": {
         "channel": 0,
         "syncword": 46406,
-        "address": 250,
+        "address": 1,
         "security": 0
     },
     "broker": {

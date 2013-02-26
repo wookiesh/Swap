@@ -11,7 +11,7 @@ module.exports = (app) ->
         $scope.$on 'swapPacket', (e, sp) ->
             # console.log sp
             $scope.packets.splice(0, 0, sp)
-            $scope.packets.pop() if $scope.packets.length > 20
+            $scope.packets.pop() if $scope.packets.length > 40
 
         # When a network event is received
         $scope.$on 'swapEvent', (e, se) ->
@@ -23,7 +23,7 @@ module.exports = (app) ->
                 $scope.motes[se.mote.address] = se.mote
 
             $scope.swapEvents.splice(0, 0, se)
-            $scope.swapEvents.pop() if $scope.swapEvents.length > 20
+            $scope.swapEvents.pop() if $scope.swapEvents.length > 40
             $scope.motes[se.mote.address][se.name] = se.mote[se.name] if se.mote                        
 
 
@@ -41,6 +41,14 @@ module.exports = (app) ->
 
         rpc.exec('swapinterface.getDevices').then (repo) ->
             $scope.repo = repo
+
+        rpc.exec('swapinterface.getLastEvents').then (swapEvents) ->
+            $scope.swapEvents = swapEvents
+            console.log swapEvents
+
+        rpc.exec('swapinterface.getLastPackets').then (packets) ->
+            $scope.packets = packets
+            console.log packets
 
         $scope.openConfig = () ->        
             $dialog.dialog().open('config.html', 'ConfigCtrl')

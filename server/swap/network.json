@@ -4,32 +4,49 @@
         "network": 46406,
         "channel": 0,
         "security": 0,
-        "nonce": 35,
+        "nonce": 179,
         "productCode": "00010001",
         "state": {
             "level": 2,
             "str": "Radio Off"
         },
-        "txInterval": 8,
-        "lastStatusTime": "2013-02-26T01:33:48.466Z",
+        "txInterval": 5,
+        "lastStatusTime": "2013-02-26T21:50:33.140Z",
         "location": "Bureau",
         "manufacturerId": 1,
         "deviceId": 1
     },
-    "10": {
-        "address": 10,
+    "3": {
+        "address": 3,
         "network": 46406,
         "channel": 0,
         "security": 0,
-        "nonce": 38,
+        "nonce": 59,
         "productCode": "00010001",
         "state": {
             "level": 2,
             "str": "Radio Off"
         },
-        "txInterval": 10,
-        "lastStatusTime": "2013-02-26T01:33:49.843Z",
+        "txInterval": 300,
+        "lastStatusTime": "2013-02-26T21:41:41.713Z",
         "location": "Batteries Inside",
+        "manufacturerId": 1,
+        "deviceId": 1
+    },
+    "4": {
+        "address": 4,
+        "network": 46406,
+        "channel": 0,
+        "security": 0,
+        "nonce": 59,
+        "productCode": "00010001",
+        "state": {
+            "level": 2,
+            "str": "Radio Off"
+        },
+        "txInterval": 300,
+        "lastStatusTime": "2013-02-26T21:41:52.372Z",
+        "location": "Third One",
         "manufacturerId": 1,
         "deviceId": 1
     }

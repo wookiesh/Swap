@@ -29,16 +29,23 @@ class DummySerial extends events.EventEmitter
 serial = new SerialModem config
 # serial = new DummySerial()
 swapManager = null
+packets = []
+swapEvents = []
 
 serial.on 'started', () ->
     swapManager = new Manager serial, config
     publisher = new ps.Publisher config
-    serial.on 'data', (sp) -> ss.api.publish.all 'swapPacket', sp
+    serial.on 'data', (sp) -> 
+        ss.api.publish.all 'swapPacket', sp
+        packets.splice(0, 0, sp)
+        packets.pop() if packets.length > 40
 
     # Just to forward things to web interface and others
     swapManager.on 'swapEvent', (sEvent) -> 
         ss.api.publish.all 'swapEvent', sEvent
         publisher.publish "SwapEvent: #{sEvent.text}"
+        swapEvents.splice(0, 0, sEvent)
+        swapEvents.pop() if swapEvents.length > 40
 
     swapManager.on 'swapStatus', (status) -> 
         ss.api.publish.all 'swapStatus', status
@@ -46,7 +53,7 @@ serial.on 'started', () ->
         unit = status.ep.units[1]
         value = status.rawValue * unit.factor + unit.offset
         publisher.publish "status/#{status.mote.location}/#{status.ep.name}: #{value}"
-        # Here value is separated from unit with a white space
+        # Here value is separated from unit with a white space        
 
 
 module.exports.actions = (req, res, ss) ->
@@ -72,6 +79,14 @@ module.exports.actions = (req, res, ss) ->
     # Get recognized devices
     getDevices: () ->
         res null, swapManager.repo
+
+    # Get last events
+    getLastEvents: () ->
+        res null, swapEvents
+
+    # Get last packets
+    getLastPackets: () ->
+        res null, packets
 
     # Save mote modifications
     updateMote: (prop, mote, oldMote) ->

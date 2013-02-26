@@ -35,7 +35,7 @@ block content
                             label Local folder:
                             input(type="text", ng-model="config.devices.local", required)
                             label Definitions Url:
-                            input(type="text", ng-model="config.devices.remote", required).span6
+                            input(type="text", ng-model="config.devices.remote", required).input-block-level
                             label Update on start:    
                                 input(type="checkbox", ng-model="config.devices.update")
                         #network.tab-pane
@@ -67,7 +67,7 @@ block content
                 dt State
                 dd {{modelMote.state.str}}
                 dt Last Status
-                dd {{modelMote.lastStatusTime | date:'dd/MM/yyyy @ hh:mm:ss'}}
+                dd {{modelMote.lastStatusTime | date:'dd/MM/yyyy @ HH:mm:ss'}}
             legend Standard registers                    
             form(name="form").form-horizontal
                 .control-group
@@ -108,9 +108,10 @@ block content
             .span6
                 h3 Stamps
                 #motes
-                    #mote(ng-repeat="mote in motes") 
-                        a(ng-click="openMoteDetails(mote)") {{mote.address}}: 
-                             b{{mote.location}}
+                    div(ng-repeat="mote in motes | orderBy: location") 
+                        a(ng-click="openMoteDetails(mote)") 
+                            strong {{mote.location}}
+                        span(ng-show="mote.address == 255").label.label-important.pull-right Address to be defined                            
                         ul
                             li(ng-repeat="reg in getDevice(mote).regularRegisters") {{reg.name}}
                                 ul
@@ -118,15 +119,17 @@ block content
                                         span.pull-right {{mote[ep.name]}}
             .span6
                 h3 Network Events
-                #events 
-                    div(ng-repeat="se in swapEvents") 
-                        span('class'="text-{{se.type}}") {{se.text}}                       
-                        span.pull-right {{se.time| date:'hh:mm:ss'}}
+                #events(ng-repeat="se in swapEvents") 
+                    div
+                        span('class'="text-{{se.type}}") {{se.text}}
+                        span.pull-right.muted <small> {{se.time| date:'HH:mm:ss'}} </small>
         .row
             .span12
-                h3 Last Packets
+                h4 Last Packets
                 #packets
                     div(ng-repeat="packet in packets") 
                         span {{packet}} 
-                        span.pull-right {{packet.time | date:'hh:mm:ss'}}
+                        span.pull-right.muted {{packet.time | date:'HH:mm:ss'}}
                 .pull-right {{packets.length}} packets
+
+
