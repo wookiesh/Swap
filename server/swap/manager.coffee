@@ -27,7 +27,7 @@ class SwapManager extends events.EventEmitter
         @networkFile = "#{__dirname}/network.json"
     
         definitions.parseAll (repo) =>
-            @repo = repo;         
+            @repo = repo;      
             @loadNetwork () =>
                 @start()    
 
@@ -58,7 +58,7 @@ class SwapManager extends events.EventEmitter
         if packet.source.toString() not of @motes
             text =  "Packet received from unknown source: #{packet.source}"   
             logger.warn text
-            @emit 'swapEvent', {name: 'unknownMote', text:text, type:'warning', time:new Date()}
+            @emit 'swapEvent', {name: 'unknownMote', text:text, type:'warning', time: new Date()}
         else
             mote = @motes[packet.source]
         
@@ -74,13 +74,20 @@ class SwapManager extends events.EventEmitter
                 else 
                     return
 
-                @motes[mote.address] = mote
-                value = packet.value.join ''              
-                mote.productCode = value
-                mote.manufacturerId = parseInt value[0..3]
-                mote.deviceId = parseInt value[4..7]
+                value = packet.value.join '' 
+                mote.productCode = packet.value
+                mote.manufacturerId = (packet.value[0] << 24) + (packet.value[1] << 16) + (packet.value[2] << 8) + packet.value[3]
+                mote.deviceId = (packet.value[4] << 24) + (packet.value[5] << 16) + (packet.value[6] << 8) + packet.value[7]
 
-                text = "New mote #{mote.address} added: #{mote.productCode} - #{@repo[mote.manufacturerId].devices[mote.manufacturerId].label} (#{@repo[mote.manufacturerId].name})"                                
+                if not @repo[mote.manufacturerId]?.devices[mote.deviceId]?
+                    text = "Unknown device or manufacturer Id detected: #{value}"
+                    logger.warn text
+                    @emit 'swapEvent', {name:'unknownDevice', text:text, type:'warning', time: new Date()}
+                    return
+                
+                @motes[mote.address] = mote                             
+
+                text = "New mote #{mote.address} added: #{mote.productCode} - #{@repo[mote.manufacturerId].devices[mote.deviceId].label} (#{@repo[mote.manufacturerId].name})"                                
                 logger.info text
                 @emit 'swapEvent', {name:'newMoteDetected', text:text, mote:mote, time: new Date()}
 
@@ -91,7 +98,7 @@ class SwapManager extends events.EventEmitter
 
             # handles missing packets ??
             if Math.abs(mote.nonce - packet.nonce) not in [1,255]
-                text = "(#{mote.location}): Missing nonce: #{packet.nonce} - #{mote.nonce}, first or lost packet ?"
+                text = "(#{mote.location}): Missing nonce: #{packet.nonce} - #{mote.nonce}"
                 logger.warn text
                 # device = @repo[mote.manufacturerId].devices[mote.deviceId]
                 @emit 'swapEvent', {name:'missingNonce', text:text, mote:mote, type:'warning', time: new Date()}
@@ -187,7 +194,7 @@ class SwapManager extends events.EventEmitter
                     for i in [0..value.length-1]
                         temp += (1<<(8*(value.length-1-i))) * value[i]                                        
                     value = temp
-                
+
                 logger.debug "New status for #{ep.name} from mote #{packet.source}, raw value: #{value}"
                 
                 @emit 'swapStatus', 
@@ -198,10 +205,13 @@ class SwapManager extends events.EventEmitter
                     mote: @motes[packet.source]
                     time: new Date()
 
-                #ep.units.forEach(function(unit){
-                #    var localValue = value * unit.factor + unit.offset;
+                unit = ep.units[1]
+                localValue = "#{(value * unit.factor + unit.offset).toFixed(2)} #{unit.name}"
                 #    logger.debug("New Status from mote %d: %s %s", localValue, unit.name);
                 #})
+                # To save last value
+                @motes[packet.source][ep.name] = localValue
+
         else if packet.regId of device.configRegisters
             throw "Not yet implemented"
         

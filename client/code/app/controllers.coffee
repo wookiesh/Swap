@@ -50,6 +50,10 @@ module.exports = (app) ->
             $scope.packets = packets
             console.log packets
 
+        $scope.noSee = (mote) ->
+            moment().diff(moment(mote.lastStatusTime)) / 1000 > 2 * mote.txInterval
+            # now.diff(moment(mote.lastStatusTime))
+
         $scope.openConfig = () ->        
             $dialog.dialog().open('config.html', 'ConfigCtrl')
 
@@ -57,7 +61,8 @@ module.exports = (app) ->
             $scope.repo[mote.manufacturerId].devices[mote.deviceId] if $scope.repo[mote.manufacturerId]
 
         $scope.openMoteDetails = (mote) ->
-            $dialog.dialog(resolve: {modelMote: (() -> mote), device: () -> $scope.getDevice(mote)}).open('dialog.html', 'MoteDetailsCtrl')
+            $dialog.dialog(resolve: {modelMote: (() -> mote), device: () -> $scope.getDevice(mote)}).open('dialog.html', 'MoteDetailsCtrl').then (mote)->
+                delete $scope.motes[mote.address] if mote
     ]
 
     app.controller 'ConfigCtrl', ['$scope', 'dialog', 'rpc', ($scope, dialog, rpc) ->
@@ -112,6 +117,13 @@ module.exports = (app) ->
                                     $scope.modelMote[p] = mote[p]
 
                     dialog.close() if not device.pwrDownMode or not changed.length
+
+            $scope.delete = (mote) ->
+                # TODO: go to a service for motes and request delete from here
+                console.log "Removing #{mote.location} (#{mote.address})"
+                rpc.exec('swapinterface.deleteMote', mote).then () ->
+                    dialog.close mote
     ]
+
 
 

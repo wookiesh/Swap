@@ -99,6 +99,11 @@ module.exports.actions = (req, res, ss) ->
             swapManager.sendCommand swap.Registers[prop].id, oldMote.address, 
                 swap.getValue(mote[prop], swap.Registers[prop].length)
 
+    deleteMote: (mote) ->
+        logger.info "Removing mote #{mote.location} (#{mote.address})"
+        delete swapManager.motes[mote.address]
+        res null
+
     # TODO: get something generic to deal with register param or endpoint size to set values
 
 

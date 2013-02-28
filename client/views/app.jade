@@ -95,6 +95,7 @@ block content
             span.pull-left(ng-show='showSetSync')
                 span.label.label-info Info
                 |  Set device in <em> Sync Mode </em> to save change
+            a(ng-click='delete(mote)', ng-hide='showSetSync').btn.btn-danger.pull-left Delete
             a(href="#", ng-click='close()').btn Close  
             button(ng-click='close(mote)', ng-disabled="form.$invalid || showSetSync" ).btn.btn-primary Save changes      
     |</script>
@@ -111,13 +112,16 @@ block content
                     div(ng-repeat="mote in motes | orderBy: location") 
                         a(ng-click="openMoteDetails(mote)") 
                             strong {{mote.location}}
-                        span(ng-show="mote.address == 255").label.label-important.pull-right Address to be defined                            
+                            span(ng-show="noSee(mote)").pull-right
+                                span.label.label-important Last Seen 
+                                |  {{mote.lastStatusTime | fromNow}} !
+                            span(ng-show="mote.address == 255").label.label-important.pull-right Address to be defined                            
                         ul
                             li(ng-repeat="reg in getDevice(mote).regularRegisters") {{reg.name}}
                                 ul
                                     li(ng-repeat="ep in reg.endPoints") {{ep.name}}
                                         span.pull-right {{mote[ep.name]}}
-            .span6
+            .span6                
                 h3 Network Events
                 #events(ng-repeat="se in swapEvents") 
                     div

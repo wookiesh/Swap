@@ -51,6 +51,8 @@ class SerialModem extends events.EventEmitter
                                         self.config.network.address = parseInt data, 16
                                         self.config.network.security = 0 # for now
                                         self.emit 'started'
+        @serialPort.on "close", ->
+            process.kill(process.pid, 'SIGTERM')
 
     # To send a packet to the Swap network                      
     send: (packet) ->

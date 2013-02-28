@@ -25,11 +25,11 @@ require('/routers')(app)
 require('/controllers')(app)
 
 ss.server.on 'disconnect', ->
-    # $('#warning').modal 'show'
+    $('#warning').modal 'show'
     console.log "Disconnected =("
 
 ss.server.on 'reconnect', ->
-    # $('#warning').modal 'hide'
+    $('#warning').modal 'hide'
     console.log "Connected =)"
 
 ss.server.on 'ready', ->

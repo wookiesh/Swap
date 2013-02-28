@@ -4,6 +4,98 @@
 		"selected_items":
 		[
 			[
+				"pull-",
+				"pull-left"
+			],
+			[
+				"swap",
+				"swapEvents"
+			],
+			[
+				"new",
+				"newAddress"
+			],
+			[
+				"get",
+				"getDevice"
+			],
+			[
+				"str",
+				"stringify"
+			],
+			[
+				"pull",
+				"pull-left"
+			],
+			[
+				"tem",
+				"templateCache"
+			],
+			[
+				"clo",
+				"closeMoteDetails"
+			],
+			[
+				"cont",
+				"controls"
+			],
+			[
+				"con",
+				"control-label"
+			],
+			[
+				"control",
+				"control-group"
+			],
+			[
+				"show",
+				"showSetSync"
+			],
+			[
+				"reg",
+				"Registers"
+			],
+			[
+				"num",
+				"num2byte"
+			],
+			[
+				"RE",
+				"Registers"
+			],
+			[
+				"st",
+				"state"
+			],
+			[
+				"packet",
+				"SwapPacket"
+			],
+			[
+				"serial",
+				"serialPort"
+			],
+			[
+				"seri",
+				"serialport"
+			],
+			[
+				"fun",
+				"func"
+			],
+			[
+				"Swap",
+				"SwapPacket"
+			],
+			[
+				"Swa",
+				"SwapMote"
+			],
+			[
+				"Sw",
+				"SwapPacket"
+			],
+			[
 				"camera",
 				"camera-server"
 			],
@@ -14,10 +106,6 @@
 			[
 				"publis",
 				"publisher"
-			],
-			[
-				"reg",
-				"regId"
 			],
 			[
 				"data",
@@ -54,10 +142,6 @@
 			[
 				"man",
 				"manufacturerId"
-			],
-			[
-				"swap",
-				"swapManager"
 			],
 			[
 				"SerialP",
@@ -124,10 +208,6 @@
 				"extractDefinitions"
 			],
 			[
-				"con",
-				"console"
-			],
-			[
 				"dow",
 				"downloadDefinitions"
 			],
@@ -173,10 +253,6 @@
 			],
 			[
 				"sw",
-				"SwapPacket"
-			],
-			[
-				"Swap",
 				"SwapPacket"
 			],
 			[
@@ -226,10 +302,6 @@
 			[
 				"pro",
 				"productCode"
-			],
-			[
-				"Sw",
-				"SwapMote"
 			],
 			[
 				"swa",
@@ -336,10 +408,6 @@
 				"AddCommand"
 			],
 			[
-				"get",
-				"getTempC"
-			],
-			[
 				"las",
 				"lastLight"
 			],
@@ -415,7 +483,7 @@
 	"build_system": "Packages/JSLint/JSLint.sublime-build",
 	"command_palette":
 	{
-		"height": 307.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -803,7 +871,7 @@
 				"Indentation: Convert to Spaces"
 			]
 		],
-		"width": 494.0
+		"width": 602.0
 	},
 	"console":
 	{
@@ -820,6 +888,43 @@
 	},
 	"file_history":
 	[
+		"/Users/joseph/workspace/alfred/swap/server/swap/serialmodem.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/css/app.styl",
+		"/Users/joseph/workspace/alfred/swap/devices/temphumlight.xml",
+		"/Users/joseph/workspace/alfred/swap/devices/devices.xml",
+		"/Users/joseph/workspace/alfred/swap/server/swap/definitions.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/swap.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/rpc/swapinterface.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/entry.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/views/app.jade",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/controllers.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swap/manager.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/swap/network.json",
+		"/Users/joseph/workspace/alfred/swap/devices/temphum.xml",
+		"/Users/joseph/workspace/alfred/swap/node_modules/ss-jade/node_modules/.bin/jade",
+		"/Users/joseph/workspace/alfred/swap/devices.json",
+		"/Users/joseph/workspace/alfred/swap/server/config.json",
+		"/Users/joseph/workspace/alfred/swap/server/swap/pubsub.coffee",
+		"/Users/joseph/workspace/alfred/swap/server/config2.json",
+		"/Users/joseph/workspace/alfred/swap/.nodemonignore",
+		"/Users/joseph/workspace/alfred/swap/app.js",
+		"/Users/joseph/workspace/alfred/swap/server/swap/config.json",
+		"/Users/joseph/workspace/alfred/swap/config.json",
+		"/Users/joseph/workspace/alfred/swap/client/css/libs/bootstrap.min.css",
+		"/Users/joseph/workspace/alfred/swap/client/static/assets/main/1361148696163.css",
+		"/Users/joseph/workspace/alfred/swap/node_modules/tar/lib/entry.js",
+		"/Users/joseph/workspace/alfred/swap/client/templates/dialog.jade",
+		"/Users/joseph/workspace/alfred/swap/node_modules/log4js/lib/appenders/console.js",
+		"/Users/joseph/workspace/alfred/swap/test/tests.coffee",
+		"/Users/joseph/workspace/alfred/swap/test/testsswap.coffee",
+		"/Users/joseph/workspace/alfred/swap/client/views/layout.jade",
+		"/Users/joseph/workspace/alfred/swap/node_modules/ss-stylus/node_modules/.bin/stylus",
+		"/Users/joseph/workspace/alfred/swap/essai.coffee",
+		"/Users/joseph/workspace/alfred/swap/essai.js",
+		"/Users/joseph/workspace/alfred/swap/motes.json",
+		"/Users/joseph/workspace/alfred/swap/node_modules/serialport/src/serialport_win.cpp",
+		"/Users/joseph/Desktop/offer - grabber.Txt",
+		"/Users/joseph/workspace/alfred/swap/client/code/app/swap.js",
 		"/Users/joseph/workspace/alfred/swap/Swap.sublime-project",
 		"/Users/joseph/workspace/alfred/swap/package.json",
 		"/Users/joseph/workspace/cameras-server/etc/init/camera-server.conf",
@@ -829,42 +934,22 @@
 		"/Users/joseph/workspace/camerasServer/DEBIAN/control",
 		"/Users/joseph/workspace/cameras-server/.git/config",
 		"/Users/joseph/workspace/camerasServer/templates/BB5.cmt",
-		"/Users/joseph/workspace/alfred/swap/client/code/app/controllers.coffee",
-		"/Users/joseph/workspace/alfred/swap/server/swap/manager.coffee",
-		"/Users/joseph/workspace/alfred/swap/client/code/app/swap.js",
-		"/Users/joseph/workspace/alfred/swap/app.js",
-		"/Users/joseph/workspace/alfred/swap/client/views/app.jade",
-		"/Users/joseph/workspace/alfred/swap/server/rpc/swapinterface.coffee",
-		"/Users/joseph/workspace/alfred/swap/server/swap/serialmodem.coffee",
-		"/Users/joseph/workspace/alfred/swap/test/tests.coffee",
-		"/Users/joseph/workspace/alfred/swap/test/testsswap.coffee",
-		"/Users/joseph/workspace/alfred/swap/server/swap/config.json",
-		"/Users/joseph/workspace/alfred/swap/server/swap/pubsub.coffee",
 		"/Users/joseph/workspace/alfred/swap/node_modules/socketstream/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/TestCase.as",
-		"/Users/joseph/workspace/alfred/swap/motes.json",
 		"/Users/joseph/workspace/alfred/swap/client/templates/dialogs/moteDetails.jade",
-		"/Users/joseph/workspace/alfred/swap/client/code/app/entry.coffee",
 		"/Users/joseph/workspace/alfred/swap/client/templates/essai.jade",
 		"/Users/joseph/workspace/alfred/swap/client/code/libs/ui-bootstrap-custom-0.1.1-SNAPSHOT.js",
 		"/Users/joseph/workspace/alfred/swap/.gitignore",
 		"/Users/joseph/workspace/alfred/swap/node_modules/ss-hogan/node_modules/hogan.js/.git_ignore",
-		"/Users/joseph/workspace/alfred/swap/server/swap/definitions.coffee",
-		"/Users/joseph/workspace/alfred/swap/client/css/app.styl",
 		"/Users/joseph/workspace/alfred/swap/client/static/assets/main/1361148696163.html",
-		"/Users/joseph/workspace/alfred/swap/devices/devices.xml",
 		"/Users/joseph/workspace/alfred/swap/devices/temppress.xml",
 		"/Users/joseph/workspace/alfred/swap/client/code/app/services.coffee",
-		"/Users/joseph/workspace/alfred/swap/devices/temphum.xml",
 		"/Users/joseph/workspace/alfred/swap/server/swap/serialModem.coffee",
 		"/Users/joseph/workspace/alfred/swap/server/swap/swapinterface.coffee",
 		"/Users/joseph/workspace/alfred/swap/server/rpc/main.coffee",
 		"/Users/joseph/workspace/alfred/swap/server/swap/serialModem.js",
-		"/Users/joseph/workspace/alfred/swap/devices.json",
 		"/Users/joseph/workspace/alfred/swap/server/swap/manager.js",
-		"/Users/joseph/workspace/alfred/swap/client/views/layout.jade",
 		"/Users/joseph/workspace/alfred/swap/node_modules/socketstream/lib/client/template_engines/angular.js",
 		"/Users/joseph/workspace/alfred/swap/node_modules/xml2js/node_modules/sax/test/trailing-attribute-no-value.js",
-		"/Users/joseph/workspace/alfred/swap/.nodemonignore",
 		"/Users/joseph/workspace/alfred/swap/client/code/libs/underscore.js",
 		"/Users/joseph/workspace/alfred/swap/client/code/libs/angular.min.js",
 		"/Users/joseph/workspace/alfred/swap/client/code/libs/bootstram-modal.js",
@@ -897,7 +982,6 @@
 		"/Users/joseph/workspace/alfred/swap/Swap.sublime-workspace",
 		"/Users/joseph/workspace/alfred/swap/node_modules/express/client.js",
 		"/Users/joseph/workspace/alfred/swap/public/javascripts/client.js",
-		"/Users/joseph/workspace/alfred/swap/config.json",
 		"/Users/joseph/workspace/alfred/swap/node_modules/express/lib/router/route.js",
 		"/Users/joseph/workspace/alfred/swap/views/layout.jade",
 		"/Users/joseph/workspace/alfred/swap/public/js/bootstrap.min.js",
@@ -931,23 +1015,7 @@
 		"/Users/joseph/Documents/repos/panstamp/python/pyswapdmtgui/src/MainFrame.py",
 		"/Users/joseph/Documents/repos/panstamp/python/pyswap/src/swap/SwapServer.py",
 		"/Users/joseph/Documents/repos/panstamp/python/pyswap/doc/classmodem_1_1CcPacket_1_1CcPacket.png",
-		"/Users/joseph/Documents/repos/panstamp/python/lagarto/lagarto-swap/config/serial.xml",
-		"/Users/joseph/workspace/gateway-server/DEBIAN/postinst",
-		"/Users/joseph/workspace/gateway-server/fabfile.py",
-		"/Users/joseph/workspace/gateway-server/DEBIAN/control",
-		"/Users/joseph/workspace/web2py/applications/gateway/static/app/view/windows/Function.js",
-		"/Users/joseph/workspace/web2py/applications/gateway/static/app/controller/Machines.js",
-		"/Users/joseph/workspace/web2py/applications/gateway/models/db.py",
-		"/Users/joseph/workspace/web2py/applications/gateway/static/extjs/examples/ux/PreviewPlugin.js",
-		"/Users/joseph/workspace/web2py/applications/gateway/controllers/default.py",
-		"/Users/joseph/.ssh/known_hosts",
-		"/Users/joseph/.subversion/config",
-		"/Users/joseph/Desktop/essai.html",
-		"/Users/joseph/Desktop/GSM.csv",
-		"/Users/joseph/Downloads/contact_sample (1).csv",
-		"/Users/joseph/Downloads/zmq_websocket/demo.py",
-		"/Users/joseph/workspace/gateway-managers/.gitignore",
-		"/Users/joseph/Downloads/zmq_websocket/bin/activate"
+		"/Users/joseph/Documents/repos/panstamp/python/lagarto/lagarto-swap/config/serial.xml"
 	],
 	"find":
 	{
@@ -973,6 +1041,29 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"swapEvents",
+			"hh",
+			" b",
+			"b ",
+			"b",
+			"console.log",
+			"logger.info",
+			"datasour",
+			"configFile",
+			"'\n",
+			"config",
+			"../img",
+			"ngModule",
+			"type=",
+			"str",
+			"hspad2",
+			"config",
+			"xit",
+			"})",
+			"sync",
+			"onsole",
+			"console",
+			"started",
 			"couch",
 			"require ",
 			"value",
@@ -1077,30 +1168,7 @@
 			"intParse",
 			"MAX_SERIAL_SILENCE_MS",
 			"void isrT1event(void)\n{\n  if (t1Ticks == MAX_SERIAL_SILENCE_TK)\n  {\n    // Detach Timer1 interrupt\n    Timer1.detachInterrupt();\n    Timer1.stop();\n    resetTimer();\n    // Pending \"+++\" command?\n    if (!strcmp(strSerial, AT_GOTO_CMDMODE))\n    {\n      disableINT0irq();  // Disable wireless reception interrupt\n      Serial.println(\"OK-Command mode\");\n      serMode = SERMODE_COMMAND;\n    }\n    memset(strSerial, 0, sizeof(strSerial));\n    len = 0;\n    Timer1.resume();\n  }\n  else\n    t1Ticks++;\n}",
-			"int0",
-			"unable to update",
-			"continuousScroll",
-			"deviceDeltax",
-			"deviceDeltaX",
-			"sendMessage",
-			"sent:",
-			"sent",
-			"server_started",
-			"server started",
-			"wx.li",
-			"foreach",
-			"sed",
-			"bind",
-			"git",
-			"    \n",
-			"glo",
-			"ip",
-			"abine",
-			",",
-			"^",
-			", ",
-			" ,",
-			" "
+			"int0"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1189,44 +1257,256 @@
 		"selected_items":
 		[
 			[
-				"app",
-				"app.js"
-			],
-			[
-				"mana",
-				"server/swap/manager.coffee"
-			],
-			[
-				"pu",
-				"server/swap/pubsub.coffee"
-			],
-			[
-				"config",
-				"server/swap/config.json"
+				"netw",
+				"server/swap/network.json"
 			],
 			[
 				"control",
 				"client/code/app/controllers.coffee"
 			],
 			[
+				"temp",
+				"devices/temphum.xml"
+			],
+			[
+				"manag",
+				"server/swap/manager.coffee"
+			],
+			[
+				"appj",
+				"client/views/app.jade"
+			],
+			[
+				"net",
+				"server/swap/network.json"
+			],
+			[
+				"jade",
+				"node_modules/ss-jade/node_modules/.bin/jade"
+			],
+			[
+				"entr",
+				"client/code/app/entry.coffee"
+			],
+			[
+				"app.ja",
+				"client/views/app.jade"
+			],
+			[
 				"swapin",
 				"server/rpc/swapinterface.coffee"
 			],
 			[
-				"confi",
-				"server/swap/config.json"
+				"app",
+				"client/views/app.jade"
+			],
+			[
+				"mana",
+				"server/swap/manager.coffee"
+			],
+			[
+				"swap",
+				"client/code/app/swap.coffee"
+			],
+			[
+				"defin",
+				"server/swap/definitions.coffee"
+			],
+			[
+				"devi",
+				"devices.json"
+			],
+			[
+				"de",
+				"devices/devices.xml"
+			],
+			[
+				"serial",
+				"server/swap/serialmodem.coffee"
+			],
+			[
+				"con",
+				"server/config.json"
+			],
+			[
+				"man",
+				"server/swap/manager.coffee"
+			],
+			[
+				"appst",
+				"client/css/app.styl"
+			],
+			[
+				"appja",
+				"client/views/app.jade"
+			],
+			[
+				"app.s",
+				"client/css/app.styl"
+			],
+			[
+				"app.j",
+				"client/views/app.jade"
+			],
+			[
+				"sty",
+				"client/css/app.styl"
 			],
 			[
 				"pub",
 				"server/swap/pubsub.coffee"
 			],
 			[
-				"sinterfa",
+				"netwo",
+				"server/swap/network.json"
+			],
+			[
+				"config",
+				"server/config.json"
+			],
+			[
+				"ignore",
+				".nodemonignore"
+			],
+			[
+				"config2",
+				"server/config2.json"
+			],
+			[
+				"config.json",
+				"server/config.json"
+			],
+			[
+				"defini",
+				"server/swap/definitions.coffee"
+			],
+			[
+				"confi",
+				"server/swap/config.json"
+			],
+			[
+				"interf",
 				"server/rpc/swapinterface.coffee"
 			],
 			[
-				"swap",
-				"client/code/app/swap.js"
+				"ser",
+				"server/swap/serialmodem.coffee"
+			],
+			[
+				"jad",
+				"node_modules/ss-jade/node_modules/.bin/jade"
+			],
+			[
+				"contro",
+				"client/code/app/controllers.coffee"
+			],
+			[
+				"a",
+				"app.js"
+			],
+			[
+				"dialog",
+				"client/templates/dialog.jade"
+			],
+			[
+				"",
+				"devices.json"
+			],
+			[
+				"app.",
+				"client/views/app.jade"
+			],
+			[
+				"bootstr",
+				"client/css/libs/bootstrap.min.css"
+			],
+			[
+				"swap.co",
+				"client/code/app/swap.coffee"
+			],
+			[
+				"boots",
+				"client/css/libs/bootstrap.min.css"
+			],
+			[
+				"controller",
+				"client/code/app/controllers.coffee"
+			],
+			[
+				"consol",
+				"node_modules/log4js/lib/appenders/console.js"
+			],
+			[
+				"layou",
+				"client/views/layout.jade"
+			],
+			[
+				"ap",
+				"app.js"
+			],
+			[
+				"styl",
+				"node_modules/ss-stylus/node_modules/.bin/stylus"
+			],
+			[
+				"test.coffee",
+				"test/testsswap.coffee"
+			],
+			[
+				"pubs",
+				"server/swap/pubsub.coffee"
+			],
+			[
+				"en",
+				"client/code/app/entry.coffee"
+			],
+			[
+				"test",
+				"test/tests.coffee"
+			],
+			[
+				"essai",
+				"essai.coffee"
+			],
+			[
+				"mote",
+				"motes.json"
+			],
+			[
+				"manager",
+				"server/swap/manager.coffee"
+			],
+			[
+				"serialmo",
+				"server/swap/serialmodem.coffee"
+			],
+			[
+				"serialin",
+				"node_modules/serialport/src/serialport_win.cpp"
+			],
+			[
+				"tes",
+				"test/tests.coffee"
+			],
+			[
+				"temph",
+				"devices/temphum.xml"
+			],
+			[
+				"testswa",
+				"test/testsswap.coffee"
+			],
+			[
+				"swapco",
+				"client/code/app/swap.coffee"
+			],
+			[
+				"pu",
+				"server/swap/pubsub.coffee"
+			],
+			[
+				"sinterfa",
+				"server/rpc/swapinterface.coffee"
 			],
 			[
 				"conf",
@@ -1245,32 +1525,8 @@
 				"node_modules/socketstream/node_modules/socket.io/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/TestCase.as"
 			],
 			[
-				"serialmo",
-				"server/swap/serialmodem.coffee"
-			],
-			[
-				"appj",
-				"client/views/app.jade"
-			],
-			[
-				"ap",
-				"app.js"
-			],
-			[
 				"moted",
 				"/Users/joseph/workspace/alfred/swap/client/templates/dialogs/moteDetails.jade"
-			],
-			[
-				"mote",
-				"motes.json"
-			],
-			[
-				"appja",
-				"client/views/app.jade"
-			],
-			[
-				"",
-				"app.js"
 			],
 			[
 				"appjad",
@@ -1279,14 +1535,6 @@
 			[
 				"det",
 				"client/templates/dialogs/moteDetails.jade"
-			],
-			[
-				"app.j",
-				"client/views/app.jade"
-			],
-			[
-				"app.ja",
-				"client/views/app.jade"
 			],
 			[
 				"entre",
@@ -1301,40 +1549,12 @@
 				"client/code/app/swap.js"
 			],
 			[
-				"entr",
-				"client/code/app/entry.coffee"
-			],
-			[
 				"git",
 				".gitignore"
 			],
 			[
-				"ignore",
-				"node_modules/ss-hogan/node_modules/hogan.js/.git_ignore"
-			],
-			[
-				"defini",
-				"server/swap/definitions.coffee"
-			],
-			[
-				"man",
-				"server/swap/manager.coffee"
-			],
-			[
-				"sty",
-				"client/css/app.styl"
-			],
-			[
 				"servi",
 				"client/code/app/services.coffee"
-			],
-			[
-				"contro",
-				"client/code/app/controllers.coffee"
-			],
-			[
-				"temph",
-				"devices/temphum.xml"
 			],
 			[
 				"devices",
@@ -1353,40 +1573,12 @@
 				"devices/temppress.xml"
 			],
 			[
-				"defin",
-				"server/swap/definitions.coffee"
-			],
-			[
-				"test",
-				"test/tests.coffee"
-			],
-			[
-				"con",
-				"server/swap/config.json"
-			],
-			[
 				"dev",
-				"devices.json"
-			],
-			[
-				"devi",
 				"devices.json"
 			],
 			[
 				"tempp",
 				"devices/temppress.xml"
-			],
-			[
-				"app.s",
-				"client/css/app.styl"
-			],
-			[
-				"manag",
-				"server/swap/manager.js"
-			],
-			[
-				"layou",
-				"client/views/layout.jade"
 			],
 			[
 				"controle",
@@ -1401,16 +1593,8 @@
 				"devices.json"
 			],
 			[
-				"temp",
-				"devices/temphum.xml"
-			],
-			[
 				"c",
 				"server/swap/config.json"
-			],
-			[
-				"tes",
-				"test/tests.coffee"
 			],
 			[
 				"one",
@@ -1419,10 +1603,6 @@
 			[
 				"nodemo",
 				".nodemonignore"
-			],
-			[
-				"de",
-				"devices/devices.xml"
 			],
 			[
 				"defi",
@@ -1471,10 +1651,6 @@
 			[
 				"dei",
 				"devices/devices.xml"
-			],
-			[
-				"jade",
-				"views/index.jade"
 			],
 			[
 				"ign",
@@ -1591,114 +1767,6 @@
 			[
 				".",
 				"gateway-server/.gitignore"
-			],
-			[
-				"machines",
-				"gateway/models/machines.py"
-			],
-			[
-				"machine",
-				"gateway/models/machines.py"
-			],
-			[
-				"index",
-				"gateway/static/index.html"
-			],
-			[
-				"defaut",
-				"gateway/controllers/default.py"
-			],
-			[
-				"work",
-				"gateway-server/Gateway.sublime-workspace"
-			],
-			[
-				"gitigno",
-				"gateway-server/.gitignore"
-			],
-			[
-				"para",
-				"gateway-server/web2py/parameters_80.py"
-			],
-			[
-				"routes",
-				"gateway-server/web2py/routes.py"
-			],
-			[
-				"db.py",
-				"gateway/models/db.py"
-			],
-			[
-				"json",
-				"jsonRpcCmd/src/jsonRpcCmd.py"
-			],
-			[
-				"setup.py",
-				"workspace/jsonRpcCmd/setup.py"
-			],
-			[
-				"setup.p",
-				"repos/web2py/setup.py"
-			],
-			[
-				"oo",
-				"ooPinChangeInt/ooPinChangeInt.h"
-			],
-			[
-				"swapmana",
-				"pyswapdmtgui/src/SwapManager.py"
-			],
-			[
-				"swapm",
-				"pluginHouseAgentSWAP/SwapManager.py"
-			],
-			[
-				"mainfr",
-				"pyswapdmtgui/src/MainFrame.py"
-			],
-			[
-				"wait",
-				"pyswapdmtgui/src/WaitDialog.py"
-			],
-			[
-				"jean",
-				"Arduino/JeanMemory/JeanMemory.ino"
-			],
-			[
-				"xpl_m",
-				"Arduino/libraries/xpl/xPL_Message.cpp"
-			],
-			[
-				"xpl_ut",
-				"Arduino/libraries/xpl/xPL_utils.h"
-			],
-			[
-				"xpl_u",
-				"Arduino/libraries/xpl/xPL_utils.cpp"
-			],
-			[
-				"xpl_mes",
-				"Arduino/libraries/xpl/xPL_Message.h"
-			],
-			[
-				"debug",
-				"Arduino/libraries/debug/debug.h"
-			],
-			[
-				"hardw",
-				"workspace/xoscillo/firmware/HardwareSerial.cpp"
-			],
-			[
-				"xpl",
-				"Arduino/libraries/xpl/xPL_Message.cpp"
-			],
-			[
-				"xpl.h",
-				"Arduino/libraries/xpl/xPL.h"
-			],
-			[
-				"queue",
-				"workspace/AVRQueue/Arduino/Queue.h"
 			]
 		],
 		"width": 0.0
@@ -1718,7 +1786,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 234.0,
 	"status_bar_visible": true
 }
