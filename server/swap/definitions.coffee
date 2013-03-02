@@ -65,7 +65,7 @@ parseManufacturersXml = (callback) ->
                     devObj.devices[deviObj.id] = deviObj
                     devObj.devices[deviObj.label] = deviObj
 
-            logger.debug "Parsed #{file}"            
+            logger.debug "Parsed #{file}: found #{Object.keys(repo)/2} manufacturer(s)"
             try
                 callback() if callback
             catch e
