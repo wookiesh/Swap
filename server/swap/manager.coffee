@@ -27,7 +27,8 @@ class SwapManager extends events.EventEmitter
         @networkFile = "#{__dirname}/network.json"
     
         definitions.parseAll (repo) =>
-            @repo = repo;      
+            @repo = repo;    
+            logger.debug "Found devices from #{Object.keys(@repo).length} manufacturer"
             @loadNetwork () =>
                 @start()    
 

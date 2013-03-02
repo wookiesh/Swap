@@ -12,3 +12,7 @@ This is also based on a modification of the gateway interface:
 * data sent to stamp starting with 'S' (for send)
 
 This projects uses socketstream as a communication framework.
+
+## Dependencies
+* libzmq
+* libzmq-dev

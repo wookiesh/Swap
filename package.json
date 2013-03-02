@@ -1,7 +1,7 @@
 {
   "name": "swap",
   "description": "An attempt to port lagarto-swap great idea to nodejs",
-  "version": "0.1",
+  "version": "0.1.0",
   "author": "Joseph Piron <joseph.piron@gmail.com",
   "private": true,
   "engines": { "node": ">= 0.6.0" },
@@ -16,7 +16,8 @@
     "tar": "*",
     "xml2js": "*",
     "request": "*",
-    "async": "*"
+    "async": "*",
+    "zmq": "*"
   },
   "license": "MIT"
 }
