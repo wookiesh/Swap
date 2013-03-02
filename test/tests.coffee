@@ -39,7 +39,7 @@ module.exports = {
 
 	'send a query packet to all motes': (test) ->
 		sm = require '../server/swap/serialmodem'
-		config = require '../server/swap/config'
+		config = require '../server/config'
 		serial = new sm(config)
 		# Try to set interval to 1 
 		sp = new (require '../client/code/app/swap').SwapPacket()
