@@ -2,29 +2,39 @@ ss = require 'socketstream'
 ps = require '../swap/pubsub'
 fs = require 'fs'
 swap = require '../../client/code/app/swap'
-config = require '../config.json'
-SerialModem = require '../swap/serialmodem'
-Manager = require '../swap/manager'
 
 log4js = require 'log4js'
 logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0])
-
 log4js.setGlobalLogLevel log4js.levels.DEBUG
 
-###
-events = require 'events'
-class DummySerial extends events.EventEmitter     
-  emitData: =>
-      @emit 'data', "(352E)0001004900010B051C"
-      setTimeout @emitData, 1000
+getConfig = () ->
+    file = "#{__dirname}/../config.json"
+    if fs.existsSync file
+        require(file)
+    else
+        config = 
+            serial:
+                port: '/dev/ttyUSB0'
+                baudrate: 38400
+            devices:
+                local: 'devices'
+                remote: 'http://www.panstamp.com/downloads/devices.tar'
+                update: 'true'
+            network:
+                channel: 0
+                syncword: 46406
+                address: 1
+                security: 0
+            broker:
+                host: 'localhost'
+                port: 10000
+        fs.writeFileSync file, JSON.stringify config
+        config
 
-  constructor: ->
-      setTimeout (=> 
-          @emit 'started'
-          @emitData())
-          , 2000
-      @emitData()
-###
+config = getConfig()
+
+SerialModem = require '../swap/serialmodem'
+Manager = require '../swap/manager'
 
 serial = new SerialModem config
 # serial = new DummySerial()
@@ -55,7 +65,6 @@ serial.on 'started', () ->
         publisher.publish "status/#{status.mote.location}/#{status.ep.name}: #{value}"
         # Here value is separated from unit with a white space        
 
-
 module.exports.actions = (req, res, ss) ->
     # Get manager configuration
     getConfig: () ->
@@ -65,7 +74,7 @@ module.exports.actions = (req, res, ss) ->
     saveConfig: (cfg) ->
         val = JSON.stringify(cfg, null, 4)
         logger.info "Saving config to #{__dirname}/../config.json"
-        fs.writeFile "#{__dirname}/../config.json", val, ((res) -> logger.error res if res)
+        fs.writeFile "#{__dirname}/config.json", val, ((res) -> logger.error res if res)
         serial.command("ATCH=#{swap.num2byte(cfg.network.channel)}") if cfg.network.channel != config.network.channel
         serial.command("ATSW=#{cfg.network.syncword.toString(16)}") if cfg.network.syncword != config.network.syncword
         serial.command("ATDA=#{swap.num2byte(cfg.network.address)}") if cfg.network.address != config.network.address
@@ -86,6 +95,7 @@ module.exports.actions = (req, res, ss) ->
 
     # Get last packets
     getLastPackets: () ->
+        console.log packets
         res null, packets
 
     # Save mote modifications

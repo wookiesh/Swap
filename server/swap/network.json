@@ -49,22 +49,22 @@
             "level": 2,
             "str": "Radio Off"
         },
-        "lastStatusTime": "2013-03-02T14:10:42.585Z",
+        "lastStatusTime": "2013-03-02T16:35:23.868Z",
         "location": "Bureau",
         "manufacturerId": 27,
         "deviceId": 1,
         "txInterval": 300,
-        "Voltage": "1.24 V",
-        "Temperature": "24.10 C",
-        "Humidity": "49.20 %",
-        "Light": "197.00 "
+        "Voltage": "1.28 V",
+        "Temperature": "26.10 C",
+        "Humidity": "42.00 %",
+        "Light": "189.00 "
     },
     "4": {
         "address": 4,
         "network": 46406,
         "channel": 0,
         "security": 0,
-        "nonce": 20,
+        "nonce": 118,
         "productCode": [
             0,
             0,
@@ -79,14 +79,14 @@
             "level": 2,
             "str": "Radio Off"
         },
-        "lastStatusTime": "2013-02-28T01:18:17.004Z",
+        "lastStatusTime": "2013-03-02T16:32:03.931Z",
         "location": "Chambre",
         "manufacturerId": 27,
         "deviceId": 1,
         "txInterval": 300,
-        "Temperature": "26.00 C",
-        "Humidity": "39.30 %",
-        "Light": "119.00 ",
-        "Voltage": "1.26 V"
+        "Temperature": "18.70 C",
+        "Humidity": "48.60 %",
+        "Light": "123.00 ",
+        "Voltage": "1.25 V"
     }
 }

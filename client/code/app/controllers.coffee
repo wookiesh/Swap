@@ -6,6 +6,7 @@ module.exports = (app) ->
         $scope.swapEvents = []
         $scope.motes = []
         $scope.repo = []
+        window.rpc = rpc
 
         # When a serial packet is received
         $scope.$on 'swapPacket', (e, sp) ->
@@ -36,19 +37,21 @@ module.exports = (app) ->
                 "#{(status.rawValue * unit.factor + unit.offset).toFixed(2)} #{unit.name}"
             $scope.motes[status.mote.address].lastStatusTime = status.mote.lastStatusTime
 
-        rpc.exec('swapinterface.getMotes').then (motes) ->
-            $scope.motes = motes
+        ss.server.on 'ready', () ->
+            console.log "Ready"
+            rpc.exec('swapinterface.getMotes').then (motes) ->
+                $scope.motes = motes
 
-        rpc.exec('swapinterface.getDevices').then (repo) ->
-            $scope.repo = repo
+            rpc.exec('swapinterface.getDevices').then (repo) ->
+                $scope.repo = repo
 
-        rpc.exec('swapinterface.getLastEvents').then (swapEvents) ->
-            $scope.swapEvents = swapEvents
-            console.log swapEvents
+            rpc.exec('swapinterface.getLastEvents').then (swapEvents) ->                
+                $scope.swapEvents = swapEvents
+                console.log swapEvents
 
-        rpc.exec('swapinterface.getLastPackets').then (packets) ->
-            $scope.packets = packets
-            console.log packets
+            rpc.exec('swapinterface.getLastPackets').then (packets) ->
+                $scope.packets = packets
+                console.log packets
 
         $scope.noSee = (mote) ->
             moment().diff(moment(mote.lastStatusTime)) / 1000 > 2 * mote.txInterval

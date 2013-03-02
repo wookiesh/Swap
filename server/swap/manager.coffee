@@ -28,7 +28,6 @@ class SwapManager extends events.EventEmitter
     
         definitions.parseAll (repo) =>
             @repo = repo;    
-            logger.debug "Found devices from #{Object.keys(@repo).length} manufacturer"
             @loadNetwork () =>
                 @start()    
 
@@ -37,6 +36,7 @@ class SwapManager extends events.EventEmitter
         fs.exists @networkFile, (res) =>
             logger.info "Loading network definition" if res
             @motes = if res then require(@networkFile) else {}
+            logger.debug "Found #{} motes already known"
             callback() if callback
         
     # Persist motes definition between executions
@@ -161,8 +161,13 @@ class SwapManager extends events.EventEmitter
 
             # Retrieve value from endpoints definition 
             else if packet.regId > 10
-                device = @repo[mote.manufacturerId].devices[mote.deviceId]
-                @handleStatus packet, device
+                if not (mote.manufacturerId of @repo)
+                    text = "(#{mote.location}): Status received from unknown device manufacturer: #{mote.manufacturerId}"
+                    logger.warn text
+                    @emit 'swapEvent', {name: 'unknownDevice', type:"warning", text:text, mote:mote, time: new Date()}
+                else                
+                    device = @repo[mote.manufacturerId].devices[mote.deviceId]
+                    @handleStatus packet, device
 
         else if packet.function is swap.Functions.QUERY
             logger.info "Query request received from #{packet.source} for mote #{packet.dest} register #{packet.regId}" 
