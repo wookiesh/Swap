@@ -53,7 +53,7 @@ serial.on 'started', () ->
     # Just to forward things to web interface and others
     swapManager.on 'swapEvent', (sEvent) -> 
         ss.api.publish.all 'swapEvent', sEvent
-        publisher.publish ["event/swap", sEvent]
+        publisher.publish ["event/swap", JSON.stringify(sEvent)]
         swapEvents.splice(0, 0, sEvent)
         swapEvents.pop() if swapEvents.length > 40
 
@@ -62,7 +62,8 @@ serial.on 'started', () ->
         #TODO: DRY here...
         unit = status.ep.units[1]
         value = status.rawValue * unit.factor + unit.offset
-        publisher.publish ["status/#{status.mote.location}/#{status.ep.name}", value]
+        publisher.publish ["status/#{status.mote.location}/#{status.ep.name}", 
+            JSON.stringify({value: value, unit: unit.name})]
         # Here value is separated from unit with a white space        
 
 module.exports.actions = (req, res, ss) ->
