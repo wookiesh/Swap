@@ -38,7 +38,6 @@ module.exports = (app) ->
             $scope.motes[status.mote.address].lastStatusTime = status.mote.lastStatusTime
 
         ss.server.on 'ready', () ->
-            console.log "Ready"
             rpc.exec('swapinterface.getMotes').then (motes) ->
                 $scope.motes = motes
 
@@ -47,11 +46,9 @@ module.exports = (app) ->
 
             rpc.exec('swapinterface.getLastEvents').then (swapEvents) ->                
                 $scope.swapEvents = swapEvents
-                console.log swapEvents
 
             rpc.exec('swapinterface.getLastPackets').then (packets) ->
                 $scope.packets = packets
-                console.log packets
 
         $scope.noSee = (mote) ->
             moment().diff(moment(mote.lastStatusTime)) / 1000 > 2 * mote.txInterval

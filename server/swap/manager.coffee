@@ -36,7 +36,7 @@ class SwapManager extends events.EventEmitter
         fs.exists @networkFile, (res) =>
             logger.info "Loading network definition" if res
             @motes = if res then require(@networkFile) else {}
-            logger.debug "Found #{} motes already known"
+            logger.debug "Found #{Object.keys(@motes).length} motes already known"
             callback() if callback
         
     # Persist motes definition between executions
@@ -225,6 +225,13 @@ class SwapManager extends events.EventEmitter
 
     # Gets the value of a specific register
     sendQuery: (regId, address) ->
+        sp = new swap.SwapPacket()
+        sp.source = @dataSource.config.network.address
+        sp.dest = address
+        sp.func = swap.Functions.QUERY
+        sp.regAddress = address
+        sp.regId = regId
+        @dataSource.send(sp)
 
     # Sets the value of a specific register
     sendCommand: (regId, address, value) ->
