@@ -15,3 +15,5 @@ This projects uses socketstream as a communication framework.
 ## Dependencies
 * libzmq
 * libzmq-dev
+
+Zmq easier for connections and so on than mqtt
