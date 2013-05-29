@@ -24,6 +24,6 @@ class Publisher
 
 	publish: (data) ->
 		logger.debug "Sending #{data}"
-		@pub.publish data
+		@pub.publish data[0],data[1]
 
 module.exports.Publisher = Publisher
