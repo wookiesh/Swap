@@ -17,7 +17,7 @@
     "xml2js": "*",
     "request": "*",
     "async": "*",
-    "zmq": "*"
+    "mqtt": "*"
   },
   "license": "MIT"
 }
