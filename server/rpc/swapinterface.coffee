@@ -63,7 +63,7 @@ serial.on 'started', () ->
         unit = status.ep.units[1]
         value = status.rawValue * unit.factor + unit.offset
         publisher.publish ["status/#{status.mote.location}/#{status.ep.name}", 
-            JSON.stringify({value: value, unit: unit.name})]
+            JSON.stringify({value: value, unit: unit.name, time:status.time})]
         # Here value is separated from unit with a white space        
 
 module.exports.actions = (req, res, ss) ->
