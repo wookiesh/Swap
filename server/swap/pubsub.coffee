@@ -15,7 +15,7 @@
 # module.exports.Publisher = Publisher
 
 mqtt = require 'mqtt'
-logger = require('log4js').getLogger(_filename.split('/').pop(-1).split('.')[0])
+logger = require('log4js').getLogger(__filename.split('/').pop(-1).split('.')[0])
 
 class Publisher
 	constructor: (@config) ->
